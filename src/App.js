@@ -1,10 +1,13 @@
 import React from "react";
-import { Auth } from "./pages";
+import { Route } from "react-router-dom";
+
+import { Auth, Home } from "./pages";
 
 function App() {
   return (
     <div className="wrapper">
-      <Auth />
+      <Route exact path={["/", "/login"]} component={Auth} />
+      <Route exact path="/im" component={Home} />
     </div>
   );
 }

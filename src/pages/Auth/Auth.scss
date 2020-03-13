@@ -25,6 +25,20 @@
     letter-spacing: 0.1px;
     color: #adadad;
   }
+  &__succes-block {
+    display: flex;
+    text-align: center;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h2 {
+      margin-top: 10px;
+    }
+    p {
+      color: #adadad;
+    }
+  }
   .button {
     text-transform: uppercase;
     font-size: 16px;
