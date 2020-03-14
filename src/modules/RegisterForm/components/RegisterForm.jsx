@@ -9,11 +9,19 @@ import {
 import { Link } from "react-router-dom";
 import { Block } from "../../../components";
 
-const RegisterForm = () => {
-  const success = true;
+const RegisterForm = props => {
+  const success = false;
   const onFinish = values => {
     console.log("Received values of form: ", values);
   };
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit
+  } = props;
   return (
     <div>
       <div className="auth__top">
@@ -23,6 +31,7 @@ const RegisterForm = () => {
       <Block>
         {!success ? (
           <Form
+            onSubmit={handleSubmit}
             name="normal_login"
             className="login-form"
             initialValues={{ remember: true }}
@@ -30,19 +39,25 @@ const RegisterForm = () => {
           >
             <Form.Item
               name="mail"
-              validateStatus="success"
+              validateStatus={
+                !touched.email ? "" : errors.email ? "error" : "success"
+              }
               hasFeedback
-              rules={[{ required: true, message: "Please input your E-Mail!" }]}
+              // rules={[{ required: true, message: "Please input your E-Mail!" }]}
             >
               <Input
+                id="email"
                 prefix={<MailOutlined className="site-form-item-icon" />}
                 placeholder="E-Mail"
                 size="large"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
               name="username"
-              rules={[{ required: true, message: "Please input your Name!" }]}
+              // rules={[{ required: true, message: "Please input your Name!" }]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
@@ -81,6 +96,7 @@ const RegisterForm = () => {
 
             <Form.Item>
               <Button
+                onSubmit={handleSubmit}
                 type="primary"
                 htmlType="submit"
                 size="large"
