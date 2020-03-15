@@ -8,10 +8,11 @@ export default withFormik({
     email: "",
     password: ""
   }),
-
   validate: values => {
     let errors = {};
+
     validateForm({ isAuth: true, values, errors });
+
     return errors;
   },
   handleSubmit: (values, { setSubmitting }) => {
