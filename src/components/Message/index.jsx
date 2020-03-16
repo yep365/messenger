@@ -50,9 +50,7 @@ const Message = ({
             ))}
         </div>
         {date && (
-          <span className="message__date">
-            <Time date={date} />
-          </span>
+          <span className="message__date">{/* <Time date={date} /> */}</span>
         )}
       </div>
     </div>
