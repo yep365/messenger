@@ -17,9 +17,7 @@ const LoginForm = props => {
     isValid,
     isSubmitting
   } = props;
-  // const onFinish = values => {
-  //   console.log("Received values of form: ", values);
-  // };
+
   return (
     <div>
       <div className="auth__top">
