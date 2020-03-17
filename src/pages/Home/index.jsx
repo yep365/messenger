@@ -2,41 +2,47 @@ import React from "react";
 
 import "./Home.scss";
 // import Message from "../../components/Message";
-import DialogItem from "../../components/DialogItem";
+import Dialogs from "../../components/Dialogs";
 
 const Home = () => {
   return (
     <section className="home">
-      <div className="dialogs">
-        <DialogItem
-          user={{ fullname: "Фёдор Достоевский", isOnline: false }}
-          unreaded={0}
-        />
-        <DialogItem
-          user={{ fullname: "Фёдор Достоевский", isOnline: true }}
-          unreaded={15}
-        />
-        <DialogItem
-          user={{ fullname: "Фёдор Достоевский", isOnline: false }}
-          unreaded={0}
-        />
-      </div>
-      {/* <Dialogs
-        itmes={[
+      <Dialogs
+        userId={1}
+        items={[
           {
-            user: {
-              fullname: "Фёдор Достоевский",
-              avatar: null
-            },
+            _id: Math.random(),
+
             message: {
               text:
                 "Мы все свидетельствуем Вам глуюочайшее наше почтение и целуем Ваши ручкиб дражащий паенька: Михайла, Фёдор, Варвара и Андрюша",
-              isReaded: false,
-              created_at: new Date(0)
+              isReaded: true,
+              created_at: new Date("Tue Mar 15 2020 17:07:30 GMT+0300"),
+              user: {
+                _id: 1,
+                fullname: "Фёдор Достоевский",
+                avatar: null,
+                isOnline: false
+              }
+            }
+          },
+          {
+            _id: Math.random(),
+
+            message: {
+              text: "Сегодня прекрасный день, а какая погода у Вас?",
+              created_at: new Date("Tue Mar 17 2020 19:07:30 GMT+0300"),
+              user: {
+                _id: 1,
+                fullname: "Александр Пушкин",
+                avatar:
+                  "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                isOnline: false
+              }
             }
           }
         ]}
-      /> */}
+      />
       {/* <Message
         avatar="https://sun9-49.userapi.com/c206716/v206716893/a0ce4/FKCzMSFI_yg.jpg?ava=1"
         text="Мы тут недавно войска Ариовиста разбили, чуваки хотели закрепиться на галльских землях, лол 🌝"

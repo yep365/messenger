@@ -1,8 +1,19 @@
 import React from "react";
 import classNames from "classnames";
+import format from "date-fns/format";
+import isToday from "date-fns/isToday";
 
-import { Time, IconReaded } from "../";
+import { IconReaded } from "../";
 import "./DialogItem.scss";
+// import { format } from "date-fns";
+
+const getMessageTime = created_at => {
+  if (isToday(created_at)) {
+    return format(created_at, "HH:mm");
+  } else {
+    return format(created_at, "dd.MM.yyyy");
+  }
+};
 
 const getAvatar = avatar => {
   if (avatar) {
@@ -17,32 +28,27 @@ const getAvatar = avatar => {
   }
 };
 
-const DialogItem = ({ user, message, date, unreaded }) => (
+const DialogItem = ({ user, message, date, unreaded, isMe }) => (
   <div
     className={classNames("dialogs__item", {
-      "dialogs__item--online": user.isOnline
+      "dialogs__item--online": message.user.isOnline
     })}
   >
     <div className="dialogs__item-avatar">
       {/* <img src="{user.avatar}" alt={`${user.fullname} avatar`} /> */}
-      {getAvatar(
-        "https://sun9-49.userapi.com/c206716/v206716893/a0ce4/FKCzMSFI_yg.jpg?ava=1"
-      )}
+      {getAvatar(user.avatar)}
     </div>
     <div className="dialogs__item-info">
       <div className="dialogs__item-info-top">
-        <b>Фёдор Достаевский</b>
+        <b>{user.fullname}</b>
         <span>
-          {/* <Time date={date} /> */}
-          13:03
+          {/* <Time date={message.created_at} /> */}
+          {getMessageTime(message.created_at)}
         </span>
       </div>
       <div className="dialogs__item-info-buttom">
-        <p>
-          Мы все свидетельствуем все свидетельствуемвсе свидетельствуемвсе
-          свидетельствуем
-        </p>
-        <IconReaded isMe={true} isReaded={false} />
+        <p>{message.text}</p>
+        {isMe && <IconReaded isMe={true} isReaded={true} />}
         {unreaded > 0 && (
           <div className="dialogs__item-unread-count">
             {unreaded > 9 ? "+9" : unreaded}
