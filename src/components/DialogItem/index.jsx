@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import { Time, IconReaded } from "../";
 import "./DialogItem.scss";
@@ -16,8 +17,12 @@ const getAvatar = avatar => {
   }
 };
 
-const DialogItem = ({ user, message, date }) => (
-  <div className="dialogs__item">
+const DialogItem = ({ user, message, date, unreaded }) => (
+  <div
+    className={classNames("dialogs__item", {
+      "dialogs__item--online": user.isOnline
+    })}
+  >
     <div className="dialogs__item-avatar">
       {/* <img src="{user.avatar}" alt={`${user.fullname} avatar`} /> */}
       {getAvatar(
@@ -37,8 +42,12 @@ const DialogItem = ({ user, message, date }) => (
           Мы все свидетельствуем все свидетельствуемвсе свидетельствуемвсе
           свидетельствуем
         </p>
-        {/* <IconReaded isMe={true} isReaded={false} /> */}
-        <div className="dialogs__item-unread-count">3</div>
+        <IconReaded isMe={true} isReaded={false} />
+        {unreaded > 0 && (
+          <div className="dialogs__item-unread-count">
+            {unreaded > 9 ? "+9" : unreaded}
+          </div>
+        )}
       </div>
     </div>
   </div>
