@@ -5,7 +5,6 @@ import isToday from "date-fns/isToday";
 
 import { IconReaded } from "../";
 import "./DialogItem.scss";
-// import { format } from "date-fns";
 
 const getMessageTime = created_at => {
   if (isToday(created_at)) {
@@ -31,19 +30,20 @@ const getAvatar = avatar => {
 const DialogItem = ({ user, message, date, unreaded, isMe }) => (
   <div
     className={classNames("dialogs__item", {
-      "dialogs__item--online": message.user.isOnline
+      "dialogs__item--online": message.isOnline
     })}
   >
     <div className="dialogs__item-avatar">
       {/* <img src="{user.avatar}" alt={`${user.fullname} avatar`} /> */}
-      {getAvatar(user.avatar)}
+      {getAvatar(message.user.avatar)}
     </div>
     <div className="dialogs__item-info">
       <div className="dialogs__item-info-top">
-        <b>{user.fullname}</b>
+        <b>{message.user.fullname}</b>
         <span>
           {/* <Time date={message.created_at} /> */}
-          {getMessageTime(message.created_at)}
+
+          {getMessageTime(new Date(message.created_at))}
         </span>
       </div>
       <div className="dialogs__item-info-buttom">
