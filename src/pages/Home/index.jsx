@@ -12,45 +12,36 @@ const Home = () => {
         items={[
           {
             _id: 3,
-
-            message: {
-              text:
-                "Мы все свидетельствуем Вам глуюочайшее наше почтение и целуем Ваши ручкиб дражащий паенька: Михайла, Фёдор, Варвара и Андрюша",
-              isReaded: true,
-              created_at: "Tue Mar 18 2020 17:07:30 GMT+0300",
-              user: {
-                fullname: "Фёдор Достоевский",
-                avatar: null,
-                isOnline: false
-              }
+            isReaded: true,
+            created_at: "Wed Mar 18 2020 10:07:30 GMT+0300",
+            text:
+              "Мы все свидетельствуем Вам глуюочайшее наше почтение и целуем Ваши ручкиб дражащий паенька: Михайла, Фёдор, Варвара и Андрюша",
+            user: {
+              fullname: "Фёдор Достоевский",
+              avatar: null,
+              isOnline: false
             }
           },
           {
             _id: 2,
-
-            message: {
-              text: "Сегодня прекрасный день, а какая погода у Вас?",
-              created_at: "Tue Mar 18 2020 15:07:30 GMT+0300",
-              user: {
-                fullname: "Александр Пушкин",
-                avatar:
-                  "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
-                isOnline: true
-              }
+            created_at: "Wed Mar 18 2020 11:07:30 GMT+0300",
+            text: "Сегодня прекрасный день, а какая погода у Вас?",
+            user: {
+              fullname: "Александр Пушкин",
+              avatar:
+                "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+              isOnline: true
             }
           },
           {
             _id: 1,
-
-            message: {
-              text: "А как Вы поживаете, господин?",
-              created_at: "Tue Mar 13 2020 19:07:30 GMT+0300",
-              user: {
-                fullname: "Пётр 1",
-                avatar:
-                  "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
-                isOnline: false
-              }
+            created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+            text: "А как Вы поживаете, господин?",
+            user: {
+              fullname: "Пётр 1",
+              avatar:
+                "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+              isOnline: false
             }
           }
         ]}

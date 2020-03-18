@@ -8,7 +8,7 @@ import "./Dialogs.scss";
 
 const Dialogs = ({ items, userId }) => (
   <div className="dialogs">
-    {orderBy(items, ["message.created_at"], ["desc"]).map(item => (
+    {orderBy(items, ["created_at"], ["asc"]).map(item => (
       <DialogItem key={item._id} isMe={item._id === userId} {...item} />
     ))}
   </div>

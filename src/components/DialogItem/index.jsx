@@ -27,27 +27,35 @@ const getAvatar = avatar => {
   }
 };
 
-const DialogItem = ({ user, message, date, unreaded, isMe }) => (
+const DialogItem = ({
+  user,
+  message,
+  text,
+  date,
+  unreaded,
+  isMe,
+  created_at
+}) => (
   <div
     className={classNames("dialogs__item", {
-      "dialogs__item--online": message.isOnline
+      "dialogs__item--online": user.isOnline
     })}
   >
     <div className="dialogs__item-avatar">
       {/* <img src="{user.avatar}" alt={`${user.fullname} avatar`} /> */}
-      {getAvatar(message.user.avatar)}
+      {getAvatar(user.avatar)}
     </div>
     <div className="dialogs__item-info">
       <div className="dialogs__item-info-top">
-        <b>{message.user.fullname}</b>
+        <b>{user.fullname}</b>
         <span>
           {/* <Time date={message.created_at} /> */}
 
-          {getMessageTime(new Date(message.created_at))}
+          {getMessageTime(new Date(created_at))}
         </span>
       </div>
       <div className="dialogs__item-info-buttom">
-        <p>{message.text}</p>
+        <p>{text}</p>
         {isMe && <IconReaded isMe={true} isReaded={true} />}
         {unreaded > 0 && (
           <div className="dialogs__item-unread-count">
