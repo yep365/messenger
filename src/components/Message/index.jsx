@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
@@ -21,7 +21,45 @@ const Message = ({
   attachments,
   isTyping
 }) => {
-  const [isPlaying, setisPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    console.log(audioRef);
+    audioRef.current.addEventListener(
+      "playing",
+      () => {
+        setIsPlaying(true);
+      },
+      false
+    );
+    audioRef.current.addEventListener(
+      "ended",
+      () => {
+        setIsPlaying(false);
+      },
+      false
+    );
+    audioRef.current.addEventListener(
+      "pause",
+      () => {
+        setIsPlaying(false);
+      },
+      false
+    );
+  }, []);
+
+  const togglePlay = () => {
+    audioRef.current.volume = "0.8";
+    audioRef.current.play();
+    if (!isPlaying) {
+      audioRef.current.play();
+      console.log(1);
+    } else {
+      audioRef.current.pause();
+      console.log(2);
+    }
+  };
 
   return (
     <div
@@ -50,13 +88,14 @@ const Message = ({
               )}
               {audio && (
                 <div className="message__audio">
+                  <audio ref={audioRef} src={audio} preload="auto" />
                   <div
                     className="message__audio-progress"
-                    style={{ width: "100%" }}
+                    style={{ width: "40%" }}
                   ></div>
                   <div className="message__audio-info">
                     <div className="message__audio-btn">
-                      <button>
+                      <button onClick={togglePlay}>
                         {isPlaying ? (
                           <img src={Pause} alt="Pause" />
                         ) : (
