@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
+import { convertCurrentTime } from "../../utils/helpers";
+
 import SoundWave from "../../assets/img/SoundWave.svg";
 import Pause from "../../assets/img/pause.svg";
 import Play from "../../assets/img/play.svg";
@@ -22,10 +24,11 @@ const Message = ({
   isTyping
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
 
   useEffect(() => {
-    console.log(audioRef);
     audioRef.current.addEventListener(
       "playing",
       () => {
@@ -37,6 +40,8 @@ const Message = ({
       "ended",
       () => {
         setIsPlaying(false);
+        setProgress(0);
+        setCurrentTime(0);
       },
       false
     );
@@ -47,6 +52,12 @@ const Message = ({
       },
       false
     );
+
+    audioRef.current.addEventListener("timeupdate", () => {
+      const duration = (audioRef.current && audioRef.current.duration) || 0;
+      setCurrentTime(audioRef.current.currentTime);
+      setProgress((audioRef.current.currentTime / duration) * 100);
+    });
   }, []);
 
   const togglePlay = () => {
@@ -54,10 +65,8 @@ const Message = ({
     audioRef.current.play();
     if (!isPlaying) {
       audioRef.current.play();
-      console.log(1);
     } else {
       audioRef.current.pause();
-      console.log(2);
     }
   };
 
@@ -91,7 +100,7 @@ const Message = ({
                   <audio ref={audioRef} src={audio} preload="auto" />
                   <div
                     className="message__audio-progress"
-                    style={{ width: "40%" }}
+                    style={{ width: progress + "%" }}
                   ></div>
                   <div className="message__audio-info">
                     <div className="message__audio-btn">
@@ -106,7 +115,9 @@ const Message = ({
                     <div className="message__audio-wave">
                       <img src={SoundWave} alt="Sound Wave" />
                     </div>
-                    <span className="message__audio-duration">00:19</span>
+                    <span className="message__audio-duration">
+                      {convertCurrentTime(currentTime)}
+                    </span>
                   </div>
                 </div>
               )}
