@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./Home.scss";
-// import Message from "../../components/Message";
+import Message from "../../components/Message";
 import Dialogs from "../../components/Dialogs";
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
           {
             _id: 3,
             isReaded: true,
-            created_at: "Wed Mar 18 2020 19:07:30 GMT+0300",
+            created_at: "Wed Mar 18 2020 20:07:30 GMT+0300",
             text:
               "Мы все свидетельствуем Вам глуюочайшее наше почтение и целуем Ваши ручкиб дражащий паенька: Михайла, Фёдор, Варвара и Андрюша",
             user: {
@@ -24,7 +24,7 @@ const Home = () => {
           },
           {
             _id: 2,
-            created_at: "Wed Mar 18 2020 19:08:30 GMT+0300",
+            created_at: "Wed Mar 18 2020 22 :08:30 GMT+0300",
             text: "Сегодня прекрасный день, а какая погода у Вас?",
             user: {
               fullname: "Александр Пушкин",
@@ -46,12 +46,12 @@ const Home = () => {
           }
         ]}
       />
-      {/* <Message
-        avatar="https://sun9-49.userapi.com/c206716/v206716893/a0ce4/FKCzMSFI_yg.jpg?ava=1"
-        text="Мы тут недавно войска Ариовиста разбили, чуваки хотели закрепиться на галльских землях, лол 🌝"
-        date={new Date("Fri Mar 13 2020 00:25:48 GMT+0300")}
-      />
       <Message
+        avatar="https://sun9-49.userapi.com/c206716/v206716893/a0ce4/FKCzMSFI_yg.jpg?ava=1"
+        date={new Date("Fri Mar 13 2020 00:25:48 GMT+0300")}
+        audio="https://notificationsounds.com/soundfiles/c361bc7b2c033a83d663b8d9fb4be56e/file-sounds-1146-quest.mp3"
+      />
+      {/* <Message
         avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
         text="Hello World, how are you?"
         date={new Date("Fri Mar 13 2020 14:25:48 GMT+0300")}
