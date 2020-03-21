@@ -3,6 +3,7 @@ import classNames from "classnames";
 import format from "date-fns/format";
 import isToday from "date-fns/isToday";
 
+import { generateAvatarFromHash } from "../../utils/helpers";
 import { IconReaded } from "../";
 import "./DialogItem.scss";
 
@@ -23,7 +24,7 @@ const getAvatar = avatar => {
       />
     );
   } else {
-    // make avatar
+    console.log(generateAvatarFromHash("49c666cc830c8f66ca0eb4c29a76bbd6"));
   }
 };
 

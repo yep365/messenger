@@ -8,7 +8,6 @@ import SoundWave from "../../assets/img/SoundWave.svg";
 import Pause from "../../assets/img/pause.svg";
 import Play from "../../assets/img/play.svg";
 
-import Time from "../Time";
 import "./Message.scss";
 import IconReaded from "../IconReaded";
 

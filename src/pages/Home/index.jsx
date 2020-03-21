@@ -11,7 +11,7 @@ const Home = () => {
         userId={1}
         items={[
           {
-            _id: 3,
+            _id: "49c666cc830c8f66ca0eb4c29a76bbd6",
             isReaded: true,
             created_at: "Wed Mar 18 2020 20:07:30 GMT+0300",
             text:
