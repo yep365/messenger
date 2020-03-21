@@ -12,21 +12,11 @@ import Time from "../Time";
 import "./Message.scss";
 import IconReaded from "../IconReaded";
 
-const Message = ({
-  avatar,
-  audio,
-  user,
-  text,
-  date,
-  isMe,
-  isReaded,
-  attachments,
-  isTyping
-}) => {
+const MessageAudio = ({ audioSrc }) => {
+  const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const audioRef = useRef(null);
 
   useEffect(() => {
     audioRef.current.addEventListener(
@@ -62,7 +52,6 @@ const Message = ({
 
   const togglePlay = () => {
     audioRef.current.volume = "0.8";
-    audioRef.current.play();
     if (!isPlaying) {
       audioRef.current.play();
     } else {
@@ -70,6 +59,45 @@ const Message = ({
     }
   };
 
+  return (
+    <div className="message__audio">
+      <audio ref={audioRef} src={audioSrc} preload="auto" />
+      <div
+        className="message__audio-progress"
+        style={{ width: progress + "%" }}
+      ></div>
+      <div className="message__audio-info">
+        <div className="message__audio-btn">
+          <button onClick={togglePlay}>
+            {isPlaying ? (
+              <img src={Pause} alt="Pause" />
+            ) : (
+              <img src={Play} alt="Play" />
+            )}
+          </button>
+        </div>
+        <div className="message__audio-wave">
+          <img src={SoundWave} alt="Sound Wave" />
+        </div>
+        <span className="message__audio-duration">
+          {convertCurrentTime(currentTime)}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const Message = ({
+  avatar,
+  audio,
+  user,
+  text,
+  date,
+  isMe,
+  isReaded,
+  attachments,
+  isTyping
+}) => {
   return (
     <div
       className={classNames("message", {
@@ -95,32 +123,7 @@ const Message = ({
                   <span />
                 </div>
               )}
-              {audio && (
-                <div className="message__audio">
-                  <audio ref={audioRef} src={audio} preload="auto" />
-                  <div
-                    className="message__audio-progress"
-                    style={{ width: progress + "%" }}
-                  ></div>
-                  <div className="message__audio-info">
-                    <div className="message__audio-btn">
-                      <button onClick={togglePlay}>
-                        {isPlaying ? (
-                          <img src={Pause} alt="Pause" />
-                        ) : (
-                          <img src={Play} alt="Play" />
-                        )}
-                      </button>
-                    </div>
-                    <div className="message__audio-wave">
-                      <img src={SoundWave} alt="Sound Wave" />
-                    </div>
-                    <span className="message__audio-duration">
-                      {convertCurrentTime(currentTime)}
-                    </span>
-                  </div>
-                </div>
-              )}
+              {audio && <MessageAudio audioSrc={audio} />}
             </div>
           )}
 
@@ -150,7 +153,7 @@ Message.defaultProps = {
 Message.propTypes = {
   avatar: PropTypes.string,
   text: PropTypes.string,
-  date: PropTypes.string,
+  date: PropTypes.object,
   user: PropTypes.object,
   attachments: PropTypes.array,
   isTyping: PropTypes.bool,
