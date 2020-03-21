@@ -12,7 +12,7 @@ export default hash => {
   return {
     color: tinycolor({ r, g, b }).toHexString(),
     colorLighten: tinycolor({ r, g, b })
-      .lighten(40)
+      .lighten(60)
       .toHexString()
   };
 };

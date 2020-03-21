@@ -11,22 +11,24 @@ const Home = () => {
         userId={1}
         items={[
           {
-            _id: "49c666cc830c8f66ca0eb4c29a76bbd6",
+            _id: "9709e1821b92a0e0ec44589bc1d65dad",
             isReaded: true,
             created_at: "Wed Mar 18 2020 20:07:30 GMT+0300",
             text:
               "Мы все свидетельствуем Вам глуюочайшее наше почтение и целуем Ваши ручкиб дражащий паенька: Михайла, Фёдор, Варвара и Андрюша",
             user: {
+              _id: "9709e1821b92a0e0ec44589bc1d65dad",
               fullname: "Фёдор Достоевский",
               avatar: null,
               isOnline: false
             }
           },
           {
-            _id: 2,
+            _id: "34rssfs29041dfsc830c8f66a76bbd6",
             created_at: "Wed Mar 18 2020 22 :08:30 GMT+0300",
             text: "Сегодня прекрасный день, а какая погода у Вас?",
             user: {
+              _id: "734rssfs29041dfsc830c8f66a76bbd6",
               fullname: "Александр Пушкин",
               avatar:
                 "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -34,10 +36,11 @@ const Home = () => {
             }
           },
           {
-            _id: 1,
+            _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
             created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
             text: "А как Вы поживаете, господин?",
             user: {
+              _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
               fullname: "Пётр 1",
               avatar:
                 "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",

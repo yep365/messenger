@@ -3,8 +3,7 @@ import classNames from "classnames";
 import format from "date-fns/format";
 import isToday from "date-fns/isToday";
 
-import { generateAvatarFromHash } from "../../utils/helpers";
-import { IconReaded } from "../";
+import { IconReaded, Avatar } from "../";
 import "./DialogItem.scss";
 
 const getMessageTime = created_at => {
@@ -12,19 +11,6 @@ const getMessageTime = created_at => {
     return format(created_at, "HH:mm");
   } else {
     return format(created_at, "dd.MM.yyyy");
-  }
-};
-
-const getAvatar = avatar => {
-  if (avatar) {
-    return (
-      <img
-        src="https://sun9-49.userapi.com/c206716/v206716893/a0ce4/FKCzMSFI_yg.jpg?ava=1"
-        alt=""
-      />
-    );
-  } else {
-    console.log(generateAvatarFromHash("49c666cc830c8f66ca0eb4c29a76bbd6"));
   }
 };
 
@@ -44,7 +30,8 @@ const DialogItem = ({
   >
     <div className="dialogs__item-avatar">
       {/* <img src="{user.avatar}" alt={`${user.fullname} avatar`} /> */}
-      {getAvatar(user.avatar)}
+      {/* {getAvatar(user.avatar)} */}
+      <Avatar user={user} />
     </div>
     <div className="dialogs__item-info">
       <div className="dialogs__item-info-top">
