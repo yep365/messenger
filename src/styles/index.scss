@@ -1,6 +1,15 @@
 @import "~reset-css";
 @import "~antd/dist/antd.css";
 
+@import "layouts/chat.scss";
+
+* {
+  outline: none;
+}
+body {
+  background-color: #f4f7fd;
+}
+
 body,
 html,
 #root,
@@ -11,8 +20,4 @@ html,
     "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
-}
-
-* {
-  outline: none;
 }
