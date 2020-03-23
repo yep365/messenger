@@ -82,12 +82,13 @@
       }
       &-btn {
         button {
+          // padding-left: 0.54rem;
           display: flex;
-          justify-content: center;
+          justify-content: space-around;
           cursor: pointer;
           border: none;
-          width: 28px;
-          height: 28px;
+          width: 26px;
+          height: 27px;
           border-radius: 30px;
           background: #0f3997;
           img {
