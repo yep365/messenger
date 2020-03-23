@@ -1,6 +1,44 @@
 .chat-input {
-  padding: 20px;
-  &__smile {
+  margin: 20px;
+  position: relative;
+
+  &__smile,
+  &__camera,
+  &__audio,
+  &__send {
     position: absolute;
+    z-index: 1;
+    &:hover {
+      opacity: 0.3;
+    }
   }
+
+  &__smile {
+    font-size: 20px;
+    top: 11px;
+    left: 11px;
+  }
+  &__camera {
+    font-size: 21px;
+    top: 11px;
+    left: 690px;
+  }
+  &__audio {
+    font-size: 18px;
+    top: 12px;
+    left: 722px;
+  }
+  &__send {
+    font-size: 17px;
+    top: 12px;
+    left: 753px;
+  }
+  input {
+    &:focus {
+      box-shadow: 0;
+    }
+  }
+}
+.ant-input-lg {
+  padding: 5.5px 11px 5.5px 39px !important;
 }
