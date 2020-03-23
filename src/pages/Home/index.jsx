@@ -8,8 +8,7 @@ import { Input } from "antd";
 
 import "./Home.scss";
 
-import Message from "../../components/Message";
-import Dialogs from "../../components/Dialogs";
+import { Message, ChatInput, Dialogs } from "../../components/";
 
 const Home = () => {
   const { Search } = Input;
@@ -98,6 +97,7 @@ const Home = () => {
               text="Hello World, how are you?"
               date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
               isReaded={true}
+              isMe={true}
               attachments={[
                 {
                   filename: "image.jpg",
@@ -129,7 +129,130 @@ const Home = () => {
                 }
               ]}
             />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+              isMe={true}
+              attachments={[
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=1&water"
+                },
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=&water"
+                },
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=3&water"
+                }
+              ]}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+              attachments={[
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=1&water"
+                },
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=&water"
+                },
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=3&water"
+                }
+              ]}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+              isMe={true}
+              attachments={[
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=1&water"
+                },
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=&water"
+                },
+                {
+                  filename: "image.jpg",
+                  url: "https://source.unsplash.com/100x100/?random=3&water"
+                }
+              ]}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
+            <Message
+              avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
+              text="Hello World, how are you?"
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
+              isReaded={true}
+            />
           </div>
+          <ChatInput />
         </div>
       </div>
     </section>
