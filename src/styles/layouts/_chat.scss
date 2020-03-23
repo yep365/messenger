@@ -12,6 +12,9 @@
       display: flex;
       justify-content: space-between;
       padding: 20px;
+      border-bottom: 1px solid #f7f7f7;
+      margin-bottom: 18px;
+      height: 60px;
     }
     &-search {
       padding: 0 20px 20px 20px;
@@ -51,6 +54,49 @@
   }
   &__dialog {
     flex: 1;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px 10px 20px;
+      border-bottom: 1px solid #f7f7f7;
+      margin-bottom: 14px;
+      height: 60px;
+    }
+    &-fullname {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 7px;
+    }
+    .status {
+      text-align: center;
+      color: #c2bdbd;
+      position: relative;
+      padding-bottom: 5px;
+      &--online {
+        &::before {
+          content: "";
+          width: 6px;
+          height: 6px;
+          border-radius: 30px;
+          background-color: #00c980;
+        }
+      }
+      &::before {
+        position: absolute;
+        top: 6px;
+        left: 33px;
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 30px;
+        background-color: #00c980;
+        border: 0.001em solid #d4d4d4;
+      }
+    }
+    &-messages {
+      padding: 14px;
+    }
   }
 }
 .ant-input-affix-wrapper {

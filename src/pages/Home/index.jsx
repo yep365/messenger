@@ -78,24 +78,25 @@ const Home = () => {
         </div>
         <div className="chat__dialog">
           <div className="chat__dialog-header">
+            <div />
             <div className="chat__dialog-header-center">
               <b className="chat__dialog-fullname">Александр Пушкин</b>
               <div className="chat__dialog-status">
                 <div className="status status--online">online</div>
               </div>
             </div>
-            <EllipsisOutlined />
+            <EllipsisOutlined style={{ fontSize: "23px", color: "#08c" }} />
           </div>
           <div className="chat__dialog-messages">
             <Message
               avatar="https://sun9-49.userapi.com/c206716/v206716893/a0ce4/FKCzMSFI_yg.jpg?ava=1"
-              date={new Date("Fri Mar 13 2020 00:25:48 GMT+0300")}
+              date={"Fri Mar 13 2020 00:25:48 GMT+0300"}
               audio="https://notificationsounds.com/soundfiles/c361bc7b2c033a83d663b8d9fb4be56e/file-sounds-1146-quest.mp3"
             />
             <Message
               avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
               text="Hello World, how are you?"
-              date={new Date("Fri Mar 13 2020 14:25:48 GMT+0300")}
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
               isMe={true}
               isReaded={true}
               attachments={[
@@ -119,7 +120,7 @@ const Home = () => {
             />
             <Message
               avatar="https://sun9-14.userapi.com/c851124/v851124397/1d9009/cD2i0BWhMHo.jpg?ava=1"
-              date={new Date("Fri Mar 13 2020 14:25:48 GMT+0300")}
+              date={"Fri Mar 13 2020 14:25:48 GMT+0300"}
               isReaded={true}
               attachments={[
                 {

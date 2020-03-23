@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 import { convertCurrentTime } from "../../utils/helpers";
 
+import Time from "../Time";
 import SoundWave from "../../assets/img/SoundWave.svg";
 import Pause from "../../assets/img/pause.svg";
 import Play from "../../assets/img/play.svg";
@@ -137,7 +138,9 @@ const Message = ({
           )}
 
           {date && (
-            <span className="message__date">{/* <Time date={date} /> */}</span>
+            <span className="message__date">
+              <Time date={date} />
+            </span>
           )}
         </div>
       </div>
