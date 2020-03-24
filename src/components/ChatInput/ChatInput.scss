@@ -7,26 +7,29 @@
   &__audio,
   &__send {
     position: absolute;
+    cursor: pointer;
     z-index: 1;
+    opacity: 0.4;
     &:hover {
-      opacity: 0.3;
+      opacity: 1;
+      transition: 0.1s ease-in-out;
     }
   }
 
   &__smile {
     font-size: 20px;
-    top: 11px;
+    top: 9px;
     left: 11px;
   }
   &__camera {
     font-size: 21px;
-    top: 11px;
-    left: 690px;
+    top: 10px;
+    left: 721px;
   }
   &__audio {
     font-size: 18px;
     top: 12px;
-    left: 722px;
+    left: 753px;
   }
   &__send {
     font-size: 17px;
@@ -40,5 +43,5 @@
   }
 }
 .ant-input-lg {
-  padding: 5.5px 11px 5.5px 39px !important;
+  padding: 5.5px 95px 5.5px 39px !important;
 }

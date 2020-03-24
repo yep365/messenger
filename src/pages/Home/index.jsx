@@ -70,6 +70,210 @@ const Home = () => {
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
                     isOnline: false
                   }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
+                },
+                {
+                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
+                  text: "А как Вы поживаете, господин?",
+                  user: {
+                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    fullname: "Пётр 1",
+                    avatar:
+                      "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
+                    isOnline: false
+                  }
                 }
               ]}
             />
