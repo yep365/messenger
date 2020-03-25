@@ -45,6 +45,8 @@
       display: flex;
       justify-content: space-around;
       margin-right: 0;
+      position: relative;
+
       .dialogs {
         max-height: 775px;
         overflow: auto;
@@ -52,6 +54,7 @@
         &::-webkit-scrollbar {
           display: none;
         }
+
         &__item {
           padding: 12px 15px;
 

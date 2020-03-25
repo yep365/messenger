@@ -24,7 +24,7 @@ const Dialogs = ({ items, userId, onSearch, inputValue }) => {
             <DialogItem key={item._id} isMe={item._id === userId} {...item} />
           ))
         ) : (
-          <Empty description={false} />
+          <Empty description={"Нет такого собеседника"} />
         )}
       </div>
     </div>
