@@ -8,7 +8,8 @@ import { Input } from "antd";
 
 import "./Home.scss";
 
-import { Message, ChatInput, Dialogs } from "../../components/";
+import { Message, ChatInput } from "../../components/";
+import { Dialogs } from "../../containers";
 
 const Home = () => {
   const { Search } = Input;
@@ -60,11 +61,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "aa0155effac8852f68f49f7a150c6cf0",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "aa0155effac8852f68f49f7a150c6cf0",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -72,11 +73,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "af1a2b2c869de6959e9c21b29c70aae8",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "af1a2b2c869de6959e9c21b29c70aae8",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -84,11 +85,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "cc51f85579e6ba71c221e0662bf62e22",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "cc51f85579e6ba71c221e0662bf62e22",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -96,11 +97,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "2176065f6f51a8fb7a733a30bedaba92",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "2176065f6f51a8fb7a733a30bedaba92",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -108,11 +109,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "454200ce55bea7551a3a724db6307838",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "454200ce55bea7551a3a724db6307838",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -120,11 +121,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "0f5b52afebd9a26a64b0c8438661e495",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "0f5b52afebd9a26a64b0c8438661e495",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -132,11 +133,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "f646eae55460e6de5d16331f75f1a098",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "f646eae55460e6de5d16331f75f1a098",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -144,11 +145,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "3d87611ef9db7194b75e06259f068a7c",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "3d87611ef9db7194b75e06259f068a7c",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -156,11 +157,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "4995eb8167fcb20c4a83049bc6e9c43d",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "4995eb8167fcb20c4a83049bc6e9c43d",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -168,11 +169,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "8788d817db6ec11682416c1c75047dd0",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "8788d817db6ec11682416c1c75047dd0",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -180,11 +181,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "01583ea1c696e64abbbe05b29f94e4ad",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "01583ea1c696e64abbbe05b29f94e4ad",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -192,11 +193,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "21424abff72e701c0581e7c3c5fe733c",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "21424abff72e701c0581e7c3c5fe733c",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -204,11 +205,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "f3fd35c7481e7a7ddda2fe742ea75648",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "f3fd35c7481e7a7ddda2fe742ea75648",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -216,11 +217,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "f2ea63f6c98bf55bf4ea2ea3134a2277",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "f2ea63f6c98bf55bf4ea2ea3134a2277",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -228,11 +229,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "3e3858ca01ab6e891e2d23434d5da74b",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "3e3858ca01ab6e891e2d23434d5da74b",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -240,11 +241,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "ae742211a0486eb3792d1e8f3d6c1e1f",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "ae742211a0486eb3792d1e8f3d6c1e1f",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -252,11 +253,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "87b84a7d1e34260dc9dbba695f4db131",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "87b84a7d1e34260dc9dbba695f4db131",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
@@ -264,11 +265,11 @@ const Home = () => {
                   }
                 },
                 {
-                  _id: "42jjsdaja;lfafsc830c8f66a76bbd6",
+                  _id: "d5aad7f3981448b4889cb963daeec1cc",
                   created_at: "Fri Mar 13 2020 19:07:30 GMT+0300",
                   text: "А как Вы поживаете, господин?",
                   user: {
-                    _id: "42jjsdaja5lfafsc830c8f66a76bbd6",
+                    _id: "d5aad7f3981448b4889cb963daeec1cc",
                     fullname: "Пётр 1",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
