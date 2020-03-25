@@ -4,7 +4,6 @@ import {
   EditOutlined,
   EllipsisOutlined
 } from "@ant-design/icons";
-import { Input } from "antd";
 
 import "./Home.scss";
 
@@ -12,7 +11,6 @@ import { Message, ChatInput } from "../../components/";
 import { Dialogs } from "../../containers";
 
 const Home = () => {
-  const { Search } = Input;
   return (
     <section className="home">
       <div className="chat">
@@ -24,13 +22,7 @@ const Home = () => {
             </div>
             <EditOutlined />
           </div>
-          <div className="chat__sidebar-search">
-            <Search
-              placeholder="Поиск по контактам"
-              onSearch={value => console.log(value)}
-              style={{ width: 284 }}
-            />
-          </div>
+
           <div className="chat__sidebar-dialogs">
             <Dialogs
               userId={1}

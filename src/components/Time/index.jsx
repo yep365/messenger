@@ -5,7 +5,6 @@ import ruLocale from "date-fns/locale/ru";
 
 const Time = ({ date }) => {
   let convertedDate = new Date(date);
-  console.log(convertedDate);
   return (
     <>
       {formatDistanceToNow(convertedDate, {

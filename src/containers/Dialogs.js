@@ -3,13 +3,16 @@ import { Dialogs as BaseDialogs } from "../components";
 
 const Dialogs = ({ items, userId }) => {
   const [inputValue, setInputValue] = useState("");
-  let filtered = Array.from(items);
-  const onChangeInput = e => {
-    const value = e.target.value;
-    filtered = filtered.dilter(
-      dialog => dialog.user.fullname.indexOf(value) >= 0
+  const [filtered, setFiltered] = useState(Array.from(items));
+
+  const onChangeInput = value => {
+    setFiltered(
+      items.filter(
+        dialog =>
+          dialog.user.fullname.toLowerCase().indexOf(value.toLowerCase()) >= 0
+      )
     );
-    setInputValue(e.target.value);
+    setInputValue(value);
   };
   return (
     <BaseDialogs
