@@ -6,7 +6,7 @@ import DialogItem from "../DialogItem";
 
 import "./Dialogs.scss";
 
-const Dialogs = ({ items, userId, onSearch, inputValue }) => {
+const Dialogs = ({ items, userId, onSearch, inputValue, onSelectDialog }) => {
   const { Search } = Input;
   return (
     <div className="chat__sidebar-wrapper">
@@ -21,7 +21,12 @@ const Dialogs = ({ items, userId, onSearch, inputValue }) => {
       <div className="dialogs">
         {items.length ? (
           orderBy(items, ["created_at"], ["desc"]).map(item => (
-            <DialogItem key={item._id} isMe={item._id === userId} {...item} />
+            <DialogItem
+              onSelect={onSelectDialog}
+              key={item._id}
+              isMe={item._id === userId}
+              {...item}
+            />
           ))
         ) : (
           <Empty description={"Нет такого собеседника"} />
