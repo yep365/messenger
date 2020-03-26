@@ -45,7 +45,7 @@ const Home = () => {
                   created_at: "Wed Mar 18 2020 22 :08:30 GMT+0300",
                   text: "Сегодня прекрасный день, а какая погода у Вас?",
                   user: {
-                    _id: "734rssfs29041dfsc830c8f66a76bbd6",
+                    _id: "734rssfs2901dfsc830c8f66a76bbd6",
                     fullname: "Александр Пушкин",
                     avatar:
                       "https://i.pinimg.com/236x/16/66/fb/1666fb793654be52797c25c202811768.jpg",
