@@ -1,5 +1,5 @@
 const initialState = {
-  items: []
+  items: null
 };
 export default (state = initialState, { type, payload }) => {
   switch (type) {

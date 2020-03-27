@@ -4,13 +4,13 @@ import classNames from "classnames";
 
 import { convertCurrentTime } from "../../utils/helpers";
 
-import Time from "../Time";
 import SoundWave from "../../assets/img/SoundWave.svg";
 import Pause from "../../assets/img/pause.svg";
 import Play from "../../assets/img/play.svg";
 
+import { Time, IconReaded, Avatar } from "../";
+
 import "./Message.scss";
-import IconReaded from "../IconReaded";
 
 const MessageAudio = ({ audioSrc }) => {
   const audioRef = useRef(null);
@@ -110,6 +110,7 @@ const Message = ({
       <div className="message__content">
         <IconReaded isMe={isMe} isReaded={isReaded} />
         <div className="message__avatar">
+          <Avatar />
           <img src={avatar} alt={`Avatar ${user.fullname}`} />
         </div>
         <div className="message__info">

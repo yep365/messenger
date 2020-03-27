@@ -5,11 +5,20 @@ import { messagesActions } from "../redux/actions";
 import { Messages as BaseMessages } from "../components";
 
 const Messages = ({ currentDialogId, fetchMessages, items }) => {
+  console.log(items, 333);
   useEffect(() => {
-    fetchMessages(currentDialogId);
+    if (currentDialogId) {
+      fetchMessages(currentDialogId);
+    }
   }, [currentDialogId]);
 
   return <BaseMessages items={items} />;
 };
 
-export default connect(({ messages }) => messages, messagesActions)(Messages);
+export default connect(
+  ({ dialogs, messages }) => ({
+    currentDialogId: dialogs.currentDialogId,
+    messages: messages.items
+  }),
+  messagesActions
+)(Messages);
