@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { messagesActions } from "../redux/actions";
 import { Messages as BaseMessages } from "../components";
 
-const Messages = ({ currentDialogId, fetchMessages, items }) => {
+const Dialogs = ({ currentDialogId, fetchMessages, items }) => {
   console.log(items, 333);
   useEffect(() => {
     if (currentDialogId) {
@@ -18,7 +18,7 @@ const Messages = ({ currentDialogId, fetchMessages, items }) => {
 export default connect(
   ({ dialogs, messages }) => ({
     currentDialogId: dialogs.currentDialogId,
-    messages: messages.items
+    items: messages.items
   }),
   messagesActions
-)(Messages);
+)(Dialogs);
