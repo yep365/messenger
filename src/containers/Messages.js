@@ -4,21 +4,21 @@ import { connect } from "react-redux";
 import { messagesActions } from "../redux/actions";
 import { Messages as BaseMessages } from "../components";
 
-const Dialogs = ({ currentDialogId, fetchMessages, items }) => {
-  console.log(items, 333);
+const Messages = ({ currentDialogId, fetchMessages, items, isLoading }) => {
   useEffect(() => {
     if (currentDialogId) {
       fetchMessages(currentDialogId);
     }
   }, [currentDialogId]);
 
-  return <BaseMessages items={items} />;
+  return <BaseMessages items={items} isLoading={isLoading} />;
 };
 
 export default connect(
   ({ dialogs, messages }) => ({
     currentDialogId: dialogs.currentDialogId,
-    items: messages.items
+    items: messages.items,
+    isLoading: messages.isLoading
   }),
   messagesActions
-)(Dialogs);
+)(Messages);
