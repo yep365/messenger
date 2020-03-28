@@ -1,6 +1,12 @@
 .chat-input {
   margin: 20px;
   position: relative;
+  &__actions {
+    cursor: pointer !important;
+    &-upload-btn {
+      cursor: pointer !important;
+    }
+  }
 
   &__smile,
   &__camera,

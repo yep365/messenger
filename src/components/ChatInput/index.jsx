@@ -7,6 +7,7 @@ import {
   SendOutlined
 } from "@ant-design/icons";
 import { Input } from "antd";
+import { UploadField } from "@navjobs/upload";
 
 import "./ChatInput.scss";
 
@@ -24,7 +25,17 @@ const ChatInput = props => {
       />
       <div className="chat-input__actions">
         <div className="chat-input__camera">
-          <CameraOutlined style={{ color: "#464847" }} />
+          <UploadField
+            onFiles={files => console.log(files)}
+            containerProps={{
+              className: "chat-input__actions-upload-btn"
+            }}
+            uploadProps={{
+              accept: ".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png,.gif,.bmp"
+            }}
+          >
+            <CameraOutlined style={{ color: "#464847" }} />
+          </UploadField>
         </div>
         {inputStatus ? (
           <div className="chat-input__send">
