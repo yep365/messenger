@@ -1,8 +1,21 @@
 .messages {
   height: 100%;
+  padding: 14px;
+  padding-bottom: 0px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &--loading {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+.ant-empty {
+  &-description {
+    white-space: pre-line;
+    color: #b4b4b4;
   }
 }

@@ -6,7 +6,7 @@
   &__content {
     display: flex;
     max-width: 440px;
-    margin-bottom: 15px;
+    margin-bottom: 7px;
     position: relative;
   }
 
@@ -27,9 +27,9 @@
   &__bubble {
     background: $blue;
     box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
-    border-radius: 12px 12px 12px 0px;
+    border-radius: 12px 12px 4px 0px;
     padding: 15px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
   }
 
   &__date {

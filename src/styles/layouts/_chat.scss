@@ -26,7 +26,7 @@
       height: 60px;
     }
     &-search {
-      padding: 0 20px 20px 20px;
+      padding: 0 20px 20px 0px;
       .ant-input {
         background: #f7f8f9;
         border: 0;
@@ -48,7 +48,7 @@
       position: relative;
 
       .dialogs {
-        max-height: 775px;
+        max-height: 785px;
         overflow: auto;
         -ms-overflow-style: none;
         &::-webkit-scrollbar {
@@ -116,16 +116,12 @@
       }
     }
     &-messages {
-      padding: 14px;
-      overflow: auto;
-      height: calc(100% - 150px);
-      -ms-overflow-style: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      height: calc(100% - 140px);
+      margin-bottom: -12px;
     }
   }
 }
+
 .anticon {
   &-edit {
     cursor: pointer;

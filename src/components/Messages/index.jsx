@@ -7,19 +7,26 @@ import { Message } from "../../components";
 
 import "./Messages.scss";
 
-const Messages = ({ isLoading, items }) => {
+const Messages = ({ blockRef, isLoading, items }) => {
   return (
-    <div className={classNames("messages", { "messages--loading": isLoading })}>
-      {isLoading && !items ? (
+    <div
+      ref={blockRef}
+      className={classNames("messages", { "messages--loading": isLoading })}
+    >
+      {isLoading ? (
         <Spin size="large" tip="Загружаю сообщения..."></Spin>
-      ) : items && items.length > 0 ? (
-        <div>
-          {items.map(item => (
-            <Message key={item._id} {...item} />
-          ))}
-        </div>
+      ) : items && !isLoading ? (
+        items.length > 0 ? (
+          <div>
+            {items.map(item => (
+              <Message key={item._id} {...item} />
+            ))}
+          </div>
+        ) : (
+          <Empty description={"Вы пока не общались...\nИсправьте это!"} />
+        )
       ) : (
-        <Empty description={"Нет сообщений!"} />
+        !items && <Empty description={"Выбирете собесдника!"} />
       )}
     </div>
   );
