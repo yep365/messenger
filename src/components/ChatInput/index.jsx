@@ -31,7 +31,8 @@ const ChatInput = props => {
               className: "chat-input__actions-upload-btn"
             }}
             uploadProps={{
-              accept: ".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png,.gif,.bmp"
+              accept: ".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png,.gif,.bmp",
+              multiple: "multyple"
             }}
           >
             <CameraOutlined style={{ color: "#464847" }} />

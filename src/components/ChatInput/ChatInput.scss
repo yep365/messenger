@@ -4,7 +4,9 @@
   &__actions {
     cursor: pointer !important;
     &-upload-btn {
-      cursor: pointer !important;
+      ::-webkit-file-upload-button {
+        cursor: pointer;
+      }
     }
   }
 
