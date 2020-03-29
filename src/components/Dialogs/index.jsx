@@ -6,7 +6,14 @@ import DialogItem from "../DialogItem";
 
 import "./Dialogs.scss";
 
-const Dialogs = ({ items, userId, onSearch, inputValue, onSelectDialog }) => {
+const Dialogs = ({
+  items,
+  userId,
+  onSearch,
+  inputValue,
+  onSelectDialog,
+  currentDialogId
+}) => {
   const { Search } = Input;
   return (
     <div className="chat__sidebar-wrapper">
@@ -25,6 +32,7 @@ const Dialogs = ({ items, userId, onSearch, inputValue, onSelectDialog }) => {
               onSelect={onSelectDialog}
               key={item._id}
               isMe={item._id === userId}
+              currentDialogId={currentDialogId}
               {...item}
             />
           ))

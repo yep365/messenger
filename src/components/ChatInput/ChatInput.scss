@@ -1,8 +1,13 @@
 .chat-input {
   margin: 20px;
   position: relative;
+  &__emoji-picker {
+    position: absolute;
+    bottom: 50px;
+    z-index: 2;
+  }
+
   &__actions {
-    cursor: pointer !important;
     &-upload-btn {
       ::-webkit-file-upload-button {
         cursor: pointer;

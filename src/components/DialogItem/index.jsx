@@ -22,11 +22,13 @@ const DialogItem = ({
   unreaded,
   isMe,
   created_at,
-  onSelect
+  onSelect,
+  currentDialogId
 }) => (
   <div
     className={classNames("dialogs__item", {
-      "dialogs__item--online": user.isOnline
+      "dialogs__item--online": user.isOnline,
+      "dialogs__item--selected": currentDialogId === _id
     })}
     onClick={onSelect.bind(this, _id)}
   >

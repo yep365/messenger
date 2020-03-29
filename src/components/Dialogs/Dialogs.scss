@@ -33,6 +33,9 @@
         }
       }
     }
+    &--selected {
+      background-color: #f3f7ff;
+    }
     &-info {
       width: 300px;
       flex-direction: column;

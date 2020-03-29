@@ -8,15 +8,30 @@ import {
 } from "@ant-design/icons";
 import { Input } from "antd";
 import { UploadField } from "@navjobs/upload";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
 
 import "./ChatInput.scss";
 
 const ChatInput = props => {
   const [inputStatus, setInputStatus] = useState("");
+  const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
+
+  const toggleEmojiPicker = () => {
+    setEmojiPickerVisible(!emojiPickerVisible);
+  };
   return (
     <div className="chat-input">
       <div className="chat-input__smile">
-        <SmileOutlined style={{ color: "#464847" }} />
+        {emojiPickerVisible && (
+          <div className="chat-input__emoji-picker">
+            <Picker set="apple" />
+          </div>
+        )}
+        <SmileOutlined
+          onClick={toggleEmojiPicker}
+          style={{ color: "#464847" }}
+        />
       </div>
       <Input
         onChange={e => setInputStatus(e.target.value)}
