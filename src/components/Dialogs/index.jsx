@@ -21,7 +21,7 @@ const Dialogs = ({
         <Search
           placeholder="Поиск по контактам"
           onChange={e => onSearch(e.target.value)}
-          style={{ width: 284 }}
+          style={{ width: 297 }}
           value={inputValue}
         />
       </div>
