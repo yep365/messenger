@@ -37,7 +37,10 @@ const Dialogs = ({
             />
           ))
         ) : (
-          <Empty description={"Нет такого собеседника"} />
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description={"Нет такого собеседника"}
+          />
         )}
       </div>
     </div>

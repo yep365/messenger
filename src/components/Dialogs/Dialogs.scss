@@ -35,6 +35,9 @@
     }
     &--selected {
       background-color: #e0ffe0;
+      &:hover {
+        background-color: #e0ffe0 !important;
+      }
     }
     &-info {
       width: 300px;

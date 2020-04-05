@@ -33,18 +33,12 @@ const DialogItem = ({
     onClick={onSelect.bind(this, _id)}
   >
     <div className="dialogs__item-avatar">
-      {/* <img src="{user.avatar}" alt={`${user.fullname} avatar`} /> */}
-      {/* {getAvatar(user.avatar)} */}
       <Avatar user={user} />
     </div>
     <div className="dialogs__item-info">
       <div className="dialogs__item-info-top">
         <b>{user.fullname}</b>
-        <span>
-          {/* <Time date={message.created_at} /> */}
-
-          {getMessageTime(new Date(created_at))}
-        </span>
+        <span>{getMessageTime(new Date(created_at))}</span>
       </div>
       <div className="dialogs__item-info-buttom">
         <p>{text}</p>

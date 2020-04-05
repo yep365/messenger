@@ -4,7 +4,7 @@ import {
   SmileOutlined,
   CameraOutlined,
   AudioOutlined,
-  SendOutlined
+  SendOutlined,
 } from "@ant-design/icons";
 import { Input } from "antd";
 import { UploadField } from "@navjobs/upload";
@@ -13,7 +13,7 @@ import { Picker } from "emoji-mart";
 
 import "./ChatInput.scss";
 
-const ChatInput = props => {
+const ChatInput = (props) => {
   const [inputStatus, setInputStatus] = useState("");
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
 
@@ -34,20 +34,20 @@ const ChatInput = props => {
         />
       </div>
       <Input
-        onChange={e => setInputStatus(e.target.value)}
+        onChange={(e) => setInputStatus(e.target.value)}
         size="large"
         placeholder="Введите сообщение"
       />
       <div className="chat-input__actions">
         <div className="chat-input__camera">
           <UploadField
-            onFiles={files => console.log(files)}
+            onFiles={(files) => console.log(files)}
             containerProps={{
-              className: "chat-input__actions-upload-btn"
+              className: "chat-input__actions-upload-btn",
             }}
             uploadProps={{
               accept: ".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png,.gif,.bmp",
-              multiple: "multyple"
+              multiple: "multyple",
             }}
           >
             <CameraOutlined style={{ color: "#464847" }} />
@@ -68,6 +68,6 @@ const ChatInput = props => {
 };
 
 ChatInput.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 export default ChatInput;
