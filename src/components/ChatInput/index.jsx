@@ -22,12 +22,12 @@ const ChatInput = (props) => {
   };
   return (
     <div className="chat-input">
+      {emojiPickerVisible && (
+        <div className="chat-input__emoji-picker">
+          <Picker set="apple" />
+        </div>
+      )}
       <div className="chat-input__smile">
-        {emojiPickerVisible && (
-          <div className="chat-input__emoji-picker">
-            <Picker set="apple" />
-          </div>
-        )}
         <SmileOutlined
           onClick={toggleEmojiPicker}
           style={{ color: "#464847" }}

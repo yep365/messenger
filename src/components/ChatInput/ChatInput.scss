@@ -4,7 +4,7 @@
   &__emoji-picker {
     position: absolute;
     bottom: 50px;
-    z-index: 2;
+    z-index: 10;
   }
 
   &__actions {
@@ -15,7 +15,6 @@
     }
   }
 
-  &__smile,
   &__camera,
   &__audio,
   &__send {
@@ -33,6 +32,14 @@
     font-size: 20px;
     top: 9px;
     left: 11px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0.4;
+    z-index: 1;
+    &:hover {
+      opacity: 1;
+      transition: 0.1s ease-in-out;
+    }
   }
   &__camera {
     font-size: 21px;

@@ -26,7 +26,7 @@ export default connect(
   ({ dialogs, messages }) => ({
     currentDialogId: dialogs.currentDialogId,
     items: messages.items,
-    isLoading: messages.isLoading
+    isLoading: messages.isLoading,
   }),
   messagesActions
 )(Messages);

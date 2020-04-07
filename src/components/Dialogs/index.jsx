@@ -12,7 +12,7 @@ const Dialogs = ({
   onSearch,
   inputValue,
   onSelectDialog,
-  currentDialogId
+  currentDialogId,
 }) => {
   const { Search } = Input;
   return (
@@ -20,14 +20,14 @@ const Dialogs = ({
       <div className="chat__sidebar-search">
         <Search
           placeholder="Поиск по контактам"
-          onChange={e => onSearch(e.target.value)}
+          onChange={(e) => onSearch(e.target.value)}
           style={{ width: 297 }}
           value={inputValue}
         />
       </div>
       <div className="dialogs">
         {items.length ? (
-          orderBy(items, ["created_at"], ["desc"]).map(item => (
+          orderBy(items, ["created_at"], ["desc"]).map((item) => (
             <DialogItem
               onSelect={onSelectDialog}
               key={item._id}

@@ -9,16 +9,16 @@ const Dialogs = ({
   setCurrentDialogId,
   currentDialogId,
   items,
-  userId
+  userId,
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [filtered, setFiltered] = useState(Array.from(items));
 
-  const onChangeInput = value => {
+  const onChangeInput = (value) => {
     setFiltered(
       items.filter(
-        dialog =>
-          dialog.user.fullname.toLowerCase().indexOf(value.toLowerCase()) >= 0
+        (dialog) =>
+          dialog.user.fullname.toLowerCase().indexOf(value.toLowerCase()) > -1
       )
     );
     setInputValue(value);
