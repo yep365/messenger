@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Block } from "../../../components";
 import { validateField } from "utils/helpers";
 
-const LoginForm = props => {
+const LoginForm = (props) => {
   const {
     values,
     touched,
@@ -15,7 +15,7 @@ const LoginForm = props => {
     handleBlur,
     handleSubmit,
     isValid,
-    isSubmitting
+    isSubmitting,
   } = props;
 
   return (
@@ -68,8 +68,9 @@ const LoginForm = props => {
               type="primary"
               htmlType="submit"
               size="large"
-              className="login-form-button button"
+              className="login-form-button button button--large"
               onClick={handleSubmit}
+              disabled={isSubmitting}
             >
               Войти в аккаунт
             </Button>

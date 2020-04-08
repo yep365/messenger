@@ -1,14 +1,17 @@
 import { withFormik } from "formik";
 import LoginForm from "../components/LoginForm";
-import validateForm from "../../../utils/validate";
+import validateForm from "utils/validate";
+import { openNotification } from "../../../utils/helpers";
+
+import axios from "core/axios";
 
 export default withFormik({
   enableReinitialize: true,
   mapPropsToValues: () => ({
     email: "",
-    password: ""
+    password: "",
   }),
-  validate: values => {
+  validate: (values) => {
     let errors = {};
 
     validateForm({ isAuth: true, values, errors });
@@ -16,10 +19,31 @@ export default withFormik({
     return errors;
   },
   handleSubmit: (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 1000);
+    return axios
+      .post("/user/signin", values)
+      .then(({ data }) => {
+        console.log(data);
+        const { status, token } = data;
+        if (status === "erorr") {
+          openNotification({
+            title: "Ошибка при авторизации",
+            text: "Неверный пароль",
+            type: "erorr",
+          });
+        } else {
+          openNotification({
+            text: "Вы авторизовались! Подождите...",
+            type: "success",
+          });
+        }
+        console.log(data);
+
+        // localStorage.token = data.token;
+        setSubmitting(false);
+      })
+      .catch(() => {
+        setSubmitting(false);
+      });
   },
-  displayName: "LoginForm"
+  displayName: "LoginForm",
 })(LoginForm);
