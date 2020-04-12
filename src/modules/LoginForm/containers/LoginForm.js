@@ -1,12 +1,14 @@
 import { connect } from "react-redux";
 import { withFormik } from "formik";
-import LoginForm from "../components/LoginForm";
-import validateForm from "utils/validate";
-import { openNotification } from "../../../utils/helpers";
+import { withRouter } from "react-router";
 
+import LoginForm from "../components/LoginForm";
+
+import validateForm from "utils/validate";
 import { userActions } from "redux/actions";
 
-const LoginFormConnected = connect((state) => state, userActions)(LoginForm);
+import store from "redux/store";
+const LoginFormConnected = connect(null, userActions)(LoginForm);
 
 const LoginFormContainer = withFormik({
   enableReinitialize: true,
@@ -21,35 +23,12 @@ const LoginFormContainer = withFormik({
 
     return errors;
   },
-  handleSubmit: (values, { setSubmitting, fetchUserLogin }) => {
-    console.log(fetchUserLogin);
-    // return axios
-    //   .post("/user/signin", values)
-    //   .then(({ data }) => {
-    //     console.log(data);
-    //     const { status, token } = data;
-    //     if (status === "erorr") {
-    //       openNotification({
-    //         title: "Ошибка при авторизации",
-    //         text: "Неверный пароль",
-    //         type: "erorr",
-    //       });
-    //     } else {
-    //       openNotification({
-    //         text: "Вы авторизовались! Подождите...",
-    //         type: "success",
-    //       });
-    //     }
-    //     console.log(data);
-
-    //     // localStorage.token = data.token;
-    //     setSubmitting(false);
-    //   })
-    //   .catch(() => {
-    //     setSubmitting(false);
-    //   });
+  handleSubmit: (values, { setSubmitting }) => {
+    store.dispatch(userActions.fetchUserLogin(values)).then(() => {
+      setSubmitting(false);
+    });
   },
   displayName: "LoginForm",
-})(LoginFormConnected);
+})(LoginForm);
 
 export default LoginFormContainer;
