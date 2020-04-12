@@ -29,6 +29,7 @@ const Actions = {
         window.localStorage["token"] = token;
         dispatch(Actions.fetchUserData());
       }
+      return data;
     });
   },
 };
