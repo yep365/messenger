@@ -78,7 +78,12 @@ const RegisterForm = (props) => {
             />
             <Form.Item>
               {isSubmitting && !isValid && <span>Ошибка!</span>}
-              <Button onClick={handleSubmit} type="primary" size="large">
+              <Button
+                disabled={isSubmitting}
+                onClick={handleSubmit}
+                type="primary"
+                size="large"
+              >
                 Зарегистрироваться
               </Button>
             </Form.Item>

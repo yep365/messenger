@@ -33,7 +33,7 @@ const Actions = {
     });
   },
   fetchUserRegister: (postData) => (dispatch) => {
-    return userApi.register(postData).then(({ data }) => {
+    return userApi.signup(postData).then(({ data }) => {
       const { status, token } = data;
       if (status === "erorr") {
         openNotification({
