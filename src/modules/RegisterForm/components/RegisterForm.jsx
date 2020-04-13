@@ -5,15 +5,15 @@ import {
   UserOutlined,
   LockOutlined,
   MailOutlined,
-  InfoCircleTwoTone
+  InfoCircleTwoTone,
 } from "@ant-design/icons";
 
-import { Button, Block } from "components";
+import { Button, Block, FormField } from "components";
 import { validateField } from "utils/helpers";
 
 const success = false;
 
-const RegisterForm = props => {
+const RegisterForm = (props) => {
   const {
     values,
     touched,
@@ -22,7 +22,7 @@ const RegisterForm = props => {
     handleBlur,
     handleSubmit,
     isValid,
-    isSubmitting
+    isSubmitting,
   } = props;
   return (
     <div>
@@ -33,54 +33,49 @@ const RegisterForm = props => {
       <Block>
         {!success ? (
           <Form onSubmit={handleSubmit} className="register-form">
-            <Form.Item
-              validateStatus={validateField("email", touched, errors)}
-              help={!touched.email ? null : errors.email}
-              hasFeedback
-            >
-              <Input
-                id="email"
-                prefix={<MailOutlined className="site-form-item-icon" />}
-                size="large"
-                placeholder="E-Mail"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </Form.Item>
-            <Form.Item>
-              <Input
-                prefix={<UserOutlined className="site-form-item-icon" />}
-                size="large"
-                placeholder="Ваше имя"
-              />
-            </Form.Item>
-            <Form.Item
-              validateStatus={validateField("password", touched, errors)}
-              help={!touched.password ? null : errors.password}
-              hasFeedback
-            >
-              <Input
-                id="password"
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                size="large"
-                type="password"
-                placeholder="Пароль"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </Form.Item>
-            <Form.Item
-              validateStatus={validateField("password", touched, errors)}
-            >
-              <Input
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                size="large"
-                type="password"
-                placeholder="Повторите пароль"
-              />
-            </Form.Item>
+            <FormField
+              name="email"
+              placeholder="E-mail"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+              prefix={<MailOutlined className="site-form-item-icon" />}
+            />
+            <FormField
+              name="fullname"
+              placeholder="Ваше имя"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+              prefix={<UserOutlined className="site-form-item-icon" />}
+            />
+            <FormField
+              name="password"
+              placeholder="Пароль"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+              type="password"
+              prefix={<LockOutlined className="site-form-item-icon" />}
+            />
+
+            <FormField
+              name="password_2"
+              placeholder="Пароль"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+              type="password"
+              prefix={<LockOutlined className="site-form-item-icon" />}
+            />
             <Form.Item>
               {isSubmitting && !isValid && <span>Ошибка!</span>}
               <Button onClick={handleSubmit} type="primary" size="large">

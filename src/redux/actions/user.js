@@ -32,5 +32,26 @@ const Actions = {
       return data;
     });
   },
+  fetchUserRegister: (postData) => (dispatch) => {
+    return userApi.register(postData).then(({ data }) => {
+      const { status, token } = data;
+      if (status === "erorr") {
+        openNotification({
+          title: "Ошибка при регистрации",
+          text: "Неверный пароль",
+          type: "erorr",
+        });
+      } else {
+        openNotification({
+          text: "Вы авторизовались! Подождите...",
+          type: "success",
+        });
+        window.axios.headers.common["token"] = token;
+        window.localStorage["token"] = token;
+        dispatch(Actions.fetchUserData());
+      }
+      return data;
+    });
+  },
 };
 export default Actions;

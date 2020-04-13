@@ -14,7 +14,9 @@ const LoginFormContainer = withFormik({
   enableReinitialize: true,
   mapPropsToValues: () => ({
     email: "",
+    fullname: "",
     password: "",
+    password_2: "",
   }),
   validate: (values) => {
     let errors = {};
