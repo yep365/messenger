@@ -23,7 +23,7 @@ const FormField = ({
         hasFeedback
       >
         <Input
-          id="name"
+          id={name}
           prefix={prefix}
           size="large"
           placeholder={placeholder}

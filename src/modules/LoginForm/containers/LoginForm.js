@@ -1,6 +1,4 @@
-import { connect } from "react-redux";
 import { withFormik } from "formik";
-import { withRouter } from "react-router";
 
 import LoginForm from "../components/LoginForm";
 
@@ -8,15 +6,12 @@ import validateForm from "utils/validate";
 import { userActions } from "redux/actions";
 
 import store from "redux/store";
-const LoginFormConnected = connect(null, userActions)(LoginForm);
 
 const LoginFormContainer = withFormik({
   enableReinitialize: true,
   mapPropsToValues: () => ({
     email: "",
-    fullname: "",
     password: "",
-    password_2: "",
   }),
   validate: (values) => {
     let errors = {};
@@ -30,9 +25,7 @@ const LoginFormContainer = withFormik({
       .dispatch(userActions.fetchUserLogin(values))
       .then(({ status }) => {
         if (status === "success") {
-          setTimeout(() => {
-            props.history.push("/");
-          }, 50);
+          props.history.push("/");
         }
         setSubmitting(false);
       })

@@ -34,7 +34,7 @@ const RegisterForm = (props) => {
         {!success ? (
           <Form onSubmit={handleSubmit} className="register-form">
             <FormField
-              name="email"
+              name="mail"
               placeholder="E-mail"
               handleChange={handleChange}
               handleBlur={handleBlur}

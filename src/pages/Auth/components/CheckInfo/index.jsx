@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Result } from "antd";
+import { Result, Button } from "antd";
 
 import { userApi } from "utils/api";
 import { Block } from "components";
@@ -22,7 +22,7 @@ const renderTextInfo = (hash, verified) => {
   }
 };
 
-const CheckInfo = ({ location }) => {
+const CheckInfo = ({ location, history }) => {
   const [verified, setVerified] = useState(false);
   const hash = location.search.split("hash=")[1];
   const info = renderTextInfo(hash, verified);
@@ -35,10 +35,22 @@ const CheckInfo = ({ location }) => {
         }
       });
     }
-  }, []);
+  });
   return (
     <Block>
-      <Result status={info.status} title="Готово!" subTitle={info.message} />
+      <Result
+        status={info.status}
+        title="Готово!"
+        subTitle={info.message}
+        extra={
+          info.status === "success" &&
+          verified && (
+            <Button type={"primary"} onClick={() => history.push("/signin")}>
+              Войти
+            </Button>
+          )
+        }
+      />
     </Block>
   );
 };

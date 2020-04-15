@@ -18,7 +18,7 @@ function App(props) {
         path="/"
         render={() => (isAuth ? <Home /> : <Redirect to="/signin" />)}
       />
-      <Route exact path="/im" component={Home} />
+      {/* <Route exact path="/im" component={Home} /> */}
     </div>
   );
 }
