@@ -1,15 +1,46 @@
-import React from "react";
-import { Typography, Result } from "antd";
+import React, { useEffect, useState } from "react";
+import { Result } from "antd";
 
-const CheckEmailInfo = () => {
+import { userApi } from "utils/api";
+import { Block } from "components";
+
+const renderTextInfo = (hash, verified) => {
+  if (hash) {
+    if (verified) {
+      return { status: "success", message: "Аккаунт успешно подтвержден!" };
+    } else {
+      return {
+        status: "errror",
+        message: "Ошибка при подддтверждении аккаунта",
+      };
+    }
+  } else {
+    return {
+      status: "404",
+      message: "Ссылка с подтверждением аккаунта отправленна на E-Mail.",
+    };
+  }
+};
+
+const CheckInfo = ({ location }) => {
+  const [verified, setVerified] = useState(false);
+  const hash = location.search.split("hash=")[1];
+  const info = renderTextInfo(hash, verified);
+  console.log(location);
+  useEffect(() => {
+    if (hash) {
+      userApi.verifyHash(hash).then(({ data }) => {
+        if (data.status === "success") {
+          setVerified(true);
+        }
+      });
+    }
+  }, []);
   return (
-    <Result
-      status="success"
-      title="Готово!"
-      subTitle="Регистрация прошла успешно, Вам на E-Mail пришло письмо с подтверждением
-    регистрации."
-    />
+    <Block>
+      <Result status={info.status} title="Готово!" subTitle={info.message} />
+    </Block>
   );
 };
 
-export default CheckEmailInfo;
+export default CheckInfo;

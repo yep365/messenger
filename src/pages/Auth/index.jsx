@@ -12,7 +12,7 @@ const Auth = () => {
       <div className="auth__content">
         <Route exact path={["/", "/signin"]} component={LoginForm} />
         <Route exact path="/signup" component={RegisterForm} />
-        <Route exact path="/signup/check" component={CheckInfo} />
+        <Route exact path="/signup/verify" component={CheckInfo} />
       </div>
     </section>
   );
