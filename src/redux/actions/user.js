@@ -12,46 +12,31 @@ const Actions = {
     });
   },
   fetchUserLogin: (postData) => (dispatch) => {
-    return userApi.signin(postData).then(({ data }) => {
-      const { status, token } = data;
-      if (status === "erorr") {
+    return userApi
+      .signIn(postData)
+      .then(({ data }) => {
+        const { token } = data;
+        openNotification({
+          title: "Отлично!",
+          text: "Авторизация успешна.",
+          type: "success",
+        });
+        window.axios.defaults.headers.common["token"] = token;
+        window.localStorage["token"] = token;
+        dispatch(Actions.fetchUserData());
+        dispatch(Actions.setIsAuth(true));
+        return data;
+      })
+      .catch(({ response }) => {
         openNotification({
           title: "Ошибка при авторизации",
-          text: "Неверный пароль",
-          type: "erorr",
+          text: "Неверный логин или пароль",
+          type: "error",
         });
-      } else {
-        openNotification({
-          text: "Вы авторизовались! Подождите...",
-          type: "success",
-        });
-        window.axios.headers.common["token"] = token;
-        window.localStorage["token"] = token;
-        dispatch(Actions.fetchUserData());
-      }
-      return data;
-    });
+      });
   },
-  fetchUserRegister: (postData) => (dispatch) => {
-    return userApi.signup(postData).then(({ data }) => {
-      const { status, token } = data;
-      if (status === "erorr") {
-        openNotification({
-          title: "Ошибка при регистрации",
-          text: "Неверный пароль",
-          type: "erorr",
-        });
-      } else {
-        openNotification({
-          text: "Вы авторизовались! Подождите...",
-          type: "success",
-        });
-        window.axios.headers.common["token"] = token;
-        window.localStorage["token"] = token;
-        dispatch(Actions.fetchUserData());
-      }
-      return data;
-    });
+  fetchUserRegister: (postData) => () => {
+    return userApi.signUp(postData);
   },
 };
 export default Actions;
