@@ -6,6 +6,10 @@ const Actions = {
     type: "USER:SET_DATA",
     payload: data,
   }),
+  setIsAuth: (bool) => ({
+    type: "USER:SET_IS_AUTH",
+    payload: bool,
+  }),
   fetchUserData: () => (dispatch) => {
     userApi.getMe().then(({ data }) => {
       dispatch(Actions.setUserData(data));

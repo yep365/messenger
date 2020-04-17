@@ -1,8 +1,9 @@
 const initialState = {
   data: null,
   token: window.localStorage.token,
-  isAuth: false,
+  isAuth: !!window.localStorage.token,
 };
+
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "USER:SET_DATA":
