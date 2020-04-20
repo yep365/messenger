@@ -101,6 +101,9 @@ const RegisterForm = (props) => {
               На Вашу почту отправлено письмо с ссылкой на подтверждение
               аккаунта.
             </p>
+            <Link className="auth__register-link" to="/signin">
+              Войти в аккаунт
+            </Link>
           </div>
         )}
       </Block>

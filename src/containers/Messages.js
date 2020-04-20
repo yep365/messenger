@@ -2,15 +2,24 @@ import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import { messagesActions } from "../redux/actions";
+import socket from "core/socket";
+
 import { Messages as BaseMessages } from "../components";
 
 const Messages = ({ currentDialogId, fetchMessages, items, isLoading }) => {
   const messagesRef = useRef(null);
 
+  const onNewMessage = () => {
+    fetchMessages(currentDialogId);
+  };
   useEffect(() => {
     if (currentDialogId) {
       fetchMessages(currentDialogId);
     }
+    socket.on("SERVER:NEW_MESSAGE", onNewMessage);
+    return () => {
+      socket.removeListener("SERVER:NEW_MESSAGE", onNewMessage);
+    };
   }, [currentDialogId]);
 
   useEffect(() => {
