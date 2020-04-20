@@ -7,7 +7,7 @@ import { Message } from "../../components";
 
 import "./Messages.scss";
 
-const Messages = ({ blockRef, isLoading, items }) => {
+const Messages = ({ blockRef, isLoading, items, user }) => {
   return (
     <div
       ref={blockRef}
@@ -18,8 +18,12 @@ const Messages = ({ blockRef, isLoading, items }) => {
       ) : items && !isLoading ? (
         items.length > 0 ? (
           <div>
-            {items.map(item => (
-              <Message key={item._id} {...item} />
+            {items.map((item) => (
+              <Message
+                key={item._id}
+                {...item}
+                isMe={user._id === item.user.id}
+              />
             ))}
           </div>
         ) : (
@@ -33,6 +37,6 @@ const Messages = ({ blockRef, isLoading, items }) => {
 };
 
 Messages.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
 };
 export default Messages;

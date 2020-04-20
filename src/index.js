@@ -5,9 +5,12 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 
+import { userActions } from "redux/actions";
 import store from "redux/store";
 
 import "./styles/index.scss";
+
+store.dispatch(userActions.fetchUserData());
 
 ReactDOM.render(
   <Provider store={store}>

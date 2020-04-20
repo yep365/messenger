@@ -6,11 +6,18 @@ import socket from "core/socket";
 
 import { Messages as BaseMessages } from "../components";
 
-const Messages = ({ currentDialogId, fetchMessages, items, isLoading }) => {
+const Messages = ({
+  currentDialogId,
+  fetchMessages,
+  addMessage,
+  items,
+  isLoading,
+  user,
+}) => {
   const messagesRef = useRef(null);
 
-  const onNewMessage = () => {
-    fetchMessages(currentDialogId);
+  const onNewMessage = (data) => {
+    addMessage(data);
   };
   useEffect(() => {
     if (currentDialogId) {
@@ -27,15 +34,21 @@ const Messages = ({ currentDialogId, fetchMessages, items, isLoading }) => {
   }, [items]);
 
   return (
-    <BaseMessages blockRef={messagesRef} items={items} isLoading={isLoading} />
+    <BaseMessages
+      user={user}
+      blockRef={messagesRef}
+      items={items}
+      isLoading={isLoading}
+    />
   );
 };
 
 export default connect(
-  ({ dialogs, messages }) => ({
+  ({ dialogs, messages, user }) => ({
     currentDialogId: dialogs.currentDialogId,
     items: messages.items,
     isLoading: messages.isLoading,
+    user: user.data,
   }),
   messagesActions
 )(Messages);
