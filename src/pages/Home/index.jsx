@@ -2,13 +2,11 @@ import React from "react";
 import {
   TeamOutlined,
   EditOutlined,
-  EllipsisOutlined
+  EllipsisOutlined,
 } from "@ant-design/icons";
+import { Messages, Dialogs, ChatInput } from "../../containers";
 
 import "./Home.scss";
-
-import { ChatInput } from "../../components/";
-import { Messages, Dialogs } from "../../containers";
 
 const Home = () => {
   return (

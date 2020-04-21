@@ -17,9 +17,19 @@ const ChatInput = (props) => {
   const [inputStatus, setInputStatus] = useState("");
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
 
+  const { onSendMessage, currentDialogId } = props;
+
   const toggleEmojiPicker = () => {
     setEmojiPickerVisible(!emojiPickerVisible);
   };
+
+  const handleSendMessage = (e) => {
+    if (e.keyCode === 13) {
+      onSendMessage(inputStatus, currentDialogId);
+      setInputStatus("");
+    }
+  };
+
   return (
     <div className="chat-input">
       {emojiPickerVisible && (
@@ -35,8 +45,10 @@ const ChatInput = (props) => {
       </div>
       <Input
         onChange={(e) => setInputStatus(e.target.value)}
+        onKeyUp={handleSendMessage}
         size="large"
         placeholder="Введите сообщение"
+        value={inputStatus}
       />
       <div className="chat-input__actions">
         <div className="chat-input__camera">
