@@ -30,7 +30,7 @@ const Messages = ({
   }, [currentDialogId]);
 
   useEffect(() => {
-    messagesRef.current.scrollTo(0, 99999999);
+    messagesRef.current.scrollTo(0, 999999999);
   }, [items]);
 
   return (

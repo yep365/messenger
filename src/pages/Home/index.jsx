@@ -4,7 +4,7 @@ import {
   EditOutlined,
   EllipsisOutlined,
 } from "@ant-design/icons";
-import { Messages, Dialogs, ChatInput } from "../../containers";
+import { Messages, Dialogs, ChatInput, Status } from "../../containers";
 
 import "./Home.scss";
 
@@ -28,12 +28,8 @@ const Home = () => {
         <div className="chat__dialog">
           <div className="chat__dialog-header">
             <div />
-            <div className="chat__dialog-header-center">
-              <b className="chat__dialog-fullname">Александр Пушкин</b>
-              <div className="chat__dialog-status">
-                <div className="status status--online">online</div>
-              </div>
-            </div>
+            <Status online />
+
             <EllipsisOutlined style={{ fontSize: "23px", color: "#08c" }} />
           </div>
           <div className="chat__dialog-messages">

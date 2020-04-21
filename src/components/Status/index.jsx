@@ -1,24 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
-import readedSvg from "../../assets/img/readed.svg";
-import noReadedSvg from "../../assets/img/noreaded.svg";
+import { Button, Popover } from "antd";
 
-const IconReaded = ({ isMe, isReaded }) =>
-  (isMe &&
-    (isReaded ? (
-      <img className="message__icon-readed" src={readedSvg} alt="Readed icon" />
-    ) : (
-      <img
-        className="message__icon-readed message__icon-readed--no"
-        src={noReadedSvg}
-        alt="No readed icon"
-      />
-    ))) ||
-  null;
+// import "./Status.scss";
 
-IconReaded.propTypes = {
-  isMe: PropTypes.bool,
-  isReaded: PropTypes.bool
+const Status = ({ online, fullname }) => (
+  <div className="chat__dialog-header">
+    <div className="chat__dialog-header-center">
+      <b className="chat__dialog-header-username">{fullname}</b>
+      <div className="chat__dialog-header-status">
+        <span className={classNames("status", { "status--online": online })}>
+          {online ? "онлайн" : "офлайн"}
+        </span>
+      </div>
+    </div>
+    <Popover
+      className="chat__dialog-header-action"
+      content={
+        <div>
+          <Button>Удалить диалог</Button>
+        </div>
+      }
+      trigger="click"
+    >
+      <div>
+        <Button type="link" shape="circle" icon="ellipsis" />
+      </div>
+    </Popover>
+  </div>
+);
+
+Status.propTypes = {
+  online: PropTypes.bool,
 };
-export default IconReaded;
+
+export default Status;
