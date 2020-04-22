@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  TeamOutlined,
-  EditOutlined,
-  EllipsisOutlined,
-} from "@ant-design/icons";
-import { Messages, Dialogs, ChatInput, Status } from "../../containers";
+import { EllipsisOutlined } from "@ant-design/icons";
+import { Messages, ChatInput, Status, Sidebar } from "../../containers";
 
 import "./Home.scss";
 
@@ -12,19 +8,7 @@ const Home = () => {
   return (
     <section className="home">
       <div className="chat">
-        <div className="chat__sidebar">
-          <div className="chat__sidebar-header">
-            <div className="chat__info">
-              <TeamOutlined />
-              <span>Список диалогов</span>
-            </div>
-            <EditOutlined />
-          </div>
-
-          <div className="chat__sidebar-dialogs">
-            <Dialogs userId={0} />
-          </div>
-        </div>
+        <Sidebar />
         <div className="chat__dialog">
           <div className="chat__dialog-header">
             <div />

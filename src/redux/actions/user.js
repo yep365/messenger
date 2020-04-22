@@ -11,9 +11,17 @@ const Actions = {
     payload: bool,
   }),
   fetchUserData: () => (dispatch) => {
-    userApi.getMe().then(({ data }) => {
-      dispatch(Actions.setUserData(data));
-    });
+    userApi
+      .getMe()
+      .then(({ data }) => {
+        dispatch(Actions.setUserData(data));
+      })
+      .catch((err) => {
+        if (err.response.status === 403) {
+          dispatch(Actions.setIsAuth(false));
+          delete window.localStorage.token;
+        }
+      });
   },
   fetchUserLogin: (postData) => (dispatch) => {
     return userApi
