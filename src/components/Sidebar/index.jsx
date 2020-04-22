@@ -1,10 +1,13 @@
 import React from "react";
 
-import { Modal, Button, Select } from "antd";
+import { Modal, Button, Select, Text, Input } from "antd";
 import { TeamOutlined, EditOutlined } from "@ant-design/icons";
 import { Dialogs } from "../../containers";
 
+import "./Sidebar.scss";
+
 const { Option } = Select;
+const { TextArea } = Input;
 const Sidebar = ({
   user,
   users,
@@ -12,8 +15,13 @@ const Sidebar = ({
   onShow,
   onClose,
   onChangeInput,
+  onSelectUser,
   onSearch,
   inputValue,
+  isLoading,
+  onModalOk,
+  onChangeTextArea,
+  messageText,
 }) => {
   const options = users.map((user) => (
     <Option key={user._id}>{user.fullname}</Option>
@@ -33,25 +41,51 @@ const Sidebar = ({
         <Dialogs userId={user && user._id} />
       </div>
       <Modal
+        className="modal-create-dialog"
         title="Создание диалога"
         visible={visible}
-        onOk={onClose}
+        onOk={onModalOk}
         onCancel={onClose}
+        confirmLoading={isLoading}
+        footer={[
+          <Button key="back" onClick={onClose}>
+            Назад
+          </Button>,
+          <Button
+            disabled={!messageText}
+            key="submit"
+            type="primary"
+            loading={isLoading}
+            onClick={onModalOk}
+          >
+            Создать
+          </Button>,
+        ]}
       >
+        <p style={{ fontWeight: "bold" }}>Введите имя пользователя</p>
         <Select
           placeholder="Введите имя пользователя"
           value={inputValue}
+          onSelect={onSelectUser}
           onSearch={onSearch}
           onChange={onChangeInput}
           style={{ width: "100%" }}
           notFoundContent={null}
-          defaultActiveFirstOption={false}
+          defaultActiveFirstOption={true}
           showArrow={false}
           filterOption={false}
           showSearch
         >
           {options}
         </Select>
+
+        <p style={{ fontWeight: "bold" }}>Введите сообщение</p>
+
+        <TextArea
+          autoSize={{ minRows: 2, maxRows: 6 }}
+          value={messageText}
+          onChange={onChangeTextArea}
+        />
       </Modal>
     </div>
   );
