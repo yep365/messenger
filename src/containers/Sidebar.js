@@ -35,7 +35,10 @@ const SidebarContainer = ({ user }) => {
 
   const onAddDialog = () => {
     dialogsApi
-      .create(selectedUserId)
+      .create({
+        patner: selectedUserId,
+        text: messageText,
+      })
       .then(({ data }) => {
         onClose();
       })

@@ -29,7 +29,6 @@ const DialogItem = ({
       "dialogs__item--online": lastMessage.user.isOnline,
       "dialogs__item--selected": currentDialogId === _id,
     })}
-    onClick={onSelect.bind(this, _id)}
   >
     <div className="dialogs__item-avatar">
       <Avatar user={lastMessage.user} />
@@ -37,7 +36,7 @@ const DialogItem = ({
     <div className="dialogs__item-info">
       <div className="dialogs__item-info-top">
         <b>{lastMessage.user.fullname}</b>
-        <span>{getMessageTime(new Date(lastMessage.created_at))}</span>
+        {/* <span>{getMessageTime(new Date(lastMessage.created_at))}</span> */}
       </div>
       <div className="dialogs__item-info-buttom">
         <p>{lastMessage.text}</p>

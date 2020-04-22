@@ -33,7 +33,7 @@ const Dialogs = ({
   };
 
   useEffect(() => {
-    if (items.lenght) {
+    if (!items.lenght) {
       onChangeInput("");
     }
   }, [items]);
