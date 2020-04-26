@@ -36,12 +36,10 @@ const SidebarContainer = ({ user }) => {
   const onAddDialog = () => {
     dialogsApi
       .create({
-        patner: selectedUserId,
+        partner: selectedUserId,
         text: messageText,
       })
-      .then(({ data }) => {
-        onClose();
-      })
+      .then(onClose)
       .catch(() => {
         setIsLoading(false);
       });
