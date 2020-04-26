@@ -28,6 +28,7 @@ const Dialogs = ({
     );
     setInputValue(value);
   };
+  window.fetchDialogs = fetchDialogs;
   const onNewDialog = () => {
     fetchDialogs();
   };

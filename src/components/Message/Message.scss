@@ -2,7 +2,11 @@
 
 .message {
   $self: &;
-
+  &:hover {
+    #{$self}__icon-actions {
+      display: block;
+    }
+  }
   &__content {
     display: flex;
     max-width: 440px;
@@ -56,13 +60,23 @@
     }
   }
 
-  &__icon-readed {
-    position: absolute;
-    bottom: 22px;
-    left: -25px;
+  &__icon {
+    &-readed {
+      position: absolute;
+      bottom: 22px;
+      left: -25px;
 
-    &--no {
-      left: -20px;
+      &--no {
+        left: -20px;
+      }
+    }
+    &-actions {
+      z-index: 1;
+      display: none;
+      transform: rotate(90deg);
+      position: absolute;
+      left: -31px;
+      top: -5px;
     }
   }
 

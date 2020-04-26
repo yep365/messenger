@@ -49,6 +49,7 @@ const SidebarContainer = ({ user }) => {
     setInputValue(value);
   };
   const onSelectUser = (userId) => {
+    console.log(userId);
     setSelectedUserId(userId);
   };
   const onChangeTextArea = (e) => {

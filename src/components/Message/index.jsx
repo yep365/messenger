@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { Popover, Button } from "antd";
+import { EllipsisOutlined } from "@ant-design/icons";
 
 import { convertCurrentTime } from "../../utils/helpers";
 
@@ -96,7 +98,8 @@ const Message = ({
   isMe,
   isReaded,
   attachments,
-  isTyping
+  isTyping,
+  onRemoveMessage,
 }) => {
   return (
     <div
@@ -104,11 +107,26 @@ const Message = ({
         "message--isme": isMe,
         "message--is-typing": isTyping,
         "message--image": attachments && attachments.length === 1,
-        "message--is--audio": audio
+        "message--is--audio": audio,
       })}
     >
       <div className="message__content">
         <IconReaded isMe={isMe} isReaded={isReaded} />
+
+        <div className="message__icon-actions">
+          <Popover
+            placement="left"
+            content={
+              <div>
+                <Button onClick={onRemoveMessage}>Удалить сообщение</Button>
+              </div>
+            }
+            trigger="click"
+          >
+            <EllipsisOutlined style={{ fontSize: "15px", color: "#08c" }} />
+          </Popover>
+        </div>
+
         <div className="message__avatar">
           <Avatar user={user} />
         </div>
@@ -149,7 +167,7 @@ const Message = ({
 };
 
 Message.defaultProps = {
-  user: {}
+  user: {},
 };
 
 Message.propTypes = {
@@ -161,7 +179,7 @@ Message.propTypes = {
   isTyping: PropTypes.bool,
   isMe: PropTypes.bool,
   isReaded: PropTypes.bool,
-  audio: PropTypes.string
+  audio: PropTypes.string,
 };
 
 export default Message;
