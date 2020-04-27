@@ -16,19 +16,6 @@ const Status = ({ online, fullname }) => (
         </span>
       </div>
     </div>
-    <Popover
-      className="chat__dialog-header-action"
-      content={
-        <div>
-          <Button>Удалить диалог</Button>
-        </div>
-      }
-      trigger="click"
-    >
-      <div>
-        <Button type="link" shape="circle" icon="ellipsis" />
-      </div>
-    </Popover>
   </div>
 );
 

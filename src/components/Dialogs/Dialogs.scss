@@ -23,8 +23,8 @@
         &::before {
           display: block;
           position: absolute;
-          right: -4px;
-          bottom: -2px;
+          top: 8px;
+          left: 52px;
           content: "";
           background-color: $green;
           border-radius: 30px;

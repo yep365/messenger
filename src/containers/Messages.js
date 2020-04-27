@@ -13,7 +13,6 @@ const Messages = ({
   items,
   isLoading,
   user,
-  onRemoveMessage,
   removeMessageById,
 }) => {
   const messagesRef = useRef(null);
