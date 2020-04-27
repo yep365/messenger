@@ -10,6 +10,7 @@ import { Input } from "antd";
 import { UploadField } from "@navjobs/upload";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+import { reactStingReplace } from "react-string-replace";
 
 import "./ChatInput.scss";
 
@@ -29,12 +30,20 @@ const ChatInput = (props) => {
       setInputStatus("");
     }
   };
+  const addImoji = ({ colons }) => {
+    setInputStatus((inputStatus + " " + colons).trim());
+  };
 
   return (
     <div className="chat-input">
       {emojiPickerVisible && (
         <div className="chat-input__emoji-picker">
-          <Picker set="apple" />
+          <Picker
+            onSelect={(emojiTag) => {
+              addImoji(emojiTag);
+            }}
+            set="apple"
+          />
         </div>
       )}
       <div className="chat-input__smile">
