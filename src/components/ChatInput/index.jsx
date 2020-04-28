@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   SmileOutlined,
@@ -10,7 +10,8 @@ import { Input } from "antd";
 import { UploadField } from "@navjobs/upload";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
-import { reactStingReplace } from "react-string-replace";
+
+import { useOutside } from "utils/helpers";
 
 import "./ChatInput.scss";
 
@@ -33,20 +34,34 @@ const ChatInput = (props) => {
   const addImoji = ({ colons }) => {
     setInputStatus((inputStatus + " " + colons).trim());
   };
+  const handleOutsideClick = (el, e) => {
+    if (el && !el.contains(e.target)) {
+      setEmojiPickerVisible(false);
+    }
+  };
+  useEffect(() => {
+    const el = document.querySelector(".chat-input__smile");
+
+    document.addEventListener("click", handleOutsideClick.bind(this, el));
+    return () => {
+      document.removeEventListener("click", handleOutsideClick.bind(this, el));
+    };
+    console.log(el);
+  }, []);
 
   return (
     <div className="chat-input">
-      {emojiPickerVisible && (
-        <div className="chat-input__emoji-picker">
-          <Picker
-            onSelect={(emojiTag) => {
-              addImoji(emojiTag);
-            }}
-            set="apple"
-          />
-        </div>
-      )}
       <div className="chat-input__smile">
+        <div className="chat-input__emoji-picker">
+          {emojiPickerVisible && (
+            <Picker
+              onSelect={(emojiTag) => {
+                addImoji(emojiTag);
+              }}
+              set="apple"
+            />
+          )}
+        </div>
         <SmileOutlined
           onClick={toggleEmojiPicker}
           style={{ color: "#464847" }}
