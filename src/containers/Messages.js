@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { messagesActions } from "../redux/actions";
 import socket from "core/socket";
 
+import { Empty } from "antd";
+
 import { Messages as BaseMessages } from "../components";
 
 const Messages = ({
@@ -31,16 +33,23 @@ const Messages = ({
   }, [currentDialogId]);
 
   useEffect(() => {
-    messagesRef.current.scrollTo(0, 999999999);
-  }, [items]);
+    if (currentDialogId) {
+      messagesRef.current.scrollTo(0, 999999999);
+    }
+  }, [currentDialogId]);
 
-  return (
+  return currentDialogId ? (
     <BaseMessages
       user={user}
       blockRef={messagesRef}
       items={items}
       isLoading={isLoading}
       onRemoveMessage={removeMessageById}
+    />
+  ) : (
+    <Empty
+      style={{ marginTop: "300px" }}
+      description={"Выбирете собесдника!"}
     />
   );
 };

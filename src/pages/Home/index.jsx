@@ -11,12 +11,20 @@ import "./Home.scss";
 import { dialogsActions } from "redux/actions";
 
 const Home = (props) => {
+  const { setCurrentDialogId } = props;
   useEffect(() => {
     const {
       location: { pathname },
     } = props;
-    const dialogsId = pathname.split("/").pop();
-    console.log(dialogsId);
+
+    if (pathname === "/") {
+      setCurrentDialogId(null);
+    } else {
+      const dialogId = pathname.split("/").pop();
+      if (dialogId) {
+        setCurrentDialogId(dialogId);
+      }
+    }
   }, [props.location.pathname]);
 
   return (
