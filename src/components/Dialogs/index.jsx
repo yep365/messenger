@@ -6,14 +6,7 @@ import DialogItem from "../DialogItem";
 
 import "./Dialogs.scss";
 
-const Dialogs = ({
-  items,
-  userId,
-  onSearch,
-  inputValue,
-  onSelectDialog,
-  currentDialogId,
-}) => {
+const Dialogs = ({ items, userId, onSearch, inputValue, currentDialogId }) => {
   const { Search } = Input;
   return (
     <div className="chat__sidebar-wrapper">
@@ -29,7 +22,6 @@ const Dialogs = ({
         {items.length ? (
           orderBy(items, ["created_at"], ["desc"]).map((item) => (
             <DialogItem
-              onSelect={onSelectDialog}
               key={item._id}
               isMe={item.author._id === userId}
               currentDialogId={currentDialogId}

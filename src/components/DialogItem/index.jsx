@@ -21,7 +21,6 @@ const DialogItem = ({
   unreaded,
   isMe,
   created_at,
-  onSelect,
   currentDialogId,
   lastMessage,
 }) => (

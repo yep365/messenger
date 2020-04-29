@@ -31,7 +31,12 @@ const Messages = ({ onRemoveMessage, blockRef, isLoading, items, user }) => {
           <Empty description={"Вы пока не общались...\nИсправьте это!"} />
         )
       ) : (
-        !items && <Empty description={"Выбирете собесдника!"} />
+        !items && (
+          <Empty
+            style={{ marginTop: "300px" }}
+            description={"Выбирете собесдника!"}
+          />
+        )
       )}
     </div>
   );

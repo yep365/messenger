@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
 import { EllipsisOutlined } from "@ant-design/icons";
 import { Popover, Button } from "antd";
 import { Messages, ChatInput, Status, Sidebar } from "../../containers";
 
 import "./Home.scss";
 
-const Home = () => {
+import { dialogsActions } from "redux/actions";
+
+const Home = (props) => {
+  useEffect(() => {
+    const {
+      location: { pathname },
+    } = props;
+    const dialogsId = pathname.split("/").pop();
+    console.log(dialogsId);
+  }, [props.location.pathname]);
+
   return (
     <section className="home">
       <div className="chat">
@@ -13,7 +26,8 @@ const Home = () => {
         <div className="chat__dialog">
           <div className="chat__dialog-header">
             <div />
-            <Status online />
+            <Status />
+
             <Popover
               className="chat__dialog-header-action"
               content={
@@ -38,4 +52,6 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withRouter(
+  connect(({ dialogs }) => dialogs, dialogsActions)(Home)
+);
