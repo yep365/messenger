@@ -11,6 +11,8 @@ import { UploadField } from "@navjobs/upload";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 
+import { UploadFiles } from "components";
+
 import { useOutside } from "utils/helpers";
 
 import "./ChatInput.scss";
@@ -98,6 +100,9 @@ const ChatInput = (props) => {
             <AudioOutlined style={{ color: "#464847" }} />
           </div>
         )}
+      </div>
+      <div>
+        <UploadFiles />
       </div>
     </div>
   );

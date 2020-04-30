@@ -83,6 +83,12 @@
       border-bottom: 1px solid #f7f7f7;
       margin-bottom: 14px;
       height: 60px;
+      &-username {
+        font-size: 17px;
+        font-style: italic;
+
+        letter-spacing: 1px;
+      }
     }
     &-fullname {
       font-weight: 500;
