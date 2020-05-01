@@ -8,7 +8,7 @@ import { Message } from "../../components";
 import "./Messages.scss";
 
 const Messages = ({ onRemoveMessage, blockRef, isLoading, items, user }) => {
-  const [chatInputHeight, setChatInputHeight] = useState(142);
+  const [chatInputHeight, setChatInputHeight] = useState(100);
 
   useEffect(() => {
     setChatInputHeight(

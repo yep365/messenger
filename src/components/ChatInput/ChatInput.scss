@@ -1,6 +1,9 @@
 .chat-input {
   margin: 20px;
   position: relative;
+  & > div:first-of-type {
+    display: flex;
+  }
   &__emoji-picker {
     position: absolute;
     bottom: 50px;
@@ -14,7 +17,10 @@
       }
     }
   }
-
+  &__attachments {
+    padding-left: 2px;
+    padding-top: 10px;
+  }
   &__camera,
   &__audio,
   &__send {
