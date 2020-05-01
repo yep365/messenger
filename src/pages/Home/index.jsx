@@ -50,9 +50,7 @@ const Home = (props) => {
               </div>
             </Popover>
           </div>
-          <div className="chat__dialog-messages">
-            <Messages />
-          </div>
+          <Messages />
           <ChatInput />
         </div>
       </div>

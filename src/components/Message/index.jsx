@@ -108,7 +108,7 @@ const Message = ({
       className={classNames("message", {
         "message--isme": isMe,
         "message--is-typing": isTyping,
-        "message--image": attachments && attachments.length === 1,
+        "message--image": attachments && attachments.length === 1 && !text,
         "message--is--audio": audio,
       })}
     >
