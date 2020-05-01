@@ -27,6 +27,8 @@ const ChatInput = (props) => {
     handleSendMessage,
     addImoji,
     handleOutsideClick,
+    attachments,
+    onSelectFiles,
   } = props;
 
   useEffect(() => {
@@ -67,7 +69,7 @@ const ChatInput = (props) => {
         <div className="chat-input__actions">
           <div className="chat-input__camera">
             <UploadField
-              onFiles={(files) => console.log(files)}
+              onFiles={onSelectFiles}
               containerProps={{
                 className: "chat-input__actions-upload-btn",
               }}
@@ -94,7 +96,7 @@ const ChatInput = (props) => {
         </div>
       </div>
       <div class="chat-input__attachments">
-        <UploadFiles />
+        <UploadFiles attachments={attachments} />
       </div>
     </div>
   );

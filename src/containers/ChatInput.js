@@ -7,6 +7,7 @@ import { messagesActions } from "redux/actions";
 
 const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   const [inputStatus, setInputStatus] = useState("");
+  const [attachments, setAttachments] = useState([]);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
   if (!currentDialogId) {
     return null;
@@ -31,6 +32,7 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       setEmojiPickerVisible(false);
     }
   };
+  const onSelectFiles = (files) => {};
 
   return (
     <ChatInputBase
@@ -44,6 +46,8 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       handleOutsideClick={handleOutsideClick}
       addImoji={addImoji}
       sendMessage={sendMessage}
+      attachments={attachments}
+      onSelectFiles={onSelectFiles}
     />
   );
 };
