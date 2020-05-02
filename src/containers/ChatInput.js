@@ -9,6 +9,7 @@ import { messagesActions } from "redux/actions";
 const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   const [inputStatus, setInputStatus] = useState("");
   const [attachments, setAttachments] = useState([]);
+  const [uploadedIndex, setUploadedIndex] = useState(0);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
 
   const toggleEmojiPicker = () => {
@@ -32,40 +33,36 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
     }
   };
 
-  const onUpload = (file, uid) => {
-    filesApi.upload(file).then(({ data }) => {
-      setAttachments(
-        attachments.map((item) => {
+  const onSelectFiles = async (files) => {
+    let uploaded = [];
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const uid = Math.round(Math.random() * 1000);
+      uploaded = [
+        ...uploaded,
+        {
+          uid,
+          name: file.name,
+          status: "uploading",
+        },
+      ];
+      setAttachments(uploaded);
+      // eslint-disable-next-line no-loop-func
+      await filesApi.upload(file).then(({ data }) => {
+        uploaded = uploaded.map((item) => {
           if (item.uid === uid) {
-            item = {
-              uid: data.file._id,
-              name: data.file.name,
-              url: data.file.url,
+            return {
               status: "done",
+              uid: data.file._id,
+              name: data.file.filename,
+              url: data.file.url,
             };
           }
           return item;
-        })
-      );
-    });
-  };
-
-  const onSelectFiles = (files) => {
-    let uploaded = [];
-    for (let i = 0; i < files.length; i++) {
-      const uid = Math.round(Math.random() * 1000);
-      const file = files[i];
-      uploaded.push({
-        uid,
-        name: file.name,
-        status: "uploading",
-        file,
+        });
       });
     }
     setAttachments(uploaded);
-    uploaded.forEach((item) => {
-      onUpload(item.file, item.uid);
-    });
   };
 
   if (!currentDialogId) {

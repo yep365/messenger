@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.8.4",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
     "@navjobs/upload": "^3.2.0",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
@@ -155,6 +156,9 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-async-to-generator"
     ]
   },
   "devDependencies": {}
