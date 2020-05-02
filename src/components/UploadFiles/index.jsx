@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-
 import { Upload, Modal } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -12,15 +10,18 @@ function getBase64(file) {
   });
 }
 
-const UploadFiles = ({ attachments }) => {
+const UploadFiles = ({ attachments, removeAttachment }) => {
   const [state, setState] = useState({
     previewVisible: false,
     previewImage: "",
-    fileList: [],
-    previewTitle: "",
+    fileList: attachments,
   });
+
   useEffect(() => {
-    setState({ ...state, fileList: attachments });
+    setState({
+      ...state,
+      fileList: attachments,
+    });
   }, [attachments]);
 
   const handleCancel = () => setState({ ...state, previewVisible: false });
@@ -29,12 +30,11 @@ const UploadFiles = ({ attachments }) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
+
     setState({
       ...state,
       previewImage: file.url || file.preview,
       previewVisible: true,
-      previewTitle:
-        file.name || file.url.substring(file.url.lastIndexOf("/") + 1),
     });
   };
 
@@ -43,6 +43,7 @@ const UploadFiles = ({ attachments }) => {
       ...state,
       fileList,
     });
+
   return (
     <div className="clearfix">
       <Upload
@@ -51,10 +52,10 @@ const UploadFiles = ({ attachments }) => {
         fileList={state.fileList}
         onPreview={handlePreview}
         onChange={handleChange}
-      ></Upload>
+        onRemove={(file) => removeAttachment(file)}
+      />
       <Modal
         visible={state.previewVisible}
-        title={state.previewTitle}
         footer={null}
         onCancel={handleCancel}
       >
@@ -63,6 +64,7 @@ const UploadFiles = ({ attachments }) => {
     </div>
   );
 };
+
 UploadFiles.defaultProps = {
   attachments: [],
 };

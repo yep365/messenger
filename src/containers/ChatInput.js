@@ -9,15 +9,19 @@ import { messagesActions } from "redux/actions";
 const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   const [inputStatus, setInputStatus] = useState("");
   const [attachments, setAttachments] = useState([]);
-  const [uploadedIndex, setUploadedIndex] = useState(0);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
 
   const toggleEmojiPicker = () => {
     setEmojiPickerVisible(!emojiPickerVisible);
   };
   const sendMessage = () => {
-    fetchSendMessage(inputStatus, currentDialogId);
+    fetchSendMessage(
+      inputStatus,
+      currentDialogId,
+      attachments.map((file) => file.uid)
+    );
     setInputStatus("");
+    setAttachments([]);
   };
   const handleSendMessage = (e) => {
     if (e.keyCode === 13) {
