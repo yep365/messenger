@@ -44,20 +44,20 @@ const ChatInput = (props) => {
     <div className="chat-input">
       <div>
         <div className="chat-input__smile">
-          <div className="chat-input__emoji-picker">
-            {emojiPickerVisible && (
-              <Picker
-                onSelect={(emojiTag) => {
-                  addImoji(emojiTag);
-                }}
-                set="apple"
-              />
-            )}
-          </div>
           <SmileOutlined
             onClick={toggleEmojiPicker}
             style={{ color: "#464847" }}
           />
+        </div>
+        <div className="chat-input__emoji-picker">
+          {emojiPickerVisible && (
+            <Picker
+              onSelect={(emojiTag) => {
+                addImoji(emojiTag);
+              }}
+              set="apple"
+            />
+          )}
         </div>
         <Input
           onChange={(e) => setInputStatus(e.target.value)}
@@ -95,6 +95,7 @@ const ChatInput = (props) => {
           )}
         </div>
       </div>
+      {console.log(attachments)}
       <div className="chat-input__attachments">
         <UploadFiles attachments={attachments} />
       </div>

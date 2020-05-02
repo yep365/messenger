@@ -33,10 +33,38 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       setEmojiPickerVisible(false);
     }
   };
+
+  const onUpload = (file, uid) => {
+    filesApi.upload(file).then(({ data }) => {
+      setAttachments(
+        attachments.map((item) => {
+          if (item.uid === uid) {
+            item = {
+              uid: data.file._id,
+              name: data.file.name,
+              status: "done",
+              url: data.file.url,
+            };
+          }
+          return item;
+        })
+      );
+    });
+  };
+
   const onSelectFiles = (files) => {
     for (let i = 0; i < files.length; i++) {
+      const uid = Math.round(Math.random() * 1000);
       const file = files[i];
-      filesApi.upload(file);
+      setAttachments([
+        ...attachments,
+        {
+          uid,
+          name: file.name,
+          status: "uploading",
+        },
+      ]);
+      onUpload(file, uid);
     }
   };
 

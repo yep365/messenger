@@ -60,5 +60,8 @@ const UploadFiles = () => {
     </div>
   );
 };
+UploadFiles.defaultProps = {
+  attachments: [],
+};
 
 export default UploadFiles;
