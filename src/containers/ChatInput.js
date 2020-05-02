@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { filesApi } from "utils/api";
 
 import { ChatInput as ChatInputBase } from "components";
 
@@ -32,7 +33,12 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       setEmojiPickerVisible(false);
     }
   };
-  const onSelectFiles = (files) => {};
+  const onSelectFiles = (files) => {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      filesApi.upload(file);
+    }
+  };
 
   return (
     <ChatInputBase

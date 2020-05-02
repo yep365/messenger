@@ -95,7 +95,7 @@ const ChatInput = (props) => {
           )}
         </div>
       </div>
-      <div class="chat-input__attachments">
+      <div className="chat-input__attachments">
         <UploadFiles attachments={attachments} />
       </div>
     </div>
