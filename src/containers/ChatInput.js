@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { filesApi } from "utils/api";
 
@@ -10,9 +10,7 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   const [inputStatus, setInputStatus] = useState("");
   const [attachments, setAttachments] = useState([]);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
-  if (!currentDialogId) {
-    return null;
-  }
+
   const toggleEmojiPicker = () => {
     setEmojiPickerVisible(!emojiPickerVisible);
   };
@@ -42,8 +40,8 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
             item = {
               uid: data.file._id,
               name: data.file.name,
-              status: "done",
               url: data.file.url,
+              status: "done",
             };
           }
           return item;
@@ -53,20 +51,26 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   };
 
   const onSelectFiles = (files) => {
+    let uploaded = [];
     for (let i = 0; i < files.length; i++) {
       const uid = Math.round(Math.random() * 1000);
       const file = files[i];
-      setAttachments([
-        ...attachments,
-        {
-          uid,
-          name: file.name,
-          status: "uploading",
-        },
-      ]);
-      onUpload(file, uid);
+      uploaded.push({
+        uid,
+        name: file.name,
+        status: "uploading",
+        file,
+      });
     }
+    setAttachments(uploaded);
+    uploaded.forEach((item) => {
+      onUpload(item.file, item.uid);
+    });
   };
+
+  if (!currentDialogId) {
+    return null;
+  }
 
   return (
     <ChatInputBase

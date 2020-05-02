@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Upload, Modal } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
@@ -12,13 +12,16 @@ function getBase64(file) {
   });
 }
 
-const UploadFiles = () => {
+const UploadFiles = ({ attachments }) => {
   const [state, setState] = useState({
     previewVisible: false,
     previewImage: "",
     fileList: [],
     previewTitle: "",
   });
+  useEffect(() => {
+    setState({ ...state, fileList: attachments });
+  }, [attachments]);
 
   const handleCancel = () => setState({ ...state, previewVisible: false });
 
