@@ -8,6 +8,7 @@ import { messagesActions } from "redux/actions";
 
 const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   const [inputStatus, setInputStatus] = useState("");
+  const [isRecording, setIsRecording] = useState(false);
   const [attachments, setAttachments] = useState([]);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
 
@@ -35,6 +36,9 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
     if (el && !el.contains(e.target)) {
       setEmojiPickerVisible(false);
     }
+  };
+  const handleStartRecording = () => {
+    setIsRecording(true);
   };
 
   const onSelectFiles = async (files) => {
@@ -87,6 +91,8 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       sendMessage={sendMessage}
       attachments={attachments}
       onSelectFiles={onSelectFiles}
+      isRecording={isRecording}
+      handleStartRecording={handleStartRecording}
     />
   );
 };

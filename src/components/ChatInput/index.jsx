@@ -29,6 +29,8 @@ const ChatInput = (props) => {
     handleOutsideClick,
     attachments,
     onSelectFiles,
+    handleStartRecording,
+    isRecording,
   } = props;
 
   useEffect(() => {
@@ -59,13 +61,21 @@ const ChatInput = (props) => {
             />
           )}
         </div>
-        <Input
-          onChange={(e) => setInputStatus(e.target.value)}
-          onKeyUp={handleSendMessage}
-          size="large"
-          placeholder="Введите сообщение"
-          value={inputStatus}
-        />
+        {isRecording ? (
+          <div className="chat-input__record-status">
+            <i></i>
+            ...Recording
+          </div>
+        ) : (
+          <Input
+            onChange={(e) => setInputStatus(e.target.value)}
+            onKeyUp={handleSendMessage}
+            size="large"
+            placeholder="Введите сообщение"
+            value={inputStatus}
+          />
+        )}
+
         <div className="chat-input__actions">
           <div className="chat-input__camera">
             <UploadField
@@ -81,7 +91,7 @@ const ChatInput = (props) => {
               <CameraOutlined style={{ color: "#464847" }} />
             </UploadField>
           </div>
-          {inputStatus ? (
+          {isRecording || inputStatus ? (
             <div className="chat-input__send">
               <SendOutlined
                 onClick={sendMessage}
@@ -89,8 +99,13 @@ const ChatInput = (props) => {
               />
             </div>
           ) : (
-            <div className="chat-input__audio">
-              <AudioOutlined style={{ color: "#464847" }} />
+            <div className="chat-input__record-btn">
+              <div className="chat-input__audio">
+                <AudioOutlined
+                  onClick={handleStartRecording}
+                  style={{ color: "#464847" }}
+                />
+              </div>
             </div>
           )}
         </div>
