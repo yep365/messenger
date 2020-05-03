@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Empty, Spin } from "antd";
+import { Empty, Spin, Modal } from "antd";
 import classNames from "classnames";
 
 import { Message } from "../../components";
 
 import "./Messages.scss";
 
-const Messages = ({ onRemoveMessage, blockRef, isLoading, items, user }) => {
+const Messages = ({
+  onRemoveMessage,
+  blockRef,
+  isLoading,
+  items,
+  user,
+  previewImage,
+  setPreviewImage,
+}) => {
   const [chatInputHeight, setChatInputHeight] = useState(100);
 
   useEffect(() => {
@@ -37,6 +45,7 @@ const Messages = ({ onRemoveMessage, blockRef, isLoading, items, user }) => {
                   {...item}
                   isMe={user._id === item.user.id}
                   onRemoveMessage={onRemoveMessage.bind(this, item._id)}
+                  setPreviewImage={setPreviewImage}
                 />
               ))}
             </div>
@@ -51,6 +60,15 @@ const Messages = ({ onRemoveMessage, blockRef, isLoading, items, user }) => {
             />
           )
         )}
+        <Modal
+          visible={!!previewImage}
+          onCancel={() => {
+            setPreviewImage(null);
+          }}
+          footer="null"
+        >
+          <img src={previewImage} alt="Preview" />
+        </Modal>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Popover, Button } from "antd";
-import { EllipsisOutlined } from "@ant-design/icons";
+import { EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
 import { Emoji } from "emoji-mart";
 import reactStingReplace from "react-string-replace";
 
@@ -102,6 +102,7 @@ const Message = ({
   attachments,
   isTyping,
   onRemoveMessage,
+  setPreviewImage,
 }) => {
   return (
     <div
@@ -157,6 +158,10 @@ const Message = ({
             <div className="message__attachments">
               {attachments.map((item, index) => (
                 <div key={index} className="message__attachments-item">
+                  <div className="message__attachments-item-overlay">
+                    <EyeOutlined />
+                  </div>
+
                   <img src={item.url} alt={item.filename} />
                 </div>
               ))}

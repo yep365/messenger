@@ -95,7 +95,7 @@ const ChatInput = (props) => {
               <CameraOutlined style={{ color: "#464847" }} />
             </UploadField>
           </div>
-          {isRecording || inputStatus ? (
+          {isRecording || inputStatus || attachments.length > 0 ? (
             <div className="chat-input__send">
               <SendOutlined
                 onClick={sendMessage}

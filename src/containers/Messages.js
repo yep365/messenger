@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import { messagesActions } from "../redux/actions";
@@ -17,6 +17,7 @@ const Messages = ({
   user,
   removeMessageById,
 }) => {
+  const [previewImage, setPreviewImage] = useState(null);
   const messagesRef = useRef(null);
 
   const onNewMessage = (data) => {
@@ -45,6 +46,8 @@ const Messages = ({
       items={items}
       isLoading={isLoading}
       onRemoveMessage={removeMessageById}
+      previewImage={previewImage}
+      setPreviewImage={setPreviewImage}
     />
   ) : (
     <Empty

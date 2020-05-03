@@ -95,15 +95,15 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       setIsRecording(false);
     };
 
-    recorder.ondataavailable = (e) => {
-      const file = new File([e.data], "audio.webm");
-      setLoading(true);
-      filesApi.upload(file).then(({ data }) => {
-        sendAudio(data.file._id).then(() => {
-          setLoading(false);
-        });
-      });
-    };
+    // recorder.ondataavailable = (e) => {
+    //   const file = new File([e.data], "audio.webm");
+    //   setLoading(true);
+    //   filesApi.upload(file).then(({ data }) => {
+    //     sendAudio(data.file._id).then(() => {
+    //       setLoading(false);
+    //     });
+    //   });
+    // };
   };
 
   const onError = (err) => {
