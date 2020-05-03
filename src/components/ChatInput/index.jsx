@@ -5,6 +5,7 @@ import {
   CameraOutlined,
   AudioOutlined,
   SendOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { Input } from "antd";
 import { UploadField } from "@navjobs/upload";
@@ -12,8 +13,6 @@ import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 
 import { UploadFiles } from "components";
-
-import { useOutside } from "utils/helpers";
 
 import "./ChatInput.scss";
 
@@ -29,8 +28,9 @@ const ChatInput = (props) => {
     handleOutsideClick,
     attachments,
     onSelectFiles,
-    handleStartRecording,
+    onRecord,
     isRecording,
+    onStopRecording,
   } = props;
 
   useEffect(() => {
@@ -64,7 +64,11 @@ const ChatInput = (props) => {
         {isRecording ? (
           <div className="chat-input__record-status">
             <i></i>
-            ...Recording
+            <p>Идёт запись</p>
+            <CloseOutlined
+              onClick={onStopRecording}
+              className="chat-input__record-close-btn"
+            />
           </div>
         ) : (
           <Input
@@ -102,7 +106,7 @@ const ChatInput = (props) => {
             <div className="chat-input__record-btn">
               <div className="chat-input__audio">
                 <AudioOutlined
-                  onClick={handleStartRecording}
+                  onClick={onRecord}
                   style={{ color: "#464847" }}
                 />
               </div>

@@ -5,17 +5,28 @@
     display: flex;
   }
   &__record {
+    &-close-btn {
+      margin-left: 10px;
+      &:hover {
+        color: #fd3939;
+      }
+    }
     &-status {
       display: flex;
       flex: 1;
       align-items: center;
+
       justify-content: center;
       margin-top: 15px;
       display: flex;
       align-items: center;
-
-      .ant-input-lg {
-        margin: 0px !important;
+      color: #fa7979;
+      p {
+        font-size: 15px;
+        font-style: oblique;
+        &::before {
+          content: "...  ";
+        }
       }
       i {
         margin-right: 10px;

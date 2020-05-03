@@ -7,9 +7,15 @@ import { ChatInput as ChatInputBase } from "components";
 import { messagesActions } from "redux/actions";
 
 const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
+  window.navigator.getUserMedia =
+    window.navigator.getUserMedia ||
+    window.navigator.mozGetUserMedia ||
+    window.navigator.msGetUserMedia ||
+    window.navigator.webkitGetUserMedia;
   const [inputStatus, setInputStatus] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [attachments, setAttachments] = useState([]);
+  const [mediaRecorder, setMediaRecorder] = useState(null);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
 
   const toggleEmojiPicker = () => {
@@ -36,9 +42,6 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
     if (el && !el.contains(e.target)) {
       setEmojiPickerVisible(false);
     }
-  };
-  const handleStartRecording = () => {
-    setIsRecording(true);
   };
 
   const onSelectFiles = async (files) => {
@@ -73,6 +76,47 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
     setAttachments(uploaded);
   };
 
+  const onRecord = () => {
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({ audio: true }, onRecording, onError);
+    }
+  };
+  const onRecording = (stream) => {
+    const recorder = new MediaRecorder(stream);
+    setMediaRecorder(recorder);
+
+    recorder.start();
+
+    recorder.onstart = () => {
+      setIsRecording(true);
+    };
+
+    recorder.onstop = () => {
+      setIsRecording(false);
+    };
+
+    recorder.ondataavailable = (e) => {
+      const file = new File([e.data], "audio.webm");
+      setLoading(true);
+      filesApi.upload(file).then(({ data }) => {
+        sendAudio(data.file._id).then(() => {
+          setLoading(false);
+        });
+      });
+    };
+  };
+
+  const onError = (err) => {
+    console.log("The following error occured: " + err);
+  };
+
+  const handleStartRecording = () => {
+    setIsRecording(true);
+  };
+
+  const onStopRecording = () => {
+    mediaRecorder.stop();
+  };
   if (!currentDialogId) {
     return null;
   }
@@ -93,6 +137,8 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       onSelectFiles={onSelectFiles}
       isRecording={isRecording}
       handleStartRecording={handleStartRecording}
+      onStopRecording={onStopRecording}
+      onRecord={onRecord}
     />
   );
 };
