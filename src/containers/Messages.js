@@ -34,10 +34,10 @@ const Messages = ({
   }, [currentDialogId]);
 
   useEffect(() => {
-    if (currentDialogId) {
+    if (items) {
       messagesRef.current.scrollTo(0, 999999999);
     }
-  }, [currentDialogId]);
+  }, [items]);
 
   return currentDialogId ? (
     <BaseMessages
