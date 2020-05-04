@@ -158,8 +158,11 @@ const Message = ({
             <div className="message__attachments">
               {attachments.map((item, index) => (
                 <div key={index} className="message__attachments-item">
-                  <div className="message__attachments-item-overlay">
-                    <EyeOutlined />
+                  <div
+                    className="message__attachments-item-overlay"
+                    onClick={() => setPreviewImage(item.url)}
+                  >
+                    <EyeOutlined style={{ color: "white", fontSize: "18px" }} />
                   </div>
 
                   <img src={item.url} alt={item.filename} />

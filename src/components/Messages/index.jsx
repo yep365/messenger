@@ -62,12 +62,14 @@ const Messages = ({
         )}
         <Modal
           visible={!!previewImage}
+          title="Прикреплённый файл"
           onCancel={() => {
             setPreviewImage(null);
           }}
-          footer="null"
+          cancelText="Закрыть"
+          footer={null}
         >
-          <img src={previewImage} alt="Preview" />
+          <img src={previewImage} style={{ width: "100%" }} alt="Preview" />
         </Modal>
       </div>
     </div>
