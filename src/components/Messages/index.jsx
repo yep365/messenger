@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Empty, Spin, Modal } from "antd";
+import { Empty, Spin, Modal, Button } from "antd";
 import classNames from "classnames";
 
 import { Message } from "../../components";
@@ -15,6 +15,8 @@ const Messages = ({
   user,
   previewImage,
   setPreviewImage,
+  setLinkOnAttachment,
+  linkOnAttachment,
 }) => {
   const [chatInputHeight, setChatInputHeight] = useState(100);
 
@@ -46,6 +48,7 @@ const Messages = ({
                   isMe={user._id === item.user.id}
                   onRemoveMessage={onRemoveMessage.bind(this, item._id)}
                   setPreviewImage={setPreviewImage}
+                  setLinkOnAttachment={setLinkOnAttachment}
                 />
               ))}
             </div>
@@ -67,7 +70,16 @@ const Messages = ({
             setPreviewImage(null);
           }}
           cancelText="Закрыть"
-          footer={null}
+          footer={
+            <Button
+              type="primary"
+              onClick={() => {
+                window.open(linkOnAttachment);
+              }}
+            >
+              Скачать файл
+            </Button>
+          }
         >
           <img src={previewImage} style={{ width: "100%" }} alt="Preview" />
         </Modal>

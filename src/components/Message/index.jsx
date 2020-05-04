@@ -103,6 +103,7 @@ const Message = ({
   isTyping,
   onRemoveMessage,
   setPreviewImage,
+  setLinkOnAttachment,
 }) => {
   return (
     <div
@@ -160,7 +161,10 @@ const Message = ({
                 <div key={index} className="message__attachments-item">
                   <div
                     className="message__attachments-item-overlay"
-                    onClick={() => setPreviewImage(item.url)}
+                    onClick={() => {
+                      setPreviewImage(item.url);
+                      setLinkOnAttachment(item.url);
+                    }}
                   >
                     <EyeOutlined style={{ color: "white", fontSize: "18px" }} />
                   </div>

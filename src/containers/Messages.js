@@ -18,6 +18,7 @@ const Messages = ({
   removeMessageById,
 }) => {
   const [previewImage, setPreviewImage] = useState(null);
+  const [linkOnAttachment, setLinkOnAttachment] = useState(null);
   const messagesRef = useRef(null);
 
   const onNewMessage = (data) => {
@@ -48,6 +49,8 @@ const Messages = ({
       onRemoveMessage={removeMessageById}
       previewImage={previewImage}
       setPreviewImage={setPreviewImage}
+      setLinkOnAttachment={setLinkOnAttachment}
+      linkOnAttachment={linkOnAttachment}
     />
   ) : (
     <Empty
