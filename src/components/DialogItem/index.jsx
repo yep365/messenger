@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 import { IconReaded, Avatar } from "../";
 
-const getMessageTime = (created_at) => {
-  if (isToday(created_at)) {
-    return format(created_at, "HH:mm");
+const getMessageTime = (createdAt) => {
+  if (isToday(createdAt)) {
+    return format(createdAt, "HH:mm");
   } else {
-    return format(created_at, "dd.MM.yyyy");
+    return format(createdAt, "dd.MM.yyyy");
   }
 };
 
@@ -38,7 +38,7 @@ const DialogItem = ({
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">
           <b>{partner.fullname}</b>
-          {/* <span>{getMessageTime(new Date(lastMessage.created_at))}</span> */}
+          <span>{getMessageTime(new Date(lastMessage.createdAt))}</span>
         </div>
         <div className="dialogs__item-info-buttom">
           <p>{lastMessage.text}</p>
