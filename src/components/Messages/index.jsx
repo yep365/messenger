@@ -36,7 +36,7 @@ const Messages = ({
         ref={blockRef}
         className={classNames("messages", { "messages--loading": isLoading })}
       >
-        {isLoading ? (
+        {isLoading && !user ? (
           <Spin size="large" tip="Загружаю сообщения..."></Spin>
         ) : items && !isLoading ? (
           items.length > 0 ? (

@@ -11,7 +11,7 @@ import "./Home.scss";
 import { dialogsActions } from "redux/actions";
 
 const Home = (props) => {
-  const { setCurrentDialogId } = props;
+  const { setCurrentDialogId, user } = props;
   useEffect(() => {
     const {
       location: { pathname },
@@ -31,33 +31,37 @@ const Home = (props) => {
     <section className="home">
       <div className="chat">
         <Sidebar />
-        <div className="chat__dialog">
-          <div className="chat__dialog-header">
-            <div />
-            <Status />
+        {user && (
+          <div className="chat__dialog">
+            <div className="chat__dialog-header">
+              <div />
+              <Status />
 
-            <Popover
-              className="chat__dialog-header-action"
-              content={
+              <Popover
+                className="chat__dialog-header-action"
+                content={
+                  <div>
+                    <Button>Удалить диалог</Button>
+                  </div>
+                }
+                trigger="click"
+              >
                 <div>
-                  <Button>Удалить диалог</Button>
+                  <EllipsisOutlined
+                    style={{ fontSize: "23px", color: "#08c" }}
+                  />
                 </div>
-              }
-              trigger="click"
-            >
-              <div>
-                <EllipsisOutlined style={{ fontSize: "23px", color: "#08c" }} />
-              </div>
-            </Popover>
+              </Popover>
+            </div>
+            <Messages />
+            <ChatInput />
           </div>
-          <Messages />
-          <ChatInput />
-        </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default withRouter(
-  connect(({ dialogs }) => dialogs, dialogsActions)(Home)
+  connect(({ user }) => ({ user: user.data }), dialogsActions)(Home)
 );

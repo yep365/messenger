@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import { Button, Popover } from "antd";
-
 // import "./Status.scss";
 
 const Status = ({ online, fullname }) => (

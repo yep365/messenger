@@ -24,6 +24,7 @@ const Dialogs = ({ items, userId, onSearch, inputValue, currentDialogId }) => {
             <DialogItem
               key={item._id}
               isMe={item.author._id === userId}
+              userId={userId}
               currentDialogId={currentDialogId}
               {...item}
             />
