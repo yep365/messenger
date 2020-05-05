@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input } from "antd";
+import { Form } from "antd";
 import { Link } from "react-router-dom";
 import {
   UserOutlined,
@@ -9,7 +9,6 @@ import {
 } from "@ant-design/icons";
 
 import { Button, Block, FormField } from "components";
-import { validateField } from "utils/helpers";
 
 const success = false;
 

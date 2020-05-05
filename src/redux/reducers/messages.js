@@ -1,5 +1,3 @@
-import { message } from "antd";
-
 const initialState = {
   items: null,
   isLoading: false,

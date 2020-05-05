@@ -21,7 +21,7 @@ const Avatar = ({ user }) => {
     return (
       <div
         style={{
-          background: `linear-gradient(135deg, ${color} 0%, ${colorLighten} 96.52%)`
+          background: `linear-gradient(135deg, ${color} 0%, ${colorLighten} 96.52%)`,
         }}
         className="avatar avatar--symbol"
       >
@@ -32,6 +32,6 @@ const Avatar = ({ user }) => {
 };
 
 Avatar.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 export default Avatar;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { filesApi } from "utils/api";
 
@@ -6,7 +6,7 @@ import { ChatInput as ChatInputBase } from "components";
 
 import { messagesActions } from "redux/actions";
 
-const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
+const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
   window.navigator.getUserMedia =
     window.navigator.getUserMedia ||
     window.navigator.mozGetUserMedia ||
@@ -23,6 +23,7 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   };
 
   const sendAudio = (audioId) => {
+    onStopRecording();
     fetchSendMessage({
       text: inputStatus,
       dialogId: currentDialogId,
@@ -31,6 +32,8 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   };
 
   const sendMessage = () => {
+    if (isRecording) {
+    }
     fetchSendMessage({
       text: inputStatus,
       dialogId: currentDialogId,
@@ -127,6 +130,11 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   const onStopRecording = () => {
     mediaRecorder.stop();
   };
+
+  const onHideRecording = () => {
+    setIsRecording(false);
+  };
+
   if (!currentDialogId) {
     return null;
   }
@@ -149,6 +157,8 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       handleStartRecording={handleStartRecording}
       onStopRecording={onStopRecording}
       onRecord={onRecord}
+      onHideRecording={onHideRecording}
+      removeAttachment={removeAttachment}
     />
   );
 };

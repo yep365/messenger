@@ -108,14 +108,15 @@ const Message = ({
   const renderAttachment = (item) => {
     if (item.ext !== "webm") {
       return (
-        <div key={item._id} className="message__attachments-item">
-          <div
-            className="message__attachments-item-overlay"
-            onClick={() => {
-              setPreviewImage(item.url);
-              setLinkOnAttachment(item.url);
-            }}
-          >
+        <div
+          key={item._id}
+          onClick={() => {
+            setPreviewImage(item.url);
+            setLinkOnAttachment(item.url);
+          }}
+          className="message__attachments-item"
+        >
+          <div className="message__attachments-item-overlay">
             <EyeOutlined style={{ color: "white", fontSize: "18px" }} />
           </div>
 
@@ -123,7 +124,7 @@ const Message = ({
         </div>
       );
     } else {
-      return <MessageAudio audioSrc={item.url} />;
+      return <MessageAudio key={item._id} audioSrc={item.url} />;
     }
   };
 
@@ -168,7 +169,7 @@ const Message = ({
               {text && (
                 <p className="message__text">
                   {reactStingReplace(text, /:(.+?):/g, (match, i) => (
-                    <Emoji emoji={match} set="apple" size="18" />
+                    <Emoji key={i} emoji={match} set="apple" size="18" />
                   ))}
                 </p>
               )}

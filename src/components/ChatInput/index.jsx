@@ -26,11 +26,13 @@ const ChatInput = (props) => {
     handleSendMessage,
     addImoji,
     handleOutsideClick,
+    removeAttachment,
     attachments,
     onSelectFiles,
     onRecord,
     isRecording,
     onStopRecording,
+    onHideRecording,
   } = props;
 
   useEffect(() => {
@@ -66,7 +68,7 @@ const ChatInput = (props) => {
             <i></i>
             <p>Идёт запись</p>
             <CloseOutlined
-              onClick={onStopRecording}
+              onClick={onHideRecording}
               className="chat-input__record-close-btn"
             />
           </div>
@@ -91,6 +93,7 @@ const ChatInput = (props) => {
                 accept: ".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png,.gif,.bmp",
                 multiple: "multyple",
               }}
+              removeAttachment={removeAttachment}
             >
               <CameraOutlined style={{ color: "#464847" }} />
             </UploadField>

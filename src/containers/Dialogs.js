@@ -16,8 +16,8 @@ const Dialogs = ({ fetchDialogs, currentDialogId, items, userId }) => {
         (dialog) =>
           dialog.author.fullname.toLowerCase().indexOf(value.toLowerCase()) >
             -1 ||
-          dialog.partner.fullname.toLowerCase().indexOf(value.toLowerCase()) >
-            -1
+          dialog.partner.fullname.toLowerCase().indexOf(value.toLowerCase()) >=
+            0
       )
     );
     setInputValue(value);
@@ -28,7 +28,7 @@ const Dialogs = ({ fetchDialogs, currentDialogId, items, userId }) => {
   useEffect(() => {
     if (!items.lenght) {
       onChangeInput("");
-    }
+    } //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
   useEffect(() => {
     fetchDialogs();

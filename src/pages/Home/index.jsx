@@ -24,7 +24,7 @@ const Home = (props) => {
       if (dialogId) {
         setCurrentDialogId(dialogId);
       }
-    }
+    } //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.location.pathname]);
 
   return (

@@ -23,6 +23,7 @@ const DialogItem = ({
   created_at,
   currentDialogId,
   lastMessage,
+  partner,
 }) => (
   <Link to={`/dialog/${_id}`}>
     <div
@@ -32,11 +33,11 @@ const DialogItem = ({
       })}
     >
       <div className="dialogs__item-avatar">
-        <Avatar user={lastMessage.user} />
+        <Avatar user={partner} />
       </div>
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">
-          <b>{lastMessage.user.fullname}</b>
+          <b>{partner.fullname}</b>
           {/* <span>{getMessageTime(new Date(lastMessage.created_at))}</span> */}
         </div>
         <div className="dialogs__item-info-buttom">
