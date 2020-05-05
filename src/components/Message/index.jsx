@@ -105,13 +105,41 @@ const Message = ({
   setPreviewImage,
   setLinkOnAttachment,
 }) => {
+  const renderAttachment = (item) => {
+    if (item.ext !== "webm") {
+      return (
+        <div key={item._id} className="message__attachments-item">
+          <div
+            className="message__attachments-item-overlay"
+            onClick={() => {
+              setPreviewImage(item.url);
+              setLinkOnAttachment(item.url);
+            }}
+          >
+            <EyeOutlined style={{ color: "white", fontSize: "18px" }} />
+          </div>
+
+          <img src={item.url} alt={item.filename} />
+        </div>
+      );
+    } else {
+      return <MessageAudio audioSrc={item.url} />;
+    }
+  };
+
+  const isAudio = () => {
+    const file = attachments[0];
+    return attachments.length && file.ext === "webm";
+  };
+
   return (
     <div
       className={classNames("message", {
         "message--isme": isMe,
         "message--is-typing": isTyping,
-        "message--image": attachments && attachments.length === 1 && !text,
-        "message--is--audio": audio,
+        "message--image":
+          !isAudio() && attachments && attachments.length === 1 && !text,
+        "message--is--audio": isAudio(),
       })}
     >
       <div className="message__content">
@@ -157,21 +185,7 @@ const Message = ({
 
           {attachments && (
             <div className="message__attachments">
-              {attachments.map((item, index) => (
-                <div key={index} className="message__attachments-item">
-                  <div
-                    className="message__attachments-item-overlay"
-                    onClick={() => {
-                      setPreviewImage(item.url);
-                      setLinkOnAttachment(item.url);
-                    }}
-                  >
-                    <EyeOutlined style={{ color: "white", fontSize: "18px" }} />
-                  </div>
-
-                  <img src={item.url} alt={item.filename} />
-                </div>
-              ))}
+              {attachments.map((item, index) => renderAttachment(item))}
             </div>
           )}
 

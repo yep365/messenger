@@ -116,6 +116,11 @@
       overflow: hidden;
     }
     #{$self}__audio {
+      padding: 15px;
+      background-color: #3283f3;
+      border-radius: 6px 6px 0 6px;
+      width: 250px;
+      overflow: hidden;
       &-info {
         display: flex;
         align-items: center;
@@ -160,6 +165,7 @@
 
     .avatar {
       margin-left: 13px;
+
       margin-right: 0;
     }
 
@@ -176,6 +182,8 @@
     }
 
     #{$self}__info {
+      padding-bottom: 0;
+      margin-bottom: 0;
       display: flex;
       align-items: center;
       text-align: right;
@@ -207,8 +215,6 @@
         img {
           width: 150px;
           height: 150px;
-          margin-right: 13px;
-          margin-bottom: 5px;
         }
       }
     }

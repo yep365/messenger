@@ -21,12 +21,21 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
   const toggleEmojiPicker = () => {
     setEmojiPickerVisible(!emojiPickerVisible);
   };
+
+  const sendAudio = (audioId) => {
+    fetchSendMessage({
+      text: inputStatus,
+      dialogId: currentDialogId,
+      attachments: [audioId],
+    });
+  };
+
   const sendMessage = () => {
-    fetchSendMessage(
-      inputStatus,
-      currentDialogId,
-      attachments.map((file) => file.uid)
-    );
+    fetchSendMessage({
+      text: inputStatus,
+      dialogId: currentDialogId,
+      attachments: attachments.map((file) => file.uid),
+    });
     setInputStatus("");
     setAttachments([]);
   };
@@ -95,15 +104,16 @@ const ChatInput = ({ fetchSendMessage, currentDialogId }) => {
       setIsRecording(false);
     };
 
-    // recorder.ondataavailable = (e) => {
-    //   const file = new File([e.data], "audio.webm");
-    //   setLoading(true);
-    //   filesApi.upload(file).then(({ data }) => {
-    //     sendAudio(data.file._id).then(() => {
-    //       setLoading(false);
-    //     });
-    //   });
-    // };
+    recorder.ondataavailable = (e) => {
+      const file = new File([e.data], "audio.webm");
+      // setLoading(true);
+      filesApi.upload(file).then(({ data }) => {
+        sendAudio(data.file._id);
+        // sendAudio(data.file._id).then(() => {
+        //   setLoading(false);
+        // });
+      });
+    };
   };
 
   const onError = (err) => {
