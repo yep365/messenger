@@ -17,15 +17,14 @@ const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
   const [attachments, setAttachments] = useState([]);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
-
+  const [isLoading, setLoading] = useState(false);
   const toggleEmojiPicker = () => {
     setEmojiPickerVisible(!emojiPickerVisible);
   };
 
   const sendAudio = (audioId) => {
-    onStopRecording();
-    fetchSendMessage({
-      text: inputStatus,
+    return fetchSendMessage({
+      text: null,
       dialogId: currentDialogId,
       attachments: [audioId],
     });
@@ -33,18 +32,21 @@ const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
 
   const sendMessage = () => {
     if (isRecording) {
+      mediaRecorder.stop();
+    } else if (inputStatus) {
+      fetchSendMessage({
+        text: inputStatus,
+        dialogId: currentDialogId,
+        attachments: attachments.map((file) => file.uid),
+      });
+      setInputStatus("");
+      setAttachments([]);
     }
-    fetchSendMessage({
-      text: inputStatus,
-      dialogId: currentDialogId,
-      attachments: attachments.map((file) => file.uid),
-    });
-    setInputStatus("");
-    setAttachments([]);
   };
   const handleSendMessage = (e) => {
-    if (e.keyCode === 13) {
+    if (e && e.keyCode === 13) {
       sendMessage();
+    } else {
     }
   };
   const addImoji = ({ colons }) => {
@@ -109,12 +111,10 @@ const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
 
     recorder.ondataavailable = (e) => {
       const file = new File([e.data], "audio.webm");
-      // setLoading(true);
+      setLoading(true);
       filesApi.upload(file).then(({ data }) => {
         sendAudio(data.file._id);
-        // sendAudio(data.file._id).then(() => {
-        //   setLoading(false);
-        // });
+        setLoading(false);
       });
     };
   };
@@ -125,10 +125,6 @@ const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
 
   const handleStartRecording = () => {
     setIsRecording(true);
-  };
-
-  const onStopRecording = () => {
-    mediaRecorder.stop();
   };
 
   const onHideRecording = () => {
@@ -155,10 +151,10 @@ const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
       onSelectFiles={onSelectFiles}
       isRecording={isRecording}
       handleStartRecording={handleStartRecording}
-      onStopRecording={onStopRecording}
       onRecord={onRecord}
       onHideRecording={onHideRecording}
       removeAttachment={removeAttachment}
+      isLoading={isLoading}
     />
   );
 };

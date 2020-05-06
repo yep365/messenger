@@ -6,6 +6,7 @@ import {
   AudioOutlined,
   SendOutlined,
   CloseOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
 import { Input } from "antd";
 import { UploadField } from "@navjobs/upload";
@@ -33,6 +34,7 @@ const ChatInput = (props) => {
     isRecording,
     onStopRecording,
     onHideRecording,
+    isLoading,
   } = props;
 
   useEffect(() => {
@@ -98,7 +100,11 @@ const ChatInput = (props) => {
               <CameraOutlined style={{ color: "#464847" }} />
             </UploadField>
           </div>
-          {isRecording || inputStatus || attachments.length > 0 ? (
+          {isLoading ? (
+            <div className="chat-input__send">
+              <LoadingOutlined style={{ color: "#464847" }} />
+            </div>
+          ) : isRecording || inputStatus || attachments.length > 0 ? (
             <div className="chat-input__send">
               <SendOutlined
                 onClick={sendMessage}
@@ -106,14 +112,16 @@ const ChatInput = (props) => {
               />
             </div>
           ) : (
-            <div className="chat-input__record-btn">
-              <div className="chat-input__audio">
-                <AudioOutlined
-                  onClick={onRecord}
-                  style={{ color: "#464847" }}
-                />
+            console.log(isRecording) || (
+              <div className="chat-input__record-btn">
+                <div className="chat-input__audio">
+                  <AudioOutlined
+                    onClick={onRecord}
+                    style={{ color: "#464847" }}
+                  />
+                </div>
               </div>
-            </div>
+            )
           )}
         </div>
       </div>

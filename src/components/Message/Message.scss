@@ -117,10 +117,11 @@
     }
     #{$self}__audio {
       padding: 15px;
-      background-color: #3283f3;
+      background-color: #3674ff;
       border-radius: 6px 6px 0 6px;
       width: 250px;
       overflow: hidden;
+      position: relative;
       &-info {
         display: flex;
         align-items: center;
