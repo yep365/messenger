@@ -12,6 +12,7 @@ const ChatInput = (props) => {
     attachments,
     fetchSendMessage,
     setAttachments,
+    removeAttachment,
   } = props;
   window.navigator.getUserMedia =
     window.navigator.getUserMedia ||
@@ -158,7 +159,7 @@ const ChatInput = (props) => {
       handleStartRecording={handleStartRecording}
       onRecord={onRecord}
       onHideRecording={onHideRecording}
-      removeAttachment={null}
+      removeAttachment={removeAttachment}
       isLoading={isLoading}
     />
   );

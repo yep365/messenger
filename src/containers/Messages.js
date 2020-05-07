@@ -16,14 +16,25 @@ const Messages = ({
   isLoading,
   user,
   removeMessageById,
+  attachments,
 }) => {
   const [previewImage, setPreviewImage] = useState(null);
   const [linkOnAttachment, setLinkOnAttachment] = useState(null);
+  const [blockHeight, setBlockHeight] = useState(145);
   const messagesRef = useRef(null);
 
   const onNewMessage = (data) => {
     addMessage(data);
   };
+
+  useEffect(() => {
+    if (attachments.length) {
+      setBlockHeight(255);
+    } else {
+      setBlockHeight(145);
+    }
+  }, [attachments]);
+
   useEffect(() => {
     if (currentDialogId) {
       fetchMessages(currentDialogId);
@@ -51,6 +62,7 @@ const Messages = ({
       setPreviewImage={setPreviewImage}
       setLinkOnAttachment={setLinkOnAttachment}
       linkOnAttachment={linkOnAttachment}
+      blockHeight={blockHeight}
     />
   ) : (
     <Empty
@@ -61,7 +73,8 @@ const Messages = ({
 };
 
 export default connect(
-  ({ dialogs, messages, user }) => ({
+  ({ dialogs, messages, user, attachments }) => ({
+    attachments: attachments.items,
     currentDialogId: dialogs.currentDialogId,
     items: messages.items,
     isLoading: messages.isLoading,

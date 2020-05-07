@@ -17,6 +17,7 @@ const Messages = ({
   setPreviewImage,
   setLinkOnAttachment,
   linkOnAttachment,
+  blockHeight,
 }) => {
   const [chatInputHeight, setChatInputHeight] = useState(100);
 
@@ -29,7 +30,7 @@ const Messages = ({
     <div
       className="chat__dialog-messages"
       style={{
-        height: `calc(100% - 150px)`,
+        height: `calc(100% - ${blockHeight}px)`,
       }}
     >
       <div
