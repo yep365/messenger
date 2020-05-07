@@ -4,9 +4,15 @@ import { filesApi } from "utils/api";
 
 import { ChatInput as ChatInputBase } from "components";
 
-import { messagesActions } from "redux/actions";
+import { messagesActions, attachmentsActions } from "redux/actions";
 
-const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
+const ChatInput = (props) => {
+  const {
+    dialogs: { currentDialogId },
+    attachments,
+    fetchSendMessage,
+    setAttachments,
+  } = props;
   window.navigator.getUserMedia =
     window.navigator.getUserMedia ||
     window.navigator.mozGetUserMedia ||
@@ -14,7 +20,6 @@ const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
     window.navigator.webkitGetUserMedia;
   const [inputStatus, setInputStatus] = useState("");
   const [isRecording, setIsRecording] = useState(false);
-  const [attachments, setAttachments] = useState([]);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -153,10 +158,16 @@ const ChatInput = ({ fetchSendMessage, currentDialogId, removeAttachment }) => {
       handleStartRecording={handleStartRecording}
       onRecord={onRecord}
       onHideRecording={onHideRecording}
-      removeAttachment={removeAttachment}
+      removeAttachment={null}
       isLoading={isLoading}
     />
   );
 };
 
-export default connect(({ dialogs }) => dialogs, messagesActions)(ChatInput);
+export default connect(
+  ({ dialogs, attachments }) => ({ dialogs, attachments: attachments.items }),
+  {
+    ...messagesActions,
+    ...attachmentsActions,
+  }
+)(ChatInput);
