@@ -112,22 +112,22 @@ const ChatInput = (props) => {
               />
             </div>
           ) : (
-            console.log(isRecording) || (
-              <div className="chat-input__record-btn">
-                <div className="chat-input__audio">
-                  <AudioOutlined
-                    onClick={onRecord}
-                    style={{ color: "#464847" }}
-                  />
-                </div>
+            <div className="chat-input__record-btn">
+              <div className="chat-input__audio">
+                <AudioOutlined
+                  onClick={onRecord}
+                  style={{ color: "#464847" }}
+                />
               </div>
-            )
+            </div>
           )}
         </div>
       </div>
-      <div className="chat-input__attachments">
-        <UploadFiles attachments={attachments} />
-      </div>
+      {attachments.length > 0 && (
+        <div className="chat-input__attachments">
+          <UploadFiles attachments={attachments} />
+        </div>
+      )}
     </div>
   );
 };

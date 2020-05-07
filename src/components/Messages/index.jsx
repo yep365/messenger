@@ -29,14 +29,14 @@ const Messages = ({
     <div
       className="chat__dialog-messages"
       style={{
-        height: `calc(100% - ${chatInputHeight}px)`,
+        height: `calc(100% - 150px)`,
       }}
     >
       <div
         ref={blockRef}
         className={classNames("messages", { "messages--loading": isLoading })}
       >
-        {isLoading && !user ? (
+        {!!isLoading || !user ? (
           <Spin size="large" tip="Загружаю сообщения..."></Spin>
         ) : items && !isLoading ? (
           items.length > 0 ? (

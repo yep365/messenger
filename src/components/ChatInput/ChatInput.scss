@@ -1,5 +1,5 @@
 .chat-input {
-  margin: 20px;
+  margin: 10px 20px 20px 20px;
   position: relative;
   & > div:first-of-type {
     display: flex;
@@ -95,18 +95,18 @@
   }
   &__camera {
     font-size: 21px;
-    top: 10px;
-    left: 721px;
+    top: 9px;
+    left: 717px;
   }
   &__audio {
     font-size: 18px;
-    top: 12px;
-    left: 753px;
+    top: 11px;
+    left: 750px;
   }
   &__send {
     font-size: 17px;
-    top: 12px;
-    left: 753px;
+    top: 11px;
+    left: 750px;
   }
   input {
     &:focus {
@@ -116,6 +116,7 @@
 }
 .ant-input-lg {
   padding: 5.5px 95px 5.5px 39px !important;
+  border-radius: 100px !important;
 }
 
 @keyframes wave-animation {
