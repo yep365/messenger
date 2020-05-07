@@ -4,6 +4,8 @@ import format from "date-fns/format";
 import isToday from "date-fns/isToday";
 import { Link } from "react-router-dom";
 
+import { isAudio } from "../../utils/helpers";
+
 import { IconReaded, Avatar } from "../";
 
 const getMessageTime = (createdAt) => {
@@ -25,38 +27,48 @@ const DialogItem = ({
   lastMessage,
   partner,
   userId,
-}) => (
-  <Link to={`/dialog/${_id}`}>
-    <div
-      className={classNames("dialogs__item", {
-        "dialogs__item--online": partner.isOnline,
-        "dialogs__item--selected": currentDialogId === _id,
-      })}
-    >
-      <div className="dialogs__item-avatar">
-        <Avatar user={partner} />
-      </div>
-      <div className="dialogs__item-info">
-        <div className="dialogs__item-info-top">
-          <b>{partner.fullname}</b>
-          <span>{getMessageTime(new Date(lastMessage.createdAt))}</span>
+}) => {
+  const renderLastMessage = (message, userId) => {
+    let text = "";
+    //TODO: see how isAduio works and make it work there
+    if ((!message.text && isAudio(message.attachments)) === 0) {
+      text = "аудиозапись";
+    } else if (!message.text && message.attachments.length) {
+      text = "прикреплённый файл";
+    } else {
+      text = message.text;
+    }
+    return `${message.user.id === userId ? "Вы: " : ""}${text}`;
+  };
+  return (
+    <Link to={`/dialog/${_id}`}>
+      <div
+        className={classNames("dialogs__item", {
+          "dialogs__item--online": partner.isOnline,
+          "dialogs__item--selected": currentDialogId === _id,
+        })}
+      >
+        <div className="dialogs__item-avatar">
+          <Avatar user={partner} />
         </div>
-        <div className="dialogs__item-info-buttom">
-          <p>
-            {lastMessage.user._id === userId
-              ? `Вы: ${lastMessage.text}`
-              : lastMessage.text}
-          </p>
-          {isMe && <IconReaded isMe={isMe} isReaded={lastMessage.readed} />}
-          {lastMessage.unreaded > 0 && (
-            <div className="dialogs__item-unread-count">
-              {lastMessage.unreaded > 9 ? "+9" : lastMessage.unreaded}
-            </div>
-          )}
+        <div className="dialogs__item-info">
+          <div className="dialogs__item-info-top">
+            <b>{partner.fullname}</b>
+            <span>{getMessageTime(new Date(lastMessage.createdAt))}</span>
+          </div>
+          <div className="dialogs__item-info-buttom">
+            <p>{renderLastMessage(lastMessage, userId)}</p>
+            {isMe && <IconReaded isMe={isMe} isReaded={lastMessage.readed} />}
+            {lastMessage.unreaded > 0 && (
+              <div className="dialogs__item-unread-count">
+                {lastMessage.unreaded > 9 ? "+9" : lastMessage.unreaded}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  </Link>
-);
+    </Link>
+  );
+};
 
 export default DialogItem;

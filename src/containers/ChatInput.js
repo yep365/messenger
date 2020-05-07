@@ -39,7 +39,7 @@ const ChatInput = (props) => {
   const sendMessage = () => {
     if (isRecording) {
       mediaRecorder.stop();
-    } else if (inputStatus) {
+    } else if (inputStatus || attachments.length > 0) {
       fetchSendMessage({
         text: inputStatus,
         dialogId: currentDialogId,

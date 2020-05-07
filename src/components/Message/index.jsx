@@ -6,7 +6,7 @@ import { EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
 import { Emoji } from "emoji-mart";
 import reactStingReplace from "react-string-replace";
 
-import { convertCurrentTime } from "../../utils/helpers";
+import { convertCurrentTime, isAudio } from "../../utils/helpers";
 
 import SoundWave from "../../assets/img/SoundWave.svg";
 import Pause from "../../assets/img/pause.svg";
@@ -128,19 +128,17 @@ const Message = ({
     }
   };
 
-  const isAudio = () => {
-    const file = attachments[0];
-    return attachments.length && file.ext === "webm";
-  };
-
   return (
     <div
       className={classNames("message", {
         "message--isme": isMe,
         "message--is-typing": isTyping,
         "message--image":
-          !isAudio() && attachments && attachments.length === 1 && !text,
-        "message--is--audio": isAudio(),
+          !isAudio(attachments) &&
+          attachments &&
+          attachments.length === 1 &&
+          !text,
+        "message--is--audio": isAudio(attachments),
       })}
     >
       <div className="message__content">

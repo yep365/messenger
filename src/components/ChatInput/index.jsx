@@ -95,7 +95,6 @@ const ChatInput = (props) => {
                 accept: ".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png,.gif,.bmp",
                 multiple: "multyple",
               }}
-              removeAttachment={removeAttachment}
             >
               <CameraOutlined style={{ color: "#464847" }} />
             </UploadField>
@@ -125,7 +124,10 @@ const ChatInput = (props) => {
       </div>
       {attachments.length > 0 && (
         <div className="chat-input__attachments">
-          <UploadFiles attachments={attachments} />
+          <UploadFiles
+            attachments={attachments}
+            removeAttachment={removeAttachment}
+          />
         </div>
       )}
     </div>
