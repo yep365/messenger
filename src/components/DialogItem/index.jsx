@@ -30,10 +30,7 @@ const DialogItem = ({
 }) => {
   const renderLastMessage = (message, userId) => {
     let text = "";
-    //TODO: see how isAduio works and make it work there
-    if ((!message.text && isAudio(message.attachments)) === 0) {
-      text = "аудиозапись";
-    } else if (!message.text && message.attachments.length) {
+    if (!message.text && message.attachments.length) {
       text = "прикреплённый файл";
     } else {
       text = message.text;

@@ -118,7 +118,7 @@
     #{$self}__audio {
       padding: 15px;
       background-color: #3674ff;
-      border-radius: 6px 6px 0 6px;
+      border-radius: 20px 20px 20px 1px;
       width: 250px;
       overflow: hidden;
       position: relative;
@@ -194,10 +194,55 @@
       background: #ffffff;
       border: 1px solid #ececec;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0220444);
-      border-radius: 12px 12px 0px 12px;
+      border-radius: 15px 15px 15px 0px;
       order: 2;
       #{$self}__text {
         color: $black;
+      }
+    }
+
+    #{$self}__audio {
+      padding: 15px;
+      background-color: #3674ff;
+      border-radius: 20px 20px 1px 20px;
+      width: 250px;
+      overflow: hidden;
+      position: relative;
+      &-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+      }
+      &-btn {
+        button {
+          // padding-left: 0.54rem;
+          display: flex;
+          justify-content: space-around;
+          cursor: pointer;
+          border: none;
+          width: 26px;
+          height: 27px;
+          border-radius: 30px;
+          background: #0f3997;
+          img {
+            height: 19px;
+          }
+        }
+      }
+      &-progress {
+        position: absolute;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: #418fff;
+        transition: 0.9s ease;
+      }
+      &-duration {
+        color: #fff;
+        font-weight: 400;
+        font-size: 12px;
+        opacity: 0.7;
       }
     }
   }
