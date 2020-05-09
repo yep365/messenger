@@ -1,4 +1,4 @@
-import { dialogsApi } from "../../utils/api";
+import { dialogsApi } from "utils/api";
 import socket from "core/socket";
 
 const Actions = {
@@ -6,8 +6,15 @@ const Actions = {
     type: "DIALOGS:SET_ITEMS",
     payload: items,
   }),
+  updateReadedStatus: ({ userId, dialogId }) => ({
+    type: "DIALOGS:LAST_MESSAGE_READED_STATUS",
+    payload: {
+      userId,
+      dialogId,
+    },
+  }),
   setCurrentDialogId: (id) => (dispatch) => {
-    socket.emit("DIALOG:JOIN", id);
+    socket.emit("DIALOGS:JOIN", id);
     dispatch({
       type: "DIALOGS:SET_CURRENT_DIALOG_ID",
       payload: id,
@@ -19,4 +26,5 @@ const Actions = {
     });
   },
 };
+
 export default Actions;

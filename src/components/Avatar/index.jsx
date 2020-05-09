@@ -15,7 +15,7 @@ const Avatar = ({ user }) => {
       />
     );
   } else {
-    const { color, colorLighten } = generateAvatarFromHash(user._id);
+    const { color, colorLighten } = generateAvatarFromHash(user.confirm_hash);
     const firstChar = user.fullname[0].toUpperCase();
 
     return (

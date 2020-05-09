@@ -17,7 +17,11 @@ const Actions = {
         dispatch(Actions.setUserData(data));
       })
       .catch((err) => {
-        if (err.response.status && err.response.status === 403) {
+        if (
+          err.response &&
+          err.response.status &&
+          err.response.status === 403
+        ) {
           dispatch(Actions.setIsAuth(false));
           delete window.localStorage.token;
         }

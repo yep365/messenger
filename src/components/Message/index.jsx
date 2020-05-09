@@ -132,7 +132,7 @@ const Message = ({
     <div
       className={classNames("message", {
         "message--isme": isMe,
-        "message--is-typing": isTyping,
+        "message--is-typing": !!isTyping,
         "message--image":
           !isAudio(attachments) &&
           attachments &&

@@ -22,7 +22,6 @@ const Messages = ({
   partner,
 }) => {
   const [chatInputHeight, setChatInputHeight] = useState(100);
-
   useEffect(() => {
     setChatInputHeight(
       chatInputHeight + document.querySelector(".chat-input").clientHeight
@@ -66,7 +65,12 @@ const Messages = ({
             />
           )
         )}
-        {isTyping && <Message isTyping={true} user={partner} />}
+        {isTyping && !isLoading && items && (
+          <Message
+            isTyping={true}
+            user={{ fullname: "qwe", _id: "qweqw12312312" }}
+          />
+        )}
         <Modal
           visible={!!previewImage}
           title="Прикреплённый файл"

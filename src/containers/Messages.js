@@ -21,8 +21,10 @@ const Messages = ({
   const [previewImage, setPreviewImage] = useState(null);
   const [linkOnAttachment, setLinkOnAttachment] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
+
   const [blockHeight, setBlockHeight] = useState(145);
   const messagesRef = useRef(null);
+  let typingTimeoutId = null;
 
   const onNewMessage = (data) => {
     addMessage(data);
@@ -30,14 +32,15 @@ const Messages = ({
 
   const toggleIsTyping = () => {
     setIsTyping(true);
+    clearInterval(typingTimeoutId);
+    typingTimeoutId = setTimeout(() => {
+      setIsTyping(false);
+    }, 3000);
   };
 
   useEffect(() => {
     socket.on("DIALOGS:TYPING", toggleIsTyping);
-    return () => {
-      socket.remove("DIALOGS:TYPING", toggleIsTyping);
-    };
-  }, [isTyping]);
+  }, []);
 
   useEffect(() => {
     if (attachments.length) {
