@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { filesApi } from "utils/api";
+import socket from "core/socket";
 
 import { ChatInput as ChatInputBase } from "components";
 
@@ -9,6 +10,7 @@ import { messagesActions, attachmentsActions } from "redux/actions";
 const ChatInput = (props) => {
   const {
     dialogs: { currentDialogId },
+    user,
     attachments,
     fetchSendMessage,
     setAttachments,
@@ -50,6 +52,7 @@ const ChatInput = (props) => {
     }
   };
   const handleSendMessage = (e) => {
+    socket.emit("DIALOGS:TYPING", { dialogId: currentDialogId, user });
     if (e && e.keyCode === 13) {
       sendMessage();
     } else {
@@ -126,6 +129,7 @@ const ChatInput = (props) => {
   };
 
   const onError = (err) => {
+    alert(`Произошла ошибка: ${err}`);
     console.log("The following error occured: " + err);
   };
 
@@ -166,7 +170,11 @@ const ChatInput = (props) => {
 };
 
 export default connect(
-  ({ dialogs, attachments }) => ({ dialogs, attachments: attachments.items }),
+  ({ dialogs, attachments, user }) => ({
+    dialogs,
+    attachments: attachments.items,
+    user: user.data,
+  }),
   {
     ...messagesActions,
     ...attachmentsActions,

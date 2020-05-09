@@ -18,6 +18,8 @@ const Messages = ({
   setLinkOnAttachment,
   linkOnAttachment,
   blockHeight,
+  isTyping,
+  partner,
 }) => {
   const [chatInputHeight, setChatInputHeight] = useState(100);
 
@@ -64,6 +66,7 @@ const Messages = ({
             />
           )
         )}
+        {isTyping && <Message isTyping={true} user={partner} />}
         <Modal
           visible={!!previewImage}
           title="Прикреплённый файл"

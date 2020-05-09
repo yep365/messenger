@@ -20,12 +20,24 @@ const Messages = ({
 }) => {
   const [previewImage, setPreviewImage] = useState(null);
   const [linkOnAttachment, setLinkOnAttachment] = useState(null);
+  const [isTyping, setIsTyping] = useState(false);
   const [blockHeight, setBlockHeight] = useState(145);
   const messagesRef = useRef(null);
 
   const onNewMessage = (data) => {
     addMessage(data);
   };
+
+  const toggleIsTyping = () => {
+    setIsTyping(true);
+  };
+
+  useEffect(() => {
+    socket.on("DIALOGS:TYPING", toggleIsTyping);
+    return () => {
+      socket.remove("DIALOGS:TYPING", toggleIsTyping);
+    };
+  }, [isTyping]);
 
   useEffect(() => {
     if (attachments.length) {
@@ -63,6 +75,7 @@ const Messages = ({
       setLinkOnAttachment={setLinkOnAttachment}
       linkOnAttachment={linkOnAttachment}
       blockHeight={blockHeight}
+      isTyping={isTyping}
     />
   ) : (
     <Empty

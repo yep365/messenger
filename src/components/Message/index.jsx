@@ -184,7 +184,7 @@ const Message = ({
 
           {attachments && (
             <div className="message__attachments">
-              {attachments.map((item, index) => renderAttachment(item))}
+              {attachments.map((item) => renderAttachment(item))}
             </div>
           )}
 
