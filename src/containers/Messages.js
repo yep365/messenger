@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { messagesActions } from "../redux/actions";
 import socket from "core/socket";
+import debounce from "lodash/debounce";
 
 import { Empty } from "antd";
 

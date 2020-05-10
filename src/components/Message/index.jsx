@@ -146,14 +146,15 @@ const Message = ({
 
         <div className="message__icon-actions">
           <Popover
-            placement="left"
+            placement="bottom"
             content={
               <div>
                 <Button onClick={onRemoveMessage}>Удалить сообщение</Button>
               </div>
             }
-            trigger="click"
+            trigger="hover"
           >
+            <Button type="link" shape="circle"></Button>
             <EllipsisOutlined style={{ fontSize: "15px", color: "#08c" }} />
           </Popover>
         </div>

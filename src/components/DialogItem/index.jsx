@@ -5,8 +5,6 @@ import isToday from "date-fns/isToday";
 import { Link } from "react-router-dom";
 import { Skeleton } from "antd";
 
-import { isAudio } from "../../utils/helpers";
-
 import { IconReaded, Avatar } from "../";
 
 const getMessageTime = (createdAt) => {

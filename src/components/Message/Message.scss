@@ -97,12 +97,12 @@
       }
     }
     &-actions {
-      z-index: 5;
+      z-index: 15;
       display: none;
       transform: rotate(90deg);
       position: absolute;
-      left: -31px;
-      top: -5px;
+      left: -38px;
+      top: -22px;
     }
   }
 
@@ -127,6 +127,11 @@
         align-items: center;
         justify-content: space-between;
         position: relative;
+      }
+      &-wave {
+        img {
+          height: 24px;
+        }
       }
       &-btn {
         button {
@@ -194,7 +199,7 @@
       background: #ffffff;
       border: 1px solid #ececec;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0220444);
-      border-radius: 15px 15px 15px 0px;
+      border-radius: 15px 15px 0px 15px;
       order: 2;
       #{$self}__text {
         color: $black;
