@@ -44,6 +44,7 @@ const ChatInput = (props) => {
     return () => {
       document.removeEventListener("click", handleOutsideClick.bind(this, el));
     };
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

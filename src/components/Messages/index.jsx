@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Empty, Spin, Modal, Button } from "antd";
 import classNames from "classnames";
@@ -21,12 +21,6 @@ const Messages = ({
   isTyping,
   partner,
 }) => {
-  // const [chatInputHeight, setChatInputHeight] = useState(100);
-  // useEffect(() => {
-  //   setChatInputHeight(
-  //     chatInputHeight + document.querySelector(".chat-input").clientHeight
-  //   );
-  // }, []);
   return (
     <div
       className="chat__dialog-messages"
@@ -65,12 +59,7 @@ const Messages = ({
             />
           )
         )}
-        {isTyping && !isLoading && items && (
-          <Message
-            isTyping={true}
-            user={{ fullname: "qwe", _id: "qweqw12312312" }}
-          />
-        )}
+        {isTyping && !isLoading && items && <Message isTyping={isTyping} />}
         <Modal
           visible={!!previewImage}
           title="Прикреплённый файл"

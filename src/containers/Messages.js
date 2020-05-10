@@ -66,7 +66,7 @@ const Messages = ({
     if (items) {
       messagesRef.current.scrollTo(0, 9999999999);
     }
-  }, [items]);
+  }, [items, attachments, isTyping]);
 
   return currentDialogId ? (
     <BaseMessages

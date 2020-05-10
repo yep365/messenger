@@ -45,6 +45,7 @@ const Dialogs = ({
       socket.removeListener("SERVER:DIALOG_CREATED", fetchDialogs);
       socket.removeListener("SERVER:NEW_MESSAGE", fetchDialogs);
     };
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

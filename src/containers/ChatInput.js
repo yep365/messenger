@@ -56,7 +56,6 @@ const ChatInput = (props) => {
     socket.emit("DIALOGS:TYPING", { dialogId: currentDialogId, user });
     if (e && e.keyCode === 13) {
       sendMessage();
-    } else {
     }
   };
   const addImoji = ({ colons }) => {

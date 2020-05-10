@@ -6,11 +6,12 @@ import { EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
 import { Emoji } from "emoji-mart";
 import reactStringReplace from "react-string-replace";
 
-import { convertCurrentTime, isAudio } from "../../utils/helpers";
+import { convertCurrentTime, isAudio } from "utils/helpers";
 
-import SoundWave from "../../assets/img/SoundWave.svg";
-import Pause from "../../assets/img/pause.svg";
-import Play from "../../assets/img/play.svg";
+import SoundWave from "assets/img/SoundWave.svg";
+import Pause from "assets/img/pause.svg";
+import Play from "assets/img/play.svg";
+import AttachedFile from "assets/img/attachedFile.png";
 
 import { Time, IconReaded, Avatar } from "../";
 
@@ -106,7 +107,21 @@ const Message = ({
   setLinkOnAttachment,
 }) => {
   const renderAttachment = (item) => {
-    if (item.ext !== "webm") {
+    if (item.ext === "webm") {
+      return <MessageAudio key={item._id} audioSrc={item.url} />;
+    } else if (item.ext === ("pdf" || "doc" || "docx" || "txt" || "rtf")) {
+      return (
+        <div
+          className="message__attachments-item-file"
+          onClick={() => {
+            setLinkOnAttachment(item.url);
+            setPreviewImage(item.url);
+          }}
+        >
+          <img src={AttachedFile} alt="Прикрепленный файл" />
+        </div>
+      );
+    } else {
       return (
         <div
           key={item._id}
@@ -123,8 +138,6 @@ const Message = ({
           <img src={item.url} alt={item.filename} />
         </div>
       );
-    } else {
-      return <MessageAudio key={item._id} audioSrc={item.url} />;
     }
   };
 
@@ -160,9 +173,14 @@ const Message = ({
         </div>
 
         <div className="message__avatar">
-          <Avatar user={user} />
+          {!isTyping && <Avatar user={user} />}
         </div>
         <div className="message__info">
+          {attachments && (
+            <div className="message__attachments">
+              {attachments.map((item) => renderAttachment(item))}
+            </div>
+          )}
           {(text || isTyping || audio) && (
             <div className="message__bubble">
               {text && (
@@ -180,12 +198,6 @@ const Message = ({
                 </div>
               )}
               {audio && <MessageAudio audioSrc={audio} />}
-            </div>
-          )}
-
-          {attachments && (
-            <div className="message__attachments">
-              {attachments.map((item) => renderAttachment(item))}
             </div>
           )}
 
