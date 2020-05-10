@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { filesApi } from "utils/api";
+import { parseEmojis } from "utils/helpers";
 import socket from "core/socket";
 
 import { ChatInput as ChatInputBase } from "components";
@@ -165,6 +166,7 @@ const ChatInput = (props) => {
       onHideRecording={onHideRecording}
       removeAttachment={removeAttachment}
       isLoading={isLoading}
+      parseEmojis={parseEmojis}
     />
   );
 };

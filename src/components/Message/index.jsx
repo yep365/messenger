@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Popover, Button } from "antd";
 import { EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
 import { Emoji } from "emoji-mart";
-import reactStingReplace from "react-string-replace";
+import reactStringReplace from "react-string-replace";
 
 import { convertCurrentTime, isAudio } from "../../utils/helpers";
 
@@ -167,8 +167,8 @@ const Message = ({
             <div className="message__bubble">
               {text && (
                 <p className="message__text">
-                  {reactStingReplace(text, /:(.+?):/g, (match, i) => (
-                    <Emoji key={i} emoji={match} set="apple" size="18" />
+                  {reactStringReplace(text, /:(.+?):/g, (match, i) => (
+                    <Emoji key={i} emoji={match} set="apple" size={16} />
                   ))}
                 </p>
               )}

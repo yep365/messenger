@@ -32,9 +32,9 @@ const ChatInput = (props) => {
     onSelectFiles,
     onRecord,
     isRecording,
-    onStopRecording,
     onHideRecording,
     isLoading,
+    parseEmojis,
   } = props;
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const ChatInput = (props) => {
             onKeyUp={handleSendMessage}
             size="large"
             placeholder="Введите сообщение"
-            value={inputStatus}
+            value={parseEmojis(inputStatus)}
           />
         )}
 

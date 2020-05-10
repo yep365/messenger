@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { messagesActions } from "../redux/actions";
 import socket from "core/socket";
-import debounce from "lodash/debounce";
 
 import { Empty } from "antd";
 
@@ -41,6 +40,7 @@ const Messages = ({
 
   useEffect(() => {
     socket.on("DIALOGS:TYPING", toggleIsTyping);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -59,6 +59,7 @@ const Messages = ({
     return () => {
       socket.removeListener("SERVER:NEW_MESSAGE", onNewMessage);
     };
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDialogId]);
 
   useEffect(() => {

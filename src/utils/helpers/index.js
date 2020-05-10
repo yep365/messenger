@@ -4,3 +4,4 @@ export { default as generateAvatarFromHash } from "./generateAvatarFromHash";
 export { default as openNotification } from "./openNotification";
 export { default as useOutside } from "./useOutside";
 export { default as isAudio } from "./isAudio";
+export { default as parseEmojis } from "./parseEmojis";
