@@ -1,7 +1,8 @@
 const initialState = {
   items: [],
   currentDialogId: window.location.pathname.split("dialog/")[1],
-  isLoading: false,
+  isLoading: true,
+  errorLoading: false,
 };
 export default (state = initialState, { type, payload }) => {
   switch (type) {
@@ -9,7 +10,15 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         items: payload,
+        isLoading: false,
       };
+    case "DIALOGS:FAILURE":
+      return {
+        ...state,
+        isLoading: false,
+        errorLoading: true,
+      };
+
     case "DIALOGS:LAST_MESSAGE_READED_STATUS":
       return {
         ...state,

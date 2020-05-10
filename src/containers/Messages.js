@@ -62,7 +62,7 @@ const Messages = ({
 
   useEffect(() => {
     if (items) {
-      messagesRef.current.scrollTo(0, 999999999);
+      messagesRef.current.scrollTo(0, 9999999999);
     }
   }, [items]);
 

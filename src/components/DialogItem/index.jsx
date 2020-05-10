@@ -3,6 +3,7 @@ import classNames from "classnames";
 import format from "date-fns/format";
 import isToday from "date-fns/isToday";
 import { Link } from "react-router-dom";
+import { Skeleton } from "antd";
 
 import { isAudio } from "../../utils/helpers";
 
@@ -23,6 +24,7 @@ const DialogItem = ({
   lastMessage,
   partner,
   userId,
+  isLoading,
 }) => {
   const renderLastMessage = (message, userId) => {
     let text = "";
@@ -34,27 +36,53 @@ const DialogItem = ({
     return `${message.user.id === userId ? "Вы: " : ""}${text}`;
   };
   return (
-    <Link to={`/dialog/${_id}`}>
+    <Link to={`${isLoading ? `#` : `/dialog/${_id}`}`}>
       <div
         className={classNames("dialogs__item", {
-          "dialogs__item--online": partner.isOnline,
-          "dialogs__item--selected": currentDialogId === _id,
+          "dialogs__item--online": partner && partner.isOnline,
+          "dialogs__item--selected": partner && currentDialogId === _id,
         })}
       >
         <div className="dialogs__item-avatar">
-          <Avatar user={partner} />
+          {isLoading ? (
+            <Skeleton.Avatar active="true" size="default" shape="circle" />
+          ) : (
+            <Avatar user={partner} />
+          )}
         </div>
         <div className="dialogs__item-info">
           <div className="dialogs__item-info-top">
-            <b>{partner.fullname}</b>
-            <span>{getMessageTime(new Date(lastMessage.createdAt))}</span>
+            {isLoading ? (
+              <Skeleton.Input
+                style={{ width: "168px", height: "14px" }}
+                active="true"
+                size="1"
+              />
+            ) : (
+              <b>{partner && partner.fullname}</b>
+            )}
+            <span>
+              {lastMessage && getMessageTime(new Date(lastMessage.createdAt))}
+            </span>
           </div>
           <div className="dialogs__item-info-buttom">
-            <p>{renderLastMessage(lastMessage, userId)}</p>
-            {isMe && <IconReaded isMe={isMe} isReaded={lastMessage.readed} />}
-            {lastMessage.unread > 0 && (
-              <div className="dialogs__item-unread-count">
-                {lastMessage.unread > 9 ? "+9" : lastMessage.unread}
+            {isLoading ? (
+              <Skeleton.Input
+                style={{ width: "236px", height: "16px" }}
+                active="true"
+                size="1"
+              />
+            ) : (
+              <div>
+                <p>{renderLastMessage(lastMessage, userId)}</p>
+                {isMe && (
+                  <IconReaded isMe={isMe} isReaded={lastMessage.readed} />
+                )}
+                {lastMessage.unread > 0 && (
+                  <div className="dialogs__item-unread-count">
+                    {lastMessage.unread > 9 ? "+9" : lastMessage.unread}
+                  </div>
+                )}
               </div>
             )}
           </div>

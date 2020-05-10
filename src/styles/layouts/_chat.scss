@@ -12,6 +12,13 @@
   &__sidebar {
     width: 320px;
     border-right: 1px solid #f7f7f7;
+    &-error {
+      padding-top: 70px;
+      svg {
+        color: #b99595;
+        font-size: 25px;
+      }
+    }
     &-wrapper {
       display: flex;
       flex-direction: column;

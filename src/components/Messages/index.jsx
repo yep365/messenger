@@ -21,12 +21,12 @@ const Messages = ({
   isTyping,
   partner,
 }) => {
-  const [chatInputHeight, setChatInputHeight] = useState(100);
-  useEffect(() => {
-    setChatInputHeight(
-      chatInputHeight + document.querySelector(".chat-input").clientHeight
-    );
-  }, []);
+  // const [chatInputHeight, setChatInputHeight] = useState(100);
+  // useEffect(() => {
+  //   setChatInputHeight(
+  //     chatInputHeight + document.querySelector(".chat-input").clientHeight
+  //   );
+  // }, []);
   return (
     <div
       className="chat__dialog-messages"

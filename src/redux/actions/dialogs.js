@@ -6,6 +6,7 @@ const Actions = {
     type: "DIALOGS:SET_ITEMS",
     payload: items,
   }),
+
   updateReadedStatus: ({ userId, dialogId }) => ({
     type: "DIALOGS:LAST_MESSAGE_READED_STATUS",
     payload: {
@@ -21,9 +22,16 @@ const Actions = {
     });
   },
   fetchDialogs: () => (dispatch) => {
-    dialogsApi.getAll().then(({ data }) => {
-      dispatch(Actions.setDialogs(data));
-    });
+    dialogsApi
+      .getAll()
+      .then(({ data }) => {
+        dispatch(Actions.setDialogs(data));
+      })
+      .catch((err) => {
+        dispatch({
+          type: "DIALOGS:FAILURE",
+        });
+      });
   },
 };
 

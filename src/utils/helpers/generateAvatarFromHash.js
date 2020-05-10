@@ -12,7 +12,7 @@ export default (hash) => {
     .map((item) => getCorrectIndex(item.charCodeAt(0)));
   console.log(r, g, b);
   return {
-    color: tinycolor({ r, g, b }).lighten(40).saturate(10).toHexString(),
-    colorLighten: tinycolor({ r, g, b }).lighten(30).saturate(30).toHexString(),
+    color: tinycolor({ r, g, b }).lighten(30).saturate(10).toHexString(),
+    colorLighten: tinycolor({ r, g, b }).lighten(25).saturate(55).toHexString(),
   };
 };
