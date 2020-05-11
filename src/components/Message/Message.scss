@@ -2,6 +2,8 @@
 
 .message {
   $self: &;
+  margin-bottom: 9px;
+
   &:hover {
     #{$self}__icon-actions {
       display: block;
@@ -11,7 +13,6 @@
     display: flex;
     max-width: 440px;
     margin-bottom: 7px;
-    position: relative;
   }
 
   &__avatar {
@@ -37,6 +38,7 @@
   }
 
   &__date {
+    padding-left: 50px;
     font-size: 12px;
     opacity: 0.5;
   }
@@ -170,17 +172,25 @@
     }
   }
   &--isme {
+    #{$self}__date {
+      display: flex;
+      flex-direction: row-reverse;
+      padding-right: 48px;
+      margin-bottom: 15px;
+    }
+  }
+  &-base--isme {
     display: flex;
     flex-direction: row-reverse;
 
     .avatar {
+      margin-top: 40px;
       margin-left: 13px;
-
       margin-right: 0;
     }
 
     #{$self}__content {
-      margin-bottom: 15px;
+      margin-bottom: 2px;
       flex-direction: row-reverse;
     }
 
@@ -205,6 +215,7 @@
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0220444);
       border-radius: 15px 15px 0px 15px;
       order: 2;
+      max-width: 290px;
       #{$self}__text {
         color: $black;
       }

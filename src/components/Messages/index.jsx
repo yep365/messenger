@@ -53,6 +53,7 @@ const Messages = ({
                     onRemoveMessage={onRemoveMessage.bind(this, item._id)}
                     setPreviewImage={setPreviewImage}
                     setLinkOnAttachment={setLinkOnAttachment}
+                    date={item.createdAt}
                   />
                 ))}
             </div>

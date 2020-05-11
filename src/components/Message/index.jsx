@@ -154,60 +154,66 @@ const Message = ({
         "message--is--audio": isAudio(attachments),
       })}
     >
-      <div className="message__content">
-        <IconReaded isMe={isMe} isReaded={readed} />
+      <div
+        className={classNames("message-base", {
+          "message-base--isme": isMe,
+        })}
+      >
+        <div className="message__content">
+          <IconReaded isMe={isMe} isReaded={readed} />
 
-        <div className="message__icon-actions">
-          <Popover
-            placement="bottom"
-            content={
-              <div>
-                <Button onClick={onRemoveMessage}>Удалить сообщение</Button>
-              </div>
-            }
-            trigger="hover"
-          >
-            <Button type="link" shape="circle"></Button>
-            <EllipsisOutlined style={{ fontSize: "15px", color: "#08c" }} />
-          </Popover>
-        </div>
-
-        <div className="message__avatar">
-          {!isTyping && <Avatar user={user} />}
-        </div>
-        <div className="message__info">
-          {attachments && (
-            <div className="message__attachments">
-              {attachments.map((item) => renderAttachment(item))}
-            </div>
-          )}
-          {(text || isTyping || audio) && (
-            <div className="message__bubble">
-              {text && (
-                <p className="message__text">
-                  {reactStringReplace(text, /:(.+?):/g, (match, i) => (
-                    <Emoji key={i} emoji={match} set="apple" size={16} />
-                  ))}
-                </p>
-              )}
-              {isTyping && (
-                <div className="message__typing">
-                  <span />
-                  <span />
-                  <span />
+          <div className="message__icon-actions">
+            <Popover
+              placement="bottom"
+              content={
+                <div>
+                  <Button onClick={onRemoveMessage}>Удалить сообщение</Button>
                 </div>
-              )}
-              {audio && <MessageAudio audioSrc={audio} />}
-            </div>
-          )}
+              }
+              trigger="hover"
+            >
+              <Button type="link" shape="circle"></Button>
+              <EllipsisOutlined style={{ fontSize: "15px", color: "#08c" }} />
+            </Popover>
+          </div>
 
-          {date && (
-            <span className="message__date">
-              <Time date={date} />
-            </span>
-          )}
+          <div className="message__avatar">
+            {!isTyping && <Avatar user={user} />}
+          </div>
+          <div className="message__info">
+            {attachments && (
+              <div className="message__attachments">
+                {attachments.map((item) => renderAttachment(item))}
+              </div>
+            )}
+
+            {(text || isTyping || audio) && (
+              <div className="message__bubble">
+                {text && (
+                  <p className="message__text">
+                    {reactStringReplace(text, /:(.+?):/g, (match, i) => (
+                      <Emoji key={i} emoji={match} set="apple" size={16} />
+                    ))}
+                  </p>
+                )}
+                {isTyping && (
+                  <div className="message__typing">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                )}
+                {audio && <MessageAudio audioSrc={audio} />}
+              </div>
+            )}
+          </div>
         </div>
       </div>
+      {date && (
+        <span className="message__date">
+          <Time date={date} />
+        </span>
+      )}
     </div>
   );
 };

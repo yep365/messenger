@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To create this app I've used React, Redux-thunk, Socket-io, SCSS.
+Folder structure contains Components, Containers, Modules and Pages!
+
+## How it looks like in production:
+
+<img src="src/assets/img/Sample.jpg" height="800">
 
 ## Available Scripts
 
