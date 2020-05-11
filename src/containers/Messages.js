@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { connect } from "react-redux";
+import throttle from "lodash/throttle";
 
 import { messagesActions } from "../redux/actions";
 import socket from "core/socket";
@@ -21,10 +22,41 @@ const Messages = ({
   const [previewImage, setPreviewImage] = useState(null);
   const [linkOnAttachment, setLinkOnAttachment] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
-
+  const [maxDisplayingMessage, setMaxDisplayingMessage] = useState(20);
   const [blockHeight, setBlockHeight] = useState(145);
   const messagesRef = useRef(null);
   let typingTimeoutId = null;
+  //Render new messages on scroll UP
+  const onScrollTopMessage = useCallback(
+    throttle((e) => {
+      if (e.target) {
+        const areAllMessages =
+          e.target.scrollHeight + e.target.scrollTop <=
+          e.target.scrollHeight + 800;
+        if (!!areAllMessages) {
+          setMaxDisplayingMessage((count) => count + 40);
+        }
+      }
+    }, 300),
+    []
+  );
+
+  useEffect(() => {
+    if (messagesRef.current) {
+      messagesRef.current.addEventListener("scroll", onScrollTopMessage);
+    }
+    return () => {
+      if (messagesRef.current) {
+        messagesRef.current.removeEventListener("scroll", onScrollTopMessage);
+      }
+    };
+  }, [onScrollTopMessage, currentDialogId]);
+  //Deleting listtner when srolled up till all messages
+  useEffect(() => {
+    if (items && messagesRef.current && maxDisplayingMessage >= items.length) {
+      messagesRef.current.removeEventListener("scroll", onScrollTopMessage);
+    }
+  }, [maxDisplayingMessage, onScrollTopMessage, items]);
 
   const onNewMessage = (data) => {
     addMessage(data);
@@ -80,6 +112,7 @@ const Messages = ({
       setLinkOnAttachment={setLinkOnAttachment}
       linkOnAttachment={linkOnAttachment}
       blockHeight={blockHeight}
+      maxDisplayingMessage={maxDisplayingMessage}
       isTyping={isTyping}
     />
   ) : (

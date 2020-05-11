@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Modal, Button, Select, Text, Input } from "antd";
+import { Modal, Button, Select, Input } from "antd";
 import { TeamOutlined, EditOutlined } from "@ant-design/icons";
 import { Dialogs } from "../../containers";
 

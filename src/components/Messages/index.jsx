@@ -20,6 +20,7 @@ const Messages = ({
   blockHeight,
   isTyping,
   partner,
+  maxDisplayingMessage,
 }) => {
   return (
     <div
@@ -37,16 +38,23 @@ const Messages = ({
         ) : items && !isLoading ? (
           items.length > 0 ? (
             <div>
-              {items.map((item) => (
-                <Message
-                  key={item._id}
-                  {...item}
-                  isMe={user._id === item.user.id}
-                  onRemoveMessage={onRemoveMessage.bind(this, item._id)}
-                  setPreviewImage={setPreviewImage}
-                  setLinkOnAttachment={setLinkOnAttachment}
-                />
-              ))}
+              {items
+                .slice(
+                  items.length <= maxDisplayingMessage
+                    ? 0
+                    : items.length - maxDisplayingMessage,
+                  items.length
+                )
+                .map((item) => (
+                  <Message
+                    key={item._id}
+                    {...item}
+                    isMe={user._id === item.user.id}
+                    onRemoveMessage={onRemoveMessage.bind(this, item._id)}
+                    setPreviewImage={setPreviewImage}
+                    setLinkOnAttachment={setLinkOnAttachment}
+                  />
+                ))}
             </div>
           ) : (
             <Empty description={"Вы пока не общались...\nИсправьте это!"} />

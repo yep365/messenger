@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Input } from "antd";
-import { MailOutlined } from "@ant-design/icons";
 
 import { validateField } from "utils/helpers";
 

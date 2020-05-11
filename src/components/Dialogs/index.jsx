@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import orderBy from "lodash/orderBy";
 import { Empty, Input } from "antd";
 import { SwapOutlined } from "@ant-design/icons";
@@ -16,14 +16,9 @@ const Dialogs = ({
   inputValue,
   errorLoading,
   currentDialogId,
+  emptyItems,
 }) => {
   const { Search } = Input;
-  const emptyItems = [];
-  for (let i = 0; i < 20; i++) {
-    emptyItems.push(
-      <DialogItem key={i} isLoading={isLoading} isOnline={false} />
-    );
-  }
 
   return (
     <div className="chat__sidebar-wrapper">
