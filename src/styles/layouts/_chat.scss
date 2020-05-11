@@ -93,7 +93,6 @@
       &-username {
         font-size: 17px;
         font-style: italic;
-
         letter-spacing: 1px;
       }
     }
@@ -102,35 +101,25 @@
       display: block;
       margin-bottom: 7px;
     }
-    .status {
-      text-align: center;
-      color: #c2bdbd;
-      position: relative;
-      padding-bottom: 5px;
-      &--online {
-        &::before {
-          content: "";
-          width: 6px;
-          height: 6px;
-          border-radius: 30px;
-          background-color: #00c980;
-        }
-      }
-      &::before {
-        position: absolute;
-        top: 8px;
-        left: -9px;
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 30px;
-        background-color: #c2bdbd;
-        border: 0.001em solid #d4d4d4;
-      }
+  }
+}
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #c2bdbd;
+
+  &--online {
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 30px;
+      background-color: #00c980;
     }
   }
 }
-
 .anticon {
   &-edit {
     cursor: pointer;
