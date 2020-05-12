@@ -4,15 +4,18 @@
   $self: &;
   margin-bottom: 9px;
 
-  &:hover {
-    #{$self}__icon-actions {
-      display: block;
-    }
-  }
   &__content {
     display: flex;
     max-width: 440px;
     margin-bottom: 7px;
+    position: relative;
+  }
+  &-base {
+    &:hover {
+      #{$self}__icon-actions {
+        display: block;
+      }
+    }
   }
 
   &__avatar {
