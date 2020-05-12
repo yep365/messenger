@@ -3,7 +3,9 @@ Folder structure contains Components, Containers, Modules and Pages!
 
 ## How it looks like in production:
 
-<img src="src/assets/img/Sample.jpg" height="800">
+<img src="src/assets/img/Sample1.jpg" width="850">
+
+## https://sleepy-montalcini-cc5410.netlify.app
 
 ## Available Scripts
 
