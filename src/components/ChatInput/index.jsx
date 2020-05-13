@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   SmileOutlined,
@@ -26,7 +26,6 @@ const ChatInput = (props) => {
     toggleEmojiPicker,
     handleSendMessage,
     addImoji,
-    handleOutsideClick,
     removeAttachment,
     attachments,
     onSelectFiles,
@@ -34,18 +33,9 @@ const ChatInput = (props) => {
     isRecording,
     onHideRecording,
     isLoading,
+    emojiPopUp,
     parseEmojis,
   } = props;
-
-  useEffect(() => {
-    const el = document.querySelector(".chat-input__smile");
-
-    document.addEventListener("click", handleOutsideClick.bind(this, el));
-    return () => {
-      document.removeEventListener("click", handleOutsideClick.bind(this, el));
-    };
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className="chat-input">
@@ -56,16 +46,18 @@ const ChatInput = (props) => {
             style={{ color: "#464847" }}
           />
         </div>
-        <div className="chat-input__emoji-picker">
-          {emojiPickerVisible && (
+
+        {emojiPickerVisible && (
+          <div ref={emojiPopUp} className="chat-input__emoji-picker">
             <Picker
               onSelect={(emojiTag) => {
                 addImoji(emojiTag);
               }}
               set="apple"
             />
-          )}
-        </div>
+          </div>
+        )}
+
         {isRecording ? (
           <div className="chat-input__record-status">
             <i></i>

@@ -66,6 +66,7 @@
     "react-router-dom": "^5.1.2",
     "react-string-replace": "^0.4.4",
     "react-styleguidist": "^11.0.0",
+    "react-use": "^14.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "reset-css": "^5.0.1",

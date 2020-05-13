@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useClickAway } from "react-use";
 import { connect } from "react-redux";
 import { filesApi } from "utils/api";
 import { parseEmojis } from "utils/helpers";
@@ -25,11 +26,9 @@ const ChatInput = (props) => {
   const [inputStatus, setInputStatus] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
-  const [emojiPickerVisible, setEmojiPickerVisible] = useState("");
+  const [emojiPickerVisible, setEmojiPickerVisible] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const toggleEmojiPicker = () => {
-    setEmojiPickerVisible(!emojiPickerVisible);
-  };
+  const emojiPopUp = useRef(null);
 
   const sendAudio = (audioId) => {
     return fetchSendMessage({
@@ -61,10 +60,12 @@ const ChatInput = (props) => {
   const addImoji = ({ colons }) => {
     setInputStatus((inputStatus + " " + colons).trim());
   };
-  const handleOutsideClick = (el, e) => {
-    if (el && !el.contains(e.target)) {
-      setEmojiPickerVisible(false);
-    }
+
+  useClickAway(emojiPopUp, () => {
+    setEmojiPickerVisible(!emojiPickerVisible);
+  });
+  const toggleEmojiPicker = () => {
+    setEmojiPickerVisible(!emojiPickerVisible);
   };
 
   const onSelectFiles = async (files) => {
@@ -154,7 +155,6 @@ const ChatInput = (props) => {
       emojiPickerVisible={emojiPickerVisible}
       setEmojiPickerVisible={setEmojiPickerVisible}
       currentDialogId={currentDialogId}
-      handleOutsideClick={handleOutsideClick}
       addImoji={addImoji}
       sendMessage={sendMessage}
       attachments={attachments}
@@ -165,6 +165,7 @@ const ChatInput = (props) => {
       onHideRecording={onHideRecording}
       removeAttachment={removeAttachment}
       isLoading={isLoading}
+      emojiPopUp={emojiPopUp}
       parseEmojis={parseEmojis}
     />
   );
