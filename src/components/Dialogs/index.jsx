@@ -51,6 +51,7 @@ const Dialogs = ({
               userId={userId}
               currentDialogId={currentDialogId}
               {...item}
+              partner={item.author._id === userId ? item.partner : item.author}
             />
           ))
         ) : isLoading ? (
