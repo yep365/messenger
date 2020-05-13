@@ -1,6 +1,7 @@
 .home {
   height: 950px;
 }
+
 .chat {
   display: flex;
   background-color: #fff;
@@ -8,7 +9,17 @@
   height: 100%;
   margin: 0 auto;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.04204);
-
+  label {
+    z-index: 1;
+    position: absolute;
+    left: 70px;
+    top: 50px;
+    font-size: 50px;
+    display: none;
+  }
+  #toggleBurger {
+    display: none;
+  }
   &__sidebar {
     width: 320px;
     border-right: 1px solid #f7f7f7;
@@ -19,6 +30,7 @@
         font-size: 25px;
       }
     }
+
     &-wrapper {
       display: flex;
       flex-direction: column;
@@ -136,5 +148,75 @@
       opacity: 1;
       transition: 0.1s ease-in-out;
     }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .chat {
+    width: 359px;
+    label {
+      cursor: pointer;
+      display: block;
+    }
+    &__info {
+      font-size: 40px;
+    }
+    &__sidebar {
+      width: 100vh;
+      display: none;
+      &-dialogs {
+        margin-top: 100px;
+      }
+      &-search {
+        .ant-input-affix-wrapper {
+          width: 350px !important;
+          height: 50px;
+          align-items: center;
+          svg {
+            font-size: 40px;
+          }
+          input {
+            font-size: 25px;
+          }
+        }
+      }
+      &-header {
+        max-width: 360px;
+        margin-top: 35px;
+        justify-content: space-around;
+        font-size: 40px;
+      }
+    }
+    &__dialog {
+      margin-top: 20px;
+      &-header {
+        height: 20vh;
+      }
+      &-messages {
+        z-index: 0;
+      }
+    }
+    &-input {
+      top: 50vh;
+      &__smile {
+        position: absolute;
+        font-size: 70px;
+      }
+    }
+  }
+  .ant-input-lg {
+    height: 150px;
+    border-radius: 30px !important;
+    font-size: 45px;
+    position: relative;
+  }
+  #toggleBurger:checked ~ .chat {
+    &__sidebar {
+      width: 100%;
+      display: block;
+    }
+  }
+  #toggleBurger:checked ~ .chat__dialog {
+    display: none;
   }
 }

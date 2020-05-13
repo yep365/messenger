@@ -3,7 +3,7 @@ import orderBy from "lodash/orderBy";
 import { Empty, Input } from "antd";
 import { SwapOutlined } from "@ant-design/icons";
 
-import DialogItem from "../DialogItem";
+import { DialogItem, Burger } from "../../components";
 
 import "./Dialogs.scss";
 import connectionErr from "../../assets/img/connectionErr.svg";
