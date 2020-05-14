@@ -34,7 +34,7 @@ const Home = (props) => {
         {user && (
           <div className="chat__dialog">
             <div className="chat__dialog-header">
-              <div />
+              <div className="chat__dialog-header-empty" />
               <Status />
 
               <Popover

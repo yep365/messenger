@@ -12,10 +12,11 @@
   label {
     z-index: 1;
     position: absolute;
-    left: 70px;
-    top: 50px;
-    font-size: 50px;
+    left: 6vw;
+    top: 2vh;
+    font-size: 30px;
     display: none;
+    color: #d7dde9;
   }
   #toggleBurger {
     display: none;
@@ -153,62 +154,106 @@
 
 @media only screen and (max-width: 450px) {
   .chat {
-    width: 359px;
+    padding: 0;
+    margin: auto;
+    width: 414px;
     label {
       cursor: pointer;
       display: block;
+      color: #959697;
     }
     &__info {
+      padding: 0px 20px 10px 20px;
       font-size: 40px;
+      span {
+        font-size: 20px;
+      }
     }
     &__sidebar {
       width: 100vh;
       display: none;
+      .anticon-edit {
+        position: absolute;
+        top: 2vh;
+        right: 3vw;
+        font-size: 20px;
+      }
       &-dialogs {
-        margin-top: 100px;
+        width: 100%;
       }
       &-search {
         .ant-input-affix-wrapper {
-          width: 350px !important;
-          height: 50px;
+          width: 88vw !important;
+          height: 38px;
           align-items: center;
           svg {
-            font-size: 40px;
+            font-size: 30px;
           }
           input {
-            font-size: 25px;
+            font-size: 15px;
           }
         }
       }
       &-header {
-        max-width: 360px;
-        margin-top: 35px;
-        justify-content: space-around;
+        height: 8vh;
+        margin: 0 0 2vh 0;
+        padding: 0 0 2vh 0;
+        justify-content: center;
         font-size: 40px;
       }
     }
     &__dialog {
-      margin-top: 20px;
+      margin-top: 10px;
+      justify-content: center;
       &-header {
-        height: 20vh;
+        height: 6.5vh;
+
+        &-action {
+          padding: 0;
+          margin: 0 0px 19px 0;
+        }
+        &-empty {
+          width: 7%;
+        }
       }
+
       &-messages {
+        height: 20px;
         z-index: 0;
       }
     }
     &-input {
-      top: 50vh;
+      position: absolute;
+      top: 90%;
+
       &__smile {
         position: absolute;
-        font-size: 70px;
+        top: 17%;
+        font-size: 20px;
+      }
+      &__actions {
+        position: absolute;
+        top: -15%;
+        left: -105%;
       }
     }
   }
+  html,
+  body {
+    height: 100vh;
+  }
+
+  .dialogs {
+    width: 100%;
+    &__item {
+      padding: 5px 6px;
+    }
+  }
   .ant-input-lg {
-    height: 150px;
+    height: 30px;
+    width: 380px;
     border-radius: 30px !important;
-    font-size: 45px;
-    position: relative;
+    font-size: 15px;
   }
   #toggleBurger:checked ~ .chat {
     &__sidebar {
@@ -218,5 +263,23 @@
   }
   #toggleBurger:checked ~ .chat__dialog {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .chat {
+    &__sidebar {
+      .anticon-edit {
+        position: absolute;
+        top: 24px;
+        left: 109%;
+        font-size: 20px;
+      }
+    }
+    label {
+      left: 10%;
+      top: 15px;
+      font-size: 20px;
+    }
   }
 }

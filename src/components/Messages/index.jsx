@@ -26,7 +26,8 @@ const Messages = ({
     <div
       className="chat__dialog-messages"
       style={{
-        height: `calc(100% - ${blockHeight}px)`,
+        height: `calc(
+          ${window.innerHeight < 850 ? `80` : `100`}% - ${blockHeight}px)`,
       }}
     >
       <div
