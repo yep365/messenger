@@ -30,7 +30,7 @@ const Sidebar = ({
 
   return (
     <>
-      <MobileBurger />
+      {window.innerWidth <= 502 ? <MobileBurger /> : null}
       <div className="chat__sidebar">
         <div className="chat__sidebar-header">
           {window.innerWidth <= 502 ? (
