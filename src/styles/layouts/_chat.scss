@@ -153,6 +153,24 @@
 }
 
 @media only screen and (max-width: 450px) {
+  .home {
+    height: 100%;
+  }
+  .dialogs {
+    min-width: 100%;
+    &__item {
+      &--selected {
+        padding: 10px 22px;
+      }
+      &-avatar {
+        width: 35px;
+        height: 35px;
+      }
+      &-info {
+        width: 90%;
+      }
+    }
+  }
   .chat {
     padding: 0;
     margin: auto;
@@ -167,18 +185,21 @@
       font-size: 40px;
       margin: 0;
       span {
-        font-size: 20px;
+        font-size: 19px;
       }
     }
     &__sidebar {
-      width: 100vh;
+      width: 100%;
       display: none;
       .anticon-edit {
         margin-top: 17px;
         font-size: 20px;
       }
+      &-wrapper {
+        flex-basis: 100%;
+      }
       &-dialogs {
-        width: 100%;
+        min-width: 100%;
       }
       &-search {
         .ant-input-affix-wrapper {
@@ -186,7 +207,7 @@
           height: 38px;
           align-items: center;
           svg {
-            font-size: 30px;
+            font-size: 21px;
           }
           input {
             font-size: 15px;
@@ -200,7 +221,7 @@
         justify-content: space-around;
         font-size: 40px;
         &-empty {
-          width: 5px;
+          width: 3%;
         }
       }
     }
@@ -270,10 +291,28 @@
 
 @media only screen and (max-width: 340px) {
   .chat {
+    &__info {
+      span {
+        font-size: 15px;
+      }
+    }
     &__sidebar {
+      &-search {
+        .ant-input-affix-wrapper {
+          svg {
+            font-size: 18px;
+          }
+        }
+        .ant-input-search {
+          width: 100%;
+        }
+      }
       &-header {
         flex-wrap: wrap-reverse;
         padding-bottom: 0;
+        &-empty {
+          width: 4%;
+        }
       }
       .anticon-edit {
         font-size: 20px;
