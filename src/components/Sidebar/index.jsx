@@ -3,6 +3,7 @@ import React from "react";
 import { Modal, Button, Select, Input } from "antd";
 import { TeamOutlined, EditOutlined } from "@ant-design/icons";
 import { Dialogs } from "../../containers";
+import { MobileBurger } from "../../components";
 
 import "./Sidebar.scss";
 
@@ -29,10 +30,12 @@ const Sidebar = ({
 
   return (
     <>
-      <label htmlFor="toggleBurger">&#9776;</label>
-      <input type="checkbox" id="toggleBurger" />
+      <MobileBurger />
       <div className="chat__sidebar">
         <div className="chat__sidebar-header">
+          {window.innerWidth <= 502 ? (
+            <div className="chat__sidebar-header-empty" />
+          ) : null}
           <div className="chat__info">
             <TeamOutlined />
             <span>Список диалогов</span>

@@ -156,7 +156,7 @@
   .chat {
     padding: 0;
     margin: auto;
-    width: 414px;
+    width: 100%;
     label {
       cursor: pointer;
       display: block;
@@ -165,6 +165,7 @@
     &__info {
       padding: 0px 20px 10px 20px;
       font-size: 40px;
+      margin: 0;
       span {
         font-size: 20px;
       }
@@ -173,9 +174,7 @@
       width: 100vh;
       display: none;
       .anticon-edit {
-        position: absolute;
-        top: 2vh;
-        right: 3vw;
+        margin-top: 17px;
         font-size: 20px;
       }
       &-dialogs {
@@ -198,8 +197,11 @@
         height: 8vh;
         margin: 0 0 2vh 0;
         padding: 0 0 2vh 0;
-        justify-content: center;
+        justify-content: space-around;
         font-size: 40px;
+        &-empty {
+          width: 5px;
+        }
       }
     }
     &__dialog {
@@ -269,16 +271,16 @@
 @media only screen and (max-width: 340px) {
   .chat {
     &__sidebar {
+      &-header {
+        flex-wrap: wrap-reverse;
+        padding-bottom: 0;
+      }
       .anticon-edit {
-        position: absolute;
-        top: 24px;
-        left: 109%;
         font-size: 20px;
       }
     }
     label {
-      left: 10%;
-      top: 15px;
+      top: 14px;
       font-size: 20px;
     }
   }
